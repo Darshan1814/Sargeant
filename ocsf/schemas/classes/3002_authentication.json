@@ -1,0 +1,15 @@
+{
+  "class_uid": 3002,
+  "class_name": "Authentication",
+  "category_uid": 3,
+  "category_name": "Identity & Access Management",
+  "extends": "base_event",
+  "additional_fields": {
+    "auth_protocol": { "type": "string" },
+    "logon_type":    { "type": "string" },
+    "status":        { "type": "string" },
+    "status_id":     { "type": "integer" },
+    "user":          { "type": "object", "properties": { "name": { "type": "string" }, "uid": { "type": "string" }, "domain": { "type": "string" } } },
+    "src_endpoint":  { "type": "object", "properties": { "ip": { "type": "string" }, "hostname": { "type": "string" } } }
+  }
+}
