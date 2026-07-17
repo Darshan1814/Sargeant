@@ -1,0 +1,23 @@
+{
+  "parser_id": "LINUX-SYSLOG-001",
+  "source_name": "Linux syslog / kern.log / messages (RFC3164 style)",
+  "os_family": "Linux",
+  "category": "System Activity",
+  "ocsf_class_uid": 1001,
+  "description": "Generic RFC3164 Linux syslog lines: 'Mon DD HH:MM:SS host process[pid]: message'. Catch-all for systemd/cron/NetworkManager/dbus and other daemons.",
+  "identifiers": {
+    "required_substrings": [],
+    "regex_signature": "^\\w{3}\\s+\\d{1,2}\\s+\\d{2}:\\d{2}:\\d{2}\\s+\\S+\\s+\\S+(\\[\\d+\\])?:",
+    "known_processes": ["sshd", "sudo", "systemd", "cron", "crond", "NetworkManager", "dbus-daemon", "rsyslogd", "kthreadd"],
+    "confidence_weight": 0.9
+  },
+  "ngre_pattern": "^(?P<month>\\w{3})\\s+(?P<day>\\d{1,2})\\s+(?P<time>\\d{2}:\\d{2}:\\d{2})\\s+(?P<host>\\S+)\\s+(?P<process>[\\w\\.\\-/]+)(?:\\[(?P<pid>\\d+)\\])?:\\s*(?P<message>.*)$",
+  "field_mapping": {
+    "host": "device.hostname",
+    "process": "actor.process.name",
+    "pid": "actor.process.pid",
+    "message": "message"
+  },
+  "sample_log": "Mar 12 14:23:01 web01 systemd[1]: Started Session 42 of user deploy.",
+  "version": "1.0"
+}

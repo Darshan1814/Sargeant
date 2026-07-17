@@ -1,0 +1,25 @@
+{
+  "parser_id": "WIN-SEC-4688",
+  "source_name": "Windows Security Auditing",
+  "os_family": "Windows",
+  "category": "Process Activity",
+  "ocsf_class_uid": 1007,
+  "activity_id": 1,
+  "activity_name": "Launch",
+  "description": "Security event 4688 — a new process has been created.",
+  "identifiers": {
+    "required_substrings": ["Event ID:", "4688", "New Process Name:"],
+    "regex_signature": "Event ID:\\s*4688\\b",
+    "known_processes": ["Microsoft-Windows-Security-Auditing"],
+    "confidence_weight": 1.0
+  },
+  "ngre_pattern": "Event ID:\\s*(?P<event_id>4688)[\\s\\S]*?Computer:\\s*(?P<computer>[^\\r\\n]+)[\\s\\S]*?Account Name:\\s*(?P<account_name>[^\\r\\n]+)[\\s\\S]*?New Process ID:\\s*(?P<new_process_id>[^\\r\\n]+)[\\s\\S]*?New Process Name:\\s*(?P<new_process_name>[^\\r\\n]+)",
+  "field_mapping": {
+    "computer": "device.hostname",
+    "account_name": "actor.user.name",
+    "new_process_name": "actor.process.name",
+    "new_process_id": "actor.process.pid"
+  },
+  "sample_log": "Log Name:      Security\nSource:        Microsoft-Windows-Security-Auditing\nEvent ID:      4688\nLevel:         Information\nComputer:      WKS01.corp.local\nA new process has been created.\n  Account Name:  jsmith\n  New Process ID:  0x1a4\n  New Process Name:  C:\\Windows\\System32\\cmd.exe",
+  "version": "1.0"
+}

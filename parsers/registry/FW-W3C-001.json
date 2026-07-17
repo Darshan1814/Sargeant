@@ -1,0 +1,27 @@
+{
+  "parser_id": "FW-W3C-001",
+  "source_name": "pfSense filterlog (W3C/CSV firewall log)",
+  "os_family": "Network",
+  "category": "Network Activity",
+  "ocsf_class_uid": 4001,
+  "description": "pfSense/OPNsense filterlog CSV firewall records delivered over syslog. Distinct from Windows pfirewall.log (WIN-FIREWALL-001) — comma-separated positional fields with block/pass action.",
+  "identifiers": {
+    "required_substrings": ["filterlog"],
+    "regex_signature": "filterlog\\[\\d+\\]:\\s*\\d+,.*?,(?:block|pass|rdr|nat),",
+    "known_processes": ["filterlog"],
+    "confidence_weight": 0.9
+  },
+  "ngre_pattern": "^(?P<month>\\w{3})\\s+(?P<day>\\d{1,2})\\s+(?P<time>\\d{2}:\\d{2}:\\d{2})\\s+(?P<host>\\S+)\\s+filterlog\\[(?P<pid>\\d+)\\]:\\s*(?P<rulenum>\\d+),[^,]*,[^,]*,(?P<tracker>\\d+),(?P<iface>[^,]+),(?P<reason>[^,]+),(?P<action>block|pass|rdr|nat),(?P<direction>in|out),(?P<ipver>\\d+),[^,]*,[^,]*,(?P<ttl>\\d+),(?P<ipid>\\d+),[^,]*,[^,]*,(?P<protoid>\\d+),(?P<protocol>\\w+),(?P<length>\\d+),(?P<src_ip>[\\d\\.]+),(?P<dst_ip>[\\d\\.]+),(?P<src_port>\\d+),(?P<dst_port>\\d+)",
+  "field_mapping": {
+    "host": "device.hostname",
+    "src_ip": "src_endpoint.ip",
+    "dst_ip": "dst_endpoint.ip",
+    "src_port": "src_endpoint.port",
+    "dst_port": "dst_endpoint.port",
+    "protocol": "connection_info.protocol_name",
+    "direction": "connection_info.direction",
+    "action": "status"
+  },
+  "sample_log": "Mar 12 14:23:01 pfsense filterlog[12345]: 5,,,1000000103,em0,match,block,in,4,0x0,,64,12345,0,none,6,tcp,60,198.51.100.7,10.0.0.5,51000,445,0,S,1234567890,,,,",
+  "version": "1.0"
+}

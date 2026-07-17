@@ -1,0 +1,24 @@
+{
+  "parser_id": "WIN-AD-DS",
+  "source_name": "Windows Security Auditing",
+  "os_family": "Windows",
+  "category": "Entity Management",
+  "ocsf_class_uid": 3005,
+  "activity_id": 1,
+  "activity_name": "Create",
+  "description": "Active Directory account management events 4720/4726/4738 — user account created/deleted/changed.",
+  "identifiers": {
+    "required_substrings": ["Event ID:", "Target Account"],
+    "regex_signature": "Event ID:\\s*(?:4720|4726|4738|4740|4767)\\b",
+    "known_processes": ["Microsoft-Windows-Security-Auditing"],
+    "confidence_weight": 1.0
+  },
+  "ngre_pattern": "Event ID:\\s*(?P<event_id>\\d+)\\b[\\s\\S]*?Computer:\\s*(?P<computer>[^\\r\\n]+)[\\s\\S]*?Subject:[\\s\\S]*?Account Name:\\s*(?P<actor_account>[^\\r\\n]+)[\\s\\S]*?Target Account:[\\s\\S]*?Account Name:\\s*(?P<target_account>[^\\r\\n]+)",
+  "field_mapping": {
+    "computer": "device.hostname",
+    "actor_account": "actor.user.name",
+    "target_account": "actor.user.domain"
+  },
+  "sample_log": "Log Name:      Security\nSource:        Microsoft-Windows-Security-Auditing\nEvent ID:      4720\nLevel:         Information\nComputer:      DC01.corp.local\nA user account was created.\nSubject:\n  Account Name:  Administrator\nTarget Account:\n  Account Name:  newuser01",
+  "version": "1.0"
+}

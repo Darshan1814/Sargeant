@@ -1,0 +1,24 @@
+{
+  "parser_id": "WIN-SYS-SVC",
+  "source_name": "Service Control Manager",
+  "os_family": "Windows",
+  "category": "System Activity",
+  "ocsf_class_uid": 1001,
+  "description": "System log Event ID 7036/7034 — Service Control Manager service state change / crash.",
+  "identifiers": {
+    "required_substrings": ["Service Control Manager", "Event ID:"],
+    "regex_signature": "Source:\\s*Service Control Manager[\\s\\S]*?Event ID:\\s*(?:7036|7034|7035|7040|7045)\\b",
+    "known_processes": ["Service Control Manager"],
+    "confidence_weight": 1.0
+  },
+  "ngre_pattern": "Source:\\s*Service Control Manager[\\s\\S]*?Event ID:\\s*(?P<event_id>\\d+)\\b[\\s\\S]*?Level:\\s*(?P<level>[^\\r\\n]+)[\\s\\S]*?Computer:\\s*(?P<computer>[^\\r\\n]+)[\\s\\S]*?(?:Description:\\s*)?(?P<service_message>The [^\\r\\n]+)",
+  "field_mapping": {
+    "computer": "device.hostname",
+    "service_message": "message"
+  },
+  "static_fields": {
+    "actor.process.name": "services.exe"
+  },
+  "sample_log": "Log Name:      System\nSource:        Service Control Manager\nEvent ID:      7036\nLevel:         Information\nComputer:      WKS01.corp.local\nDescription:   The Windows Update service entered the running state.",
+  "version": "1.0"
+}

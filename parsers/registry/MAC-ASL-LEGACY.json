@@ -1,0 +1,22 @@
+{
+  "parser_id": "MAC-ASL-LEGACY",
+  "source_name": "macOS Apple System Log (ASL)",
+  "os_family": "macOS",
+  "category": "System Activity",
+  "ocsf_class_uid": 1001,
+  "description": "Legacy Apple System Log bracketed text (post asl_search / syslog -T export): [Time ...] [Sender ...] [Level N] [PID N] [Message ...].",
+  "identifiers": {
+    "required_substrings": ["[Sender ", "[Message "],
+    "regex_signature": "\\[Sender [^\\]]+\\][\\s\\S]*?\\[Message ",
+    "known_processes": [],
+    "confidence_weight": 0.9
+  },
+  "ngre_pattern": "\\[Time (?P<datetime>[^\\]]+)\\][\\s\\S]*?\\[Sender (?P<process>[^\\]]+)\\][\\s\\S]*?\\[Level (?P<level_num>\\d+)\\][\\s\\S]*?\\[PID (?P<pid>\\d+)\\][\\s\\S]*?\\[Message (?P<message>[^\\]]*)\\]",
+  "field_mapping": {
+    "process": "actor.process.name",
+    "pid": "actor.process.pid",
+    "message": "message"
+  },
+  "sample_log": "[Time 2024.05.01 12:00:00 UTC] [Sender kernel] [Level 5] [PID 0] [Message AppleACPIPlatform found]",
+  "version": "1.0"
+}

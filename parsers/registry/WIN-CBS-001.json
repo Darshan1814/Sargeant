@@ -1,0 +1,22 @@
+{
+  "parser_id": "WIN-CBS-001",
+  "source_name": "Windows CBS/CSI Component Store Log",
+  "os_family": "Windows",
+  "category": "System Activity",
+  "ocsf_class_uid": 1001,
+  "description": "Windows Component-Based Servicing (CBS) and CSI installer/update logs. Format: YYYY-MM-DD HH:MM:SS, Level  Component  Message",
+  "identifiers": {
+    "required_substrings": ["CBS"],
+    "regex_signature": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}, \\w+\\s+(?:CBS|CSI)\\s+",
+    "known_processes": ["CBS", "CSI", "TrustedInstaller", "WindowsUpdateAgent"],
+    "confidence_weight": 0.9
+  },
+  "ngre_pattern": "^(?P<datetime>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}), (?P<level>\\w+)\\s+(?P<component>CBS|CSI)\\s+(?P<message>.+)$",
+  "field_mapping": {
+    "datetime": "_datetime",
+    "component": "actor.process.name",
+    "message": "message"
+  },
+  "sample_log": "2016-09-28 04:30:30, Info                  CBS    Loaded Servicing Stack v6.1.7601.23505",
+  "version": "1.0"
+}

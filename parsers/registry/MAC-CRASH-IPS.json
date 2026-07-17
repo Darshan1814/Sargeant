@@ -1,0 +1,26 @@
+{
+  "parser_id": "MAC-CRASH-IPS",
+  "source_name": "macOS Crash Report (.ips)",
+  "os_family": "macOS",
+  "category": "Application Lifecycle",
+  "ocsf_class_uid": 6005,
+  "description": "macOS crash report .ips header (JSON). Extracts app_name, timestamp, bug_type, os_version, incident id.",
+  "identifiers": {
+    "required_substrings": ["\"app_name\"", "\"bug_type\""],
+    "regex_signature": "\"app_name\"\\s*:\\s*\"[^\"]*\"[\\s\\S]*?\"bug_type\"\\s*:",
+    "known_processes": [],
+    "confidence_weight": 0.9
+  },
+  "ngre_pattern": "\"app_name\"\\s*:\\s*\"(?P<process>[^\"]*)\"[\\s\\S]*?\"timestamp\"\\s*:\\s*\"(?P<timestamp>[^\"]*)\"[\\s\\S]*?\"bug_type\"\\s*:\\s*\"(?P<bug_type>[^\"]*)\"[\\s\\S]*?\"os_version\"\\s*:\\s*\"(?P<os_version>[^\"]*)\"[\\s\\S]*?\"incident_id\"\\s*:\\s*\"(?P<incident_id>[^\"]*)\"",
+  "field_mapping": {
+    "process": "actor.process.name",
+    "incident_id": "metadata.uid_alt"
+  },
+  "static_fields": {
+    "severity_id": 4,
+    "severity": "High",
+    "status": "Failure"
+  },
+  "sample_log": "{\"app_name\":\"Safari\",\"timestamp\":\"2024-05-01 12:00:00.00 -0700\",\"app_version\":\"17.0\",\"bug_type\":\"309\",\"os_version\":\"macOS 14.4.1 (23E224)\",\"incident_id\":\"ABCD-1234\"}",
+  "version": "1.0"
+}

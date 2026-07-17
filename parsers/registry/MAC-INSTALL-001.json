@@ -1,0 +1,24 @@
+{
+  "parser_id": "MAC-INSTALL-001",
+  "source_name": "macOS Installer (install.log)",
+  "os_family": "macOS",
+  "category": "Application Lifecycle",
+  "ocsf_class_uid": 6005,
+  "description": "macOS /var/log/install.log: YYYY-MM-DD HH:MM:SS[±offset] host process[pid]: message. Package installs, softwareupdate, installd.",
+  "identifiers": {
+    "required_substrings": ["installd"],
+    "regex_signature": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:[\\+\\-]\\d{2,4})?\\s+\\S+\\s+[^\\[]+\\[\\d+\\]:",
+    "known_processes": ["installd", "installer", "softwareupdated", "packagekit"],
+    "confidence_weight": 1.0
+  },
+  "ngre_pattern": "^(?P<datetime>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})(?P<tzoffset>[\\+\\-]\\d{2,4})?\\s+(?P<host>\\S+)\\s+(?P<process>[^\\[]+)\\[(?P<pid>\\d+)\\]:\\s*(?P<message>.*)$",
+  "field_mapping": {
+    "datetime": "_datetime",
+    "host": "device.hostname",
+    "process": "actor.process.name",
+    "pid": "actor.process.pid",
+    "message": "message"
+  },
+  "sample_log": "2024-05-01 12:00:00-07 MacBook installd[311]: PackageKit: Installing com.apple.pkg.Example",
+  "version": "1.0"
+}
