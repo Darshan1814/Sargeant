@@ -1,0 +1,5 @@
+E/AndroidRuntime( 6944): FATAL EXCEPTION: main
+W/dumpsys( 3907): Thread Pool max thread count is 0
+I/ActivityManager( 1200): Displayed com.example.app/.MainActivity
+D/WifiService( 1200): setWifiEnabled: true pid=1200
+V/AudioManager( 6944): playSoundEffect effectType: 0

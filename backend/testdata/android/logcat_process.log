@@ -1,0 +1,4 @@
+W( 3907) Thread Pool max thread count is 0  (dumpsys)
+E( 6944) FATAL EXCEPTION: main  (AndroidRuntime)
+I( 1200) Displayed com.example.app  (ActivityManager)
+D( 1200) setWifiEnabled: true  (WifiService)

@@ -1,0 +1,9 @@
+[ 08-10 09:20:19.692  3907: 3921 W/dumpsys ]
+Thread Pool max thread count is 0. Cannot cache binder as linkToDeath
+
+[ 08-10 09:20:20.100  6944: 6944 E/AndroidRuntime ]
+FATAL EXCEPTION: main
+java.lang.NullPointerException: Attempt to invoke virtual method
+
+[ 08-10 09:20:21.000  1200: 1200 I/ActivityManager ]
+Displayed com.example.app/.MainActivity: +1s200ms

@@ -1,0 +1,6 @@
+08-10 09:20:19.692 W/dumpsys( 3907): Thread Pool max thread count is 0. Cannot cache binder
+08-10 09:20:19.760 E/OplusStorageUFSBandwidth( 3907): Alarm set to trigger in 10 seconds
+08-10 09:08:26.131 W/VRI[MainActivity]( 6944): performTraversals: cancelAndRedraw
+08-10 09:21:00.001 I/ConnectivityService( 1200): NetworkAgent switched to WIFI
+08-10 09:21:05.220 D/WindowManager( 1200): Adding window Window{abc} to display 0
+08-10 09:21:06.310 E/AndroidRuntime( 6944): FATAL EXCEPTION: main
