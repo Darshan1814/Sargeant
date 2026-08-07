@@ -1,0 +1,999 @@
+Feb  1 10:12:04 web01 cron[25304]: Started Session 659 of user svc_backup.
+--------
+Oct 20 05:29:56 app-node-3 sshd[18512]: pam_unix(cron:session): session opened for user root
+--------
+Apr 24 05:43:25 db02 sshd[10832]: Started Session 834 of user admin.
+--------
+Aug 19 16:15:36 app-node-3 NetworkManager[5974]: device eth0 entered promiscuous mode
+--------
+Jan  1 15:44:12 app-node-3 systemd[12785]: Reached target Multi-User System.
+--------
+May  5 04:10:20 gateway cron[12887]: Started Session 395 of user postgres.
+--------
+Dec  5 07:50:04 db02 cron[18005]: device eth0 entered promiscuous mode
+--------
+Mar  5 16:17:52 gateway systemd[5108]: pam_unix(cron:session): session opened for user jdoe
+--------
+Apr 11 22:12:03 web01 sudo[12901]: Started Session 767 of user jdoe.
+--------
+Apr 21 21:15:12 app-node-3 NetworkManager[21604]: Started Session 828 of user root.
+--------
+Nov  1 20:01:47 app-node-3 sshd[10701]: pam_unix(cron:session): session opened for user jdoe
+--------
+Jul 18 20:52:19 db02 systemd[13657]: pam_unix(cron:session): session opened for user postgres
+--------
+May 26 21:36:37 web01 systemd[2917]: Reached target Multi-User System.
+--------
+Jan 21 18:19:49 gateway cron[14381]: Started Session 392 of user svc_backup.
+--------
+Nov  6 13:08:42 db02 sudo[3682]: Reached target Multi-User System.
+--------
+Feb  8 21:35:16 web01 cron[913]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Feb 22 11:55:38 web01 sudo[22980]: pam_unix(cron:session): session opened for user postgres
+--------
+May 21 09:43:35 web01 dbus-daemon[24539]: Started Session 555 of user root.
+--------
+Mar 13 01:45:44 app-node-3 NetworkManager[22412]: Started Session 526 of user jdoe.
+--------
+Aug 21 09:04:12 app-node-3 sudo[13739]: device eth0 entered promiscuous mode
+--------
+Dec 27 22:28:24 web01 sshd[1508]: Started Session 811 of user jdoe.
+--------
+Jul 21 00:59:57 gateway sudo[22462]: Started Session 474 of user root.
+--------
+May 17 12:44:42 app-node-3 dbus-daemon[5149]: Reached target Multi-User System.
+--------
+Jan 17 01:30:35 gateway dbus-daemon[17833]: Reached target Multi-User System.
+--------
+Apr  8 21:31:17 app-node-3 sudo[28101]: pam_unix(cron:session): session opened for user postgres
+--------
+Jun  5 16:03:30 gateway sshd[2534]: Started Session 451 of user admin.
+--------
+Aug 18 11:49:29 web01 systemd[10961]: Reached target Multi-User System.
+--------
+Apr  8 04:40:33 gateway systemd[25976]: Reached target Multi-User System.
+--------
+Nov 25 06:34:13 web01 dbus-daemon[14043]: pam_unix(cron:session): session opened for user admin
+--------
+Oct  2 15:04:40 db02 dbus-daemon[16644]: pam_unix(cron:session): session opened for user postgres
+--------
+Apr  3 20:33:21 gateway dbus-daemon[26652]: device eth0 entered promiscuous mode
+--------
+Dec  2 21:31:58 web01 sudo[22626]: device eth0 entered promiscuous mode
+--------
+Apr 17 21:59:56 web01 sudo[632]: device eth0 entered promiscuous mode
+--------
+Mar 22 02:09:10 web01 sshd[23322]: Started Session 861 of user root.
+--------
+Jun  1 17:30:57 gateway NetworkManager[4319]: pam_unix(cron:session): session opened for user deploy
+--------
+Nov 22 20:25:22 gateway sudo[20898]: Reached target Multi-User System.
+--------
+Jan 10 05:46:54 app-node-3 dbus-daemon[9134]: Reached target Multi-User System.
+--------
+Aug  6 21:52:04 web01 systemd[13981]: device eth0 entered promiscuous mode
+--------
+Aug  1 07:36:39 gateway sshd[17754]: pam_unix(cron:session): session opened for user postgres
+--------
+Oct 25 03:16:33 app-node-3 cron[28545]: device eth0 entered promiscuous mode
+--------
+Feb  4 14:03:04 gateway NetworkManager[3540]: device eth0 entered promiscuous mode
+--------
+Oct  2 08:50:11 web01 sudo[4247]: Reached target Multi-User System.
+--------
+Nov 18 13:06:04 web01 cron[14932]: pam_unix(cron:session): session opened for user deploy
+--------
+Aug  3 12:43:14 gateway systemd[1253]: device eth0 entered promiscuous mode
+--------
+Nov  8 00:42:33 app-node-3 NetworkManager[16509]: Reached target Multi-User System.
+--------
+Apr  4 12:14:36 gateway sshd[23300]: Reached target Multi-User System.
+--------
+Jun 10 19:38:28 web01 NetworkManager[4361]: Started Session 727 of user svc_backup.
+--------
+Aug  9 21:21:40 web01 sudo[4886]: pam_unix(cron:session): session opened for user jdoe
+--------
+Sep  5 13:08:45 web01 dbus-daemon[17059]: pam_unix(cron:session): session opened for user root
+--------
+Sep 23 18:29:10 app-node-3 sshd[22330]: pam_unix(cron:session): session opened for user root
+--------
+Jun 12 23:15:59 web01 dbus-daemon[10460]: Reached target Multi-User System.
+--------
+Jan 15 09:26:36 web01 sshd[2686]: Reached target Multi-User System.
+--------
+Mar 18 18:32:56 web01 sudo[25549]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Feb  5 13:30:31 gateway sshd[16407]: Reached target Multi-User System.
+--------
+Jun 21 15:34:46 web01 systemd[16804]: Reached target Multi-User System.
+--------
+Oct 20 23:48:50 gateway sshd[1682]: device eth0 entered promiscuous mode
+--------
+Jan 20 03:00:06 web01 cron[19338]: device eth0 entered promiscuous mode
+--------
+Aug  9 20:57:53 app-node-3 NetworkManager[18542]: pam_unix(cron:session): session opened for user admin
+--------
+Aug 26 17:23:36 gateway NetworkManager[8517]: device eth0 entered promiscuous mode
+--------
+Jun  1 12:11:31 gateway cron[26930]: Reached target Multi-User System.
+--------
+Nov 23 05:39:30 web01 sshd[17133]: device eth0 entered promiscuous mode
+--------
+Jan 23 06:41:06 app-node-3 sshd[25436]: Reached target Multi-User System.
+--------
+Mar 27 06:45:22 gateway dbus-daemon[23377]: Reached target Multi-User System.
+--------
+Oct  1 02:38:04 db02 systemd[718]: pam_unix(cron:session): session opened for user jdoe
+--------
+Jan 17 12:04:34 app-node-3 systemd[444]: Started Session 133 of user root.
+--------
+Aug 25 19:59:44 web01 sudo[980]: Started Session 163 of user admin.
+--------
+Feb 18 10:46:40 db02 cron[24593]: Reached target Multi-User System.
+--------
+Jun 17 19:33:54 web01 NetworkManager[4863]: Reached target Multi-User System.
+--------
+Mar 16 07:50:12 db02 NetworkManager[24723]: pam_unix(cron:session): session opened for user root
+--------
+Oct 25 15:46:55 web01 systemd[4223]: Started Session 302 of user svc_backup.
+--------
+Jun 24 18:24:03 web01 systemd[10526]: Started Session 625 of user postgres.
+--------
+Dec 16 18:41:01 app-node-3 sudo[27181]: pam_unix(cron:session): session opened for user jdoe
+--------
+Nov 19 21:48:27 gateway NetworkManager[4239]: device eth0 entered promiscuous mode
+--------
+Jan  4 07:15:06 web01 sudo[6851]: pam_unix(cron:session): session opened for user svc_backup
+--------
+May 21 13:13:38 gateway NetworkManager[14344]: Started Session 984 of user postgres.
+--------
+Dec 18 15:18:04 app-node-3 sudo[7836]: Reached target Multi-User System.
+--------
+Dec 27 12:00:13 gateway sshd[16909]: Reached target Multi-User System.
+--------
+Jan 16 14:03:07 gateway sshd[26430]: Started Session 787 of user root.
+--------
+Feb 10 14:57:04 db02 dbus-daemon[22734]: Reached target Multi-User System.
+--------
+Mar 17 23:54:13 gateway systemd[18171]: Reached target Multi-User System.
+--------
+Jun 13 16:47:49 web01 NetworkManager[24086]: pam_unix(cron:session): session opened for user postgres
+--------
+May 18 11:11:27 db02 systemd[19360]: Started Session 155 of user deploy.
+--------
+Mar 24 05:16:34 app-node-3 sshd[2015]: device eth0 entered promiscuous mode
+--------
+May 15 23:12:56 web01 systemd[22903]: Reached target Multi-User System.
+--------
+Mar 26 04:27:26 db02 systemd[18947]: Started Session 702 of user jdoe.
+--------
+Sep 28 12:52:08 gateway sudo[13524]: Started Session 636 of user jdoe.
+--------
+Jul  1 19:25:26 app-node-3 cron[14826]: device eth0 entered promiscuous mode
+--------
+Jul 10 13:09:14 web01 systemd[18149]: pam_unix(cron:session): session opened for user admin
+--------
+Apr  7 21:42:34 gateway systemd[24738]: device eth0 entered promiscuous mode
+--------
+Mar  9 18:47:00 db02 cron[29112]: Started Session 543 of user admin.
+--------
+Dec 23 18:01:18 web01 cron[16004]: Reached target Multi-User System.
+--------
+Sep  4 21:14:32 app-node-3 NetworkManager[17098]: device eth0 entered promiscuous mode
+--------
+Jun  7 03:33:25 app-node-3 systemd[9975]: Started Session 550 of user postgres.
+--------
+Aug 16 23:07:54 app-node-3 NetworkManager[14070]: device eth0 entered promiscuous mode
+--------
+Nov 17 23:17:28 gateway dbus-daemon[20023]: Started Session 527 of user postgres.
+--------
+Jul 28 22:37:05 app-node-3 NetworkManager[11394]: device eth0 entered promiscuous mode
+--------
+Apr  2 06:37:01 app-node-3 dbus-daemon[23773]: Reached target Multi-User System.
+--------
+Mar 14 06:28:58 web01 systemd[25655]: Reached target Multi-User System.
+--------
+Jun  4 10:09:35 db02 dbus-daemon[13932]: device eth0 entered promiscuous mode
+--------
+Jun  9 11:46:36 web01 sshd[17270]: Started Session 374 of user deploy.
+--------
+Oct  7 15:00:17 app-node-3 cron[19384]: device eth0 entered promiscuous mode
+--------
+Jul 12 11:10:19 db02 sshd[8752]: Started Session 876 of user postgres.
+--------
+Aug 25 19:24:27 app-node-3 sudo[22985]: pam_unix(cron:session): session opened for user deploy
+--------
+Jun  5 19:32:15 app-node-3 sshd[23376]: Reached target Multi-User System.
+--------
+Jul  2 08:17:25 gateway sshd[7223]: Reached target Multi-User System.
+--------
+Dec 24 02:48:59 web01 sshd[29137]: pam_unix(cron:session): session opened for user root
+--------
+Jan  7 01:34:25 db02 cron[21811]: Started Session 571 of user postgres.
+--------
+Apr 23 13:52:12 web01 sudo[20119]: device eth0 entered promiscuous mode
+--------
+Aug  8 00:29:46 gateway cron[28157]: Started Session 140 of user root.
+--------
+Mar  8 15:29:06 app-node-3 sshd[29977]: device eth0 entered promiscuous mode
+--------
+Sep 26 02:28:54 gateway cron[2126]: Started Session 707 of user jdoe.
+--------
+Apr 13 05:24:08 web01 sshd[603]: device eth0 entered promiscuous mode
+--------
+Dec 14 22:17:45 gateway cron[26605]: pam_unix(cron:session): session opened for user deploy
+--------
+Sep 22 10:00:06 app-node-3 sudo[14216]: Reached target Multi-User System.
+--------
+Oct 26 05:47:46 db02 sshd[20866]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Sep  4 14:53:24 db02 dbus-daemon[25711]: Started Session 202 of user postgres.
+--------
+Oct 26 16:51:16 gateway systemd[25505]: device eth0 entered promiscuous mode
+--------
+Dec 17 10:21:14 db02 sudo[19097]: pam_unix(cron:session): session opened for user jdoe
+--------
+Jul  4 02:02:45 db02 sshd[23805]: Started Session 207 of user admin.
+--------
+Apr 19 19:38:22 db02 sudo[672]: Reached target Multi-User System.
+--------
+Oct 19 11:11:29 web01 NetworkManager[6128]: Started Session 198 of user deploy.
+--------
+May  3 19:38:31 web01 NetworkManager[24689]: Reached target Multi-User System.
+--------
+Sep  2 23:07:36 app-node-3 sudo[24874]: device eth0 entered promiscuous mode
+--------
+Mar 27 07:22:21 db02 systemd[3214]: Started Session 165 of user postgres.
+--------
+Apr  8 02:38:48 app-node-3 dbus-daemon[23046]: Started Session 548 of user postgres.
+--------
+Nov 25 20:17:05 app-node-3 sudo[13717]: Started Session 126 of user admin.
+--------
+May 18 06:54:54 gateway systemd[22267]: Reached target Multi-User System.
+--------
+Sep 12 10:11:08 gateway sshd[7785]: Started Session 584 of user deploy.
+--------
+Aug 26 08:54:10 db02 sudo[5833]: Started Session 304 of user root.
+--------
+Mar  5 17:29:05 app-node-3 sshd[16250]: Started Session 495 of user svc_backup.
+--------
+Oct  7 06:20:08 db02 NetworkManager[8274]: Started Session 33 of user svc_backup.
+--------
+Sep 22 06:12:15 db02 sshd[17374]: Started Session 421 of user svc_backup.
+--------
+May 24 23:36:30 app-node-3 systemd[23902]: Started Session 845 of user deploy.
+--------
+Jul 11 10:15:47 db02 cron[28177]: Started Session 464 of user deploy.
+--------
+May 24 09:27:20 gateway sshd[22799]: pam_unix(cron:session): session opened for user deploy
+--------
+Jun  2 18:57:32 web01 sshd[24944]: device eth0 entered promiscuous mode
+--------
+Nov 22 02:55:55 gateway sshd[19493]: Started Session 260 of user postgres.
+--------
+Sep  8 09:26:06 db02 cron[28126]: device eth0 entered promiscuous mode
+--------
+May 18 22:32:05 web01 cron[23150]: pam_unix(cron:session): session opened for user postgres
+--------
+Jan 24 14:11:27 gateway sshd[19985]: pam_unix(cron:session): session opened for user admin
+--------
+Oct  3 00:25:59 db02 systemd[21743]: Reached target Multi-User System.
+--------
+Jan 12 21:05:10 db02 NetworkManager[5676]: Reached target Multi-User System.
+--------
+Nov 18 22:29:19 web01 NetworkManager[23182]: Started Session 261 of user admin.
+--------
+Dec  1 05:14:52 app-node-3 dbus-daemon[25020]: Started Session 489 of user postgres.
+--------
+Feb  1 17:07:35 app-node-3 dbus-daemon[19858]: Started Session 40 of user postgres.
+--------
+Mar  5 09:45:29 web01 sshd[23197]: Reached target Multi-User System.
+--------
+Dec  3 20:29:34 gateway NetworkManager[20559]: device eth0 entered promiscuous mode
+--------
+Dec 12 05:50:56 db02 sudo[2718]: pam_unix(cron:session): session opened for user postgres
+--------
+Oct  8 13:09:26 web01 systemd[19576]: device eth0 entered promiscuous mode
+--------
+Jun  9 16:21:19 app-node-3 cron[3578]: Reached target Multi-User System.
+--------
+Sep 12 08:38:58 gateway dbus-daemon[23351]: device eth0 entered promiscuous mode
+--------
+Jun 19 11:42:17 gateway systemd[6186]: pam_unix(cron:session): session opened for user deploy
+--------
+Apr  8 16:59:33 db02 sudo[12409]: device eth0 entered promiscuous mode
+--------
+May 18 12:45:38 web01 cron[27410]: Reached target Multi-User System.
+--------
+Jul 22 23:53:25 db02 sudo[26905]: device eth0 entered promiscuous mode
+--------
+Mar  6 02:52:54 gateway cron[29651]: device eth0 entered promiscuous mode
+--------
+Dec 15 03:09:44 web01 dbus-daemon[2130]: pam_unix(cron:session): session opened for user svc_backup
+--------
+May 22 15:56:02 app-node-3 cron[8669]: Started Session 68 of user root.
+--------
+Apr  9 16:28:36 db02 sudo[28711]: device eth0 entered promiscuous mode
+--------
+Dec  6 04:25:56 app-node-3 cron[5736]: Reached target Multi-User System.
+--------
+Aug  4 00:03:11 db02 sudo[14547]: Started Session 599 of user jdoe.
+--------
+Apr 18 19:53:15 gateway systemd[1552]: Reached target Multi-User System.
+--------
+Dec 12 02:18:32 db02 sudo[29121]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Oct 11 14:20:29 web01 cron[5208]: Reached target Multi-User System.
+--------
+Apr  3 15:06:16 app-node-3 systemd[24414]: pam_unix(cron:session): session opened for user root
+--------
+Dec 14 07:03:44 gateway sudo[6229]: pam_unix(cron:session): session opened for user root
+--------
+Dec  4 00:33:08 db02 cron[13915]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Dec  7 12:53:15 db02 NetworkManager[5489]: Reached target Multi-User System.
+--------
+Mar  8 11:25:37 app-node-3 dbus-daemon[14069]: device eth0 entered promiscuous mode
+--------
+May  8 05:30:24 app-node-3 sudo[19010]: device eth0 entered promiscuous mode
+--------
+Dec 22 12:38:14 gateway NetworkManager[26049]: device eth0 entered promiscuous mode
+--------
+Feb  8 16:20:38 gateway sshd[2366]: pam_unix(cron:session): session opened for user jdoe
+--------
+Oct 20 01:11:34 gateway NetworkManager[16273]: Reached target Multi-User System.
+--------
+Oct 16 12:20:50 app-node-3 cron[21395]: Reached target Multi-User System.
+--------
+Aug 21 00:01:07 app-node-3 sudo[28360]: pam_unix(cron:session): session opened for user jdoe
+--------
+Mar 27 18:52:07 gateway systemd[1218]: device eth0 entered promiscuous mode
+--------
+Aug 22 02:55:54 db02 sshd[24926]: device eth0 entered promiscuous mode
+--------
+May 21 16:11:29 app-node-3 NetworkManager[13007]: Reached target Multi-User System.
+--------
+Jun  5 01:52:46 db02 systemd[28943]: Started Session 292 of user deploy.
+--------
+Jul 25 19:02:03 web01 sudo[1147]: Reached target Multi-User System.
+--------
+Sep  7 01:06:46 app-node-3 cron[29032]: Reached target Multi-User System.
+--------
+Dec 17 02:28:53 app-node-3 sudo[24121]: Reached target Multi-User System.
+--------
+Jul 20 22:36:51 web01 sudo[18009]: device eth0 entered promiscuous mode
+--------
+May 19 04:45:55 gateway cron[28822]: Started Session 533 of user root.
+--------
+Dec 19 00:06:25 app-node-3 sshd[28967]: pam_unix(cron:session): session opened for user deploy
+--------
+Jan 22 01:51:11 gateway sudo[28053]: Reached target Multi-User System.
+--------
+Jul 12 00:05:29 gateway NetworkManager[15202]: device eth0 entered promiscuous mode
+--------
+Apr  6 07:54:18 db02 sshd[21616]: Started Session 562 of user postgres.
+--------
+Feb 23 12:14:55 web01 cron[19114]: pam_unix(cron:session): session opened for user postgres
+--------
+Sep 28 19:16:36 app-node-3 systemd[5425]: pam_unix(cron:session): session opened for user root
+--------
+Apr 25 19:06:52 db02 sshd[22249]: Started Session 884 of user svc_backup.
+--------
+May 18 23:18:19 db02 NetworkManager[24600]: Reached target Multi-User System.
+--------
+Nov 26 03:05:23 web01 cron[27190]: device eth0 entered promiscuous mode
+--------
+Mar 17 03:44:22 app-node-3 systemd[8308]: Reached target Multi-User System.
+--------
+Jan 11 22:16:38 db02 NetworkManager[981]: Started Session 30 of user postgres.
+--------
+Mar  4 10:28:10 web01 cron[21130]: device eth0 entered promiscuous mode
+--------
+Feb 26 15:36:40 app-node-3 cron[6840]: Started Session 608 of user root.
+--------
+Jun 15 07:29:27 db02 NetworkManager[11742]: Reached target Multi-User System.
+--------
+Jul  3 05:30:59 app-node-3 sshd[23130]: Reached target Multi-User System.
+--------
+Jan  1 09:12:14 gateway NetworkManager[11147]: device eth0 entered promiscuous mode
+--------
+Jul 15 02:59:58 app-node-3 cron[26466]: pam_unix(cron:session): session opened for user jdoe
+--------
+Sep 10 00:30:18 web01 sshd[15656]: Started Session 83 of user jdoe.
+--------
+Jun 28 06:01:57 gateway NetworkManager[29028]: device eth0 entered promiscuous mode
+--------
+Dec  6 04:46:41 app-node-3 sshd[16013]: device eth0 entered promiscuous mode
+--------
+Nov 27 21:58:41 db02 cron[28482]: device eth0 entered promiscuous mode
+--------
+Jul 21 04:45:51 db02 dbus-daemon[28791]: Reached target Multi-User System.
+--------
+Dec 22 00:06:58 db02 dbus-daemon[10565]: Started Session 609 of user postgres.
+--------
+Apr  1 15:07:43 gateway dbus-daemon[12596]: Reached target Multi-User System.
+--------
+Jan 13 19:33:49 gateway sshd[8280]: pam_unix(cron:session): session opened for user postgres
+--------
+Dec  4 08:41:37 db02 NetworkManager[5653]: pam_unix(cron:session): session opened for user deploy
+--------
+Jan 22 03:38:20 app-node-3 sudo[4630]: device eth0 entered promiscuous mode
+--------
+Jun 18 15:33:36 app-node-3 cron[11291]: pam_unix(cron:session): session opened for user root
+--------
+Aug 14 23:11:29 gateway NetworkManager[22150]: pam_unix(cron:session): session opened for user deploy
+--------
+Oct 20 12:59:09 web01 dbus-daemon[27789]: Started Session 564 of user svc_backup.
+--------
+Sep 15 00:59:27 web01 cron[15350]: Reached target Multi-User System.
+--------
+Jun 14 06:12:58 web01 sudo[25798]: Reached target Multi-User System.
+--------
+Oct 14 12:16:52 db02 systemd[14462]: pam_unix(cron:session): session opened for user admin
+--------
+Nov  9 21:31:22 app-node-3 dbus-daemon[7572]: device eth0 entered promiscuous mode
+--------
+Sep 10 22:13:50 web01 sudo[11306]: Reached target Multi-User System.
+--------
+Aug 19 21:51:44 web01 cron[13723]: pam_unix(cron:session): session opened for user deploy
+--------
+Apr  5 09:37:47 app-node-3 sudo[12606]: device eth0 entered promiscuous mode
+--------
+Nov 25 03:10:21 app-node-3 cron[12856]: Started Session 697 of user postgres.
+--------
+Mar 10 14:38:47 gateway systemd[23628]: device eth0 entered promiscuous mode
+--------
+Jun 23 22:41:30 web01 sshd[18530]: pam_unix(cron:session): session opened for user root
+--------
+Aug  5 23:44:07 app-node-3 sshd[6355]: Started Session 2 of user jdoe.
+--------
+Sep  2 23:36:40 app-node-3 NetworkManager[6748]: Reached target Multi-User System.
+--------
+Aug  1 00:24:29 db02 sudo[18098]: device eth0 entered promiscuous mode
+--------
+Jun 20 23:34:36 db02 sshd[28943]: device eth0 entered promiscuous mode
+--------
+Jan  8 20:09:44 gateway systemd[23269]: pam_unix(cron:session): session opened for user deploy
+--------
+Aug 21 03:00:18 web01 sshd[21521]: device eth0 entered promiscuous mode
+--------
+Sep  3 18:34:16 app-node-3 sshd[13163]: Reached target Multi-User System.
+--------
+Jul 19 10:31:45 app-node-3 sshd[14060]: device eth0 entered promiscuous mode
+--------
+Aug 16 16:20:36 gateway sshd[21019]: pam_unix(cron:session): session opened for user admin
+--------
+Jul  4 06:17:02 app-node-3 cron[29368]: device eth0 entered promiscuous mode
+--------
+Feb  4 15:19:00 web01 NetworkManager[11397]: Started Session 334 of user admin.
+--------
+Feb  9 18:06:23 app-node-3 NetworkManager[14724]: Started Session 304 of user admin.
+--------
+Feb 27 23:58:26 db02 sshd[22579]: Reached target Multi-User System.
+--------
+Feb  2 20:45:22 app-node-3 systemd[24576]: pam_unix(cron:session): session opened for user postgres
+--------
+Jul 18 11:05:43 gateway cron[6624]: device eth0 entered promiscuous mode
+--------
+Oct 14 14:19:44 web01 systemd[17193]: Reached target Multi-User System.
+--------
+Mar  2 22:08:00 gateway sudo[26326]: device eth0 entered promiscuous mode
+--------
+Jun  4 02:10:52 gateway systemd[870]: pam_unix(cron:session): session opened for user deploy
+--------
+Nov 24 04:22:11 app-node-3 systemd[7261]: Reached target Multi-User System.
+--------
+Jul 28 14:46:17 gateway systemd[3415]: Started Session 585 of user admin.
+--------
+Oct 18 16:39:37 db02 systemd[24496]: device eth0 entered promiscuous mode
+--------
+Feb  5 18:20:37 web01 sshd[5751]: pam_unix(cron:session): session opened for user postgres
+--------
+Feb 18 08:20:44 db02 dbus-daemon[20149]: Started Session 536 of user svc_backup.
+--------
+Jan 16 16:43:12 app-node-3 sudo[28247]: Started Session 774 of user svc_backup.
+--------
+Jan  3 17:45:49 app-node-3 cron[26743]: Started Session 63 of user root.
+--------
+Sep  5 18:07:33 app-node-3 systemd[10923]: device eth0 entered promiscuous mode
+--------
+Jun 11 05:01:39 web01 sshd[22160]: device eth0 entered promiscuous mode
+--------
+May 13 20:19:04 gateway dbus-daemon[224]: pam_unix(cron:session): session opened for user postgres
+--------
+Feb 15 22:44:55 gateway systemd[9677]: Reached target Multi-User System.
+--------
+Jan  7 00:49:19 db02 cron[6636]: device eth0 entered promiscuous mode
+--------
+Aug  1 15:34:06 db02 NetworkManager[10216]: Started Session 234 of user admin.
+--------
+Feb 25 11:00:22 web01 sshd[21621]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Jan 14 20:30:47 db02 dbus-daemon[8291]: Reached target Multi-User System.
+--------
+Dec 27 12:46:30 gateway systemd[13265]: device eth0 entered promiscuous mode
+--------
+Feb 20 03:10:33 gateway sudo[3089]: pam_unix(cron:session): session opened for user admin
+--------
+Feb 10 20:36:53 web01 sshd[11798]: Started Session 875 of user admin.
+--------
+Nov 10 12:14:17 db02 NetworkManager[3271]: pam_unix(cron:session): session opened for user jdoe
+--------
+Apr 23 21:33:55 gateway cron[25887]: pam_unix(cron:session): session opened for user jdoe
+--------
+May 18 11:00:21 gateway dbus-daemon[23710]: device eth0 entered promiscuous mode
+--------
+Feb 17 18:18:40 app-node-3 cron[23481]: Started Session 734 of user jdoe.
+--------
+Jul  1 05:48:50 db02 NetworkManager[14484]: Reached target Multi-User System.
+--------
+Mar  1 02:17:32 db02 dbus-daemon[20955]: Started Session 218 of user deploy.
+--------
+May 16 21:42:09 app-node-3 NetworkManager[29616]: pam_unix(cron:session): session opened for user postgres
+--------
+Feb  2 11:21:28 app-node-3 sshd[25373]: Started Session 702 of user svc_backup.
+--------
+Jan 23 11:42:16 db02 systemd[28156]: pam_unix(cron:session): session opened for user admin
+--------
+Jul 17 22:49:24 web01 dbus-daemon[21372]: pam_unix(cron:session): session opened for user postgres
+--------
+Dec  4 04:48:26 db02 dbus-daemon[20378]: device eth0 entered promiscuous mode
+--------
+Aug 19 05:18:47 gateway dbus-daemon[19573]: device eth0 entered promiscuous mode
+--------
+Oct  4 03:43:11 gateway sshd[21638]: Reached target Multi-User System.
+--------
+Dec 16 18:15:57 app-node-3 sudo[5819]: Reached target Multi-User System.
+--------
+Jun  8 06:45:34 db02 sudo[29330]: Reached target Multi-User System.
+--------
+Mar 19 12:12:58 db02 dbus-daemon[8218]: pam_unix(cron:session): session opened for user postgres
+--------
+May 12 18:47:20 db02 dbus-daemon[10150]: pam_unix(cron:session): session opened for user deploy
+--------
+Apr 15 17:50:10 web01 sshd[22812]: Reached target Multi-User System.
+--------
+Nov 15 12:43:47 app-node-3 sshd[23315]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Nov 21 11:23:27 db02 dbus-daemon[93]: Reached target Multi-User System.
+--------
+Aug 27 21:45:49 db02 NetworkManager[19838]: device eth0 entered promiscuous mode
+--------
+Dec 20 04:47:46 web01 dbus-daemon[14271]: Reached target Multi-User System.
+--------
+Aug 28 00:20:40 gateway NetworkManager[19562]: Started Session 532 of user root.
+--------
+Jul 20 05:20:31 db02 dbus-daemon[25799]: pam_unix(cron:session): session opened for user admin
+--------
+Aug 20 03:55:20 gateway sudo[22329]: Started Session 916 of user deploy.
+--------
+Apr 18 21:59:28 app-node-3 systemd[16808]: device eth0 entered promiscuous mode
+--------
+Oct 23 12:39:23 gateway cron[18103]: device eth0 entered promiscuous mode
+--------
+Jun  1 08:59:17 app-node-3 NetworkManager[12084]: pam_unix(cron:session): session opened for user postgres
+--------
+Jul  2 13:36:53 web01 cron[13083]: Started Session 743 of user svc_backup.
+--------
+Dec 13 02:07:39 app-node-3 cron[15746]: device eth0 entered promiscuous mode
+--------
+Jan 20 20:30:21 web01 sshd[6075]: Reached target Multi-User System.
+--------
+Jul  5 00:32:34 db02 sudo[12156]: device eth0 entered promiscuous mode
+--------
+Dec  1 04:26:45 db02 sshd[7156]: Reached target Multi-User System.
+--------
+May 20 11:18:42 db02 NetworkManager[24235]: device eth0 entered promiscuous mode
+--------
+Jul  5 06:35:55 web01 NetworkManager[18685]: device eth0 entered promiscuous mode
+--------
+Nov 23 18:49:51 db02 NetworkManager[25068]: Started Session 582 of user svc_backup.
+--------
+May  1 03:28:44 app-node-3 NetworkManager[27278]: pam_unix(cron:session): session opened for user admin
+--------
+Feb  8 17:49:44 gateway NetworkManager[12358]: Started Session 952 of user admin.
+--------
+Jan  7 01:54:17 app-node-3 cron[21128]: Started Session 269 of user postgres.
+--------
+May  7 11:11:41 app-node-3 systemd[6214]: Reached target Multi-User System.
+--------
+Apr 14 09:37:50 db02 NetworkManager[5761]: Started Session 842 of user admin.
+--------
+Mar 25 06:41:12 gateway cron[13974]: pam_unix(cron:session): session opened for user admin
+--------
+Aug 24 12:34:00 gateway dbus-daemon[21989]: Started Session 170 of user postgres.
+--------
+Aug 12 05:17:32 db02 NetworkManager[12388]: Started Session 223 of user svc_backup.
+--------
+Feb  7 16:12:16 gateway NetworkManager[14930]: Started Session 826 of user admin.
+--------
+Jun 20 09:33:30 app-node-3 cron[753]: pam_unix(cron:session): session opened for user deploy
+--------
+Mar 11 07:48:05 app-node-3 sudo[23491]: Started Session 810 of user admin.
+--------
+Oct 15 05:10:47 gateway dbus-daemon[16926]: Reached target Multi-User System.
+--------
+Jun 12 07:07:14 app-node-3 dbus-daemon[766]: Reached target Multi-User System.
+--------
+Jan 13 20:33:31 db02 sshd[13462]: Reached target Multi-User System.
+--------
+Sep  7 08:03:25 app-node-3 sshd[3632]: device eth0 entered promiscuous mode
+--------
+Jan  7 20:52:53 web01 systemd[14350]: Started Session 313 of user deploy.
+--------
+Jan 26 02:17:20 gateway NetworkManager[10715]: device eth0 entered promiscuous mode
+--------
+Oct  6 00:59:51 gateway sudo[5723]: device eth0 entered promiscuous mode
+--------
+Oct 17 12:11:28 db02 sudo[19071]: device eth0 entered promiscuous mode
+--------
+Dec 23 14:15:45 web01 dbus-daemon[2146]: pam_unix(cron:session): session opened for user root
+--------
+Nov 18 18:34:40 web01 sudo[17803]: pam_unix(cron:session): session opened for user jdoe
+--------
+Feb  6 08:33:59 db02 systemd[21604]: Started Session 578 of user postgres.
+--------
+Jul  3 14:36:37 app-node-3 sudo[21698]: Reached target Multi-User System.
+--------
+Jan 15 02:29:25 db02 systemd[22257]: Started Session 650 of user root.
+--------
+Dec 22 01:04:51 web01 cron[14403]: Reached target Multi-User System.
+--------
+Mar 14 10:54:40 web01 systemd[6597]: Reached target Multi-User System.
+--------
+Oct  8 22:49:29 web01 cron[9189]: device eth0 entered promiscuous mode
+--------
+Oct 16 11:31:39 db02 NetworkManager[20597]: Reached target Multi-User System.
+--------
+Dec 25 01:28:13 app-node-3 NetworkManager[15677]: Reached target Multi-User System.
+--------
+Oct 12 11:44:12 app-node-3 sshd[18725]: device eth0 entered promiscuous mode
+--------
+Dec 22 05:27:22 web01 NetworkManager[325]: pam_unix(cron:session): session opened for user admin
+--------
+Feb 15 03:38:28 web01 NetworkManager[8643]: device eth0 entered promiscuous mode
+--------
+May 25 20:46:50 db02 sudo[11193]: pam_unix(cron:session): session opened for user admin
+--------
+Aug 27 11:09:59 gateway dbus-daemon[1721]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Sep 25 03:47:48 gateway sudo[9819]: device eth0 entered promiscuous mode
+--------
+Jun 28 14:01:10 gateway systemd[16047]: Reached target Multi-User System.
+--------
+Jul 21 16:25:20 gateway systemd[19261]: Started Session 7 of user root.
+--------
+Sep 10 08:20:58 gateway sudo[20696]: pam_unix(cron:session): session opened for user postgres
+--------
+Apr 12 22:39:08 db02 dbus-daemon[16848]: Started Session 488 of user deploy.
+--------
+Jun 20 00:08:38 web01 cron[25466]: device eth0 entered promiscuous mode
+--------
+Jul 19 12:25:53 app-node-3 sudo[5734]: Reached target Multi-User System.
+--------
+Nov 12 03:49:49 db02 systemd[19470]: Reached target Multi-User System.
+--------
+Nov 11 17:32:53 app-node-3 dbus-daemon[5178]: pam_unix(cron:session): session opened for user admin
+--------
+Jul 24 06:06:57 gateway sudo[26607]: pam_unix(cron:session): session opened for user root
+--------
+Aug 16 20:26:15 app-node-3 sudo[7453]: device eth0 entered promiscuous mode
+--------
+May 22 04:21:02 app-node-3 dbus-daemon[16528]: device eth0 entered promiscuous mode
+--------
+Mar 16 03:35:27 web01 sshd[24013]: device eth0 entered promiscuous mode
+--------
+Dec 18 19:29:45 db02 systemd[701]: Reached target Multi-User System.
+--------
+Nov 14 21:55:46 app-node-3 cron[18273]: Started Session 686 of user root.
+--------
+Mar  2 13:17:34 app-node-3 sudo[23011]: pam_unix(cron:session): session opened for user postgres
+--------
+May 17 23:09:33 db02 sudo[27612]: pam_unix(cron:session): session opened for user root
+--------
+Nov 14 10:28:51 gateway cron[13397]: Reached target Multi-User System.
+--------
+Jun 28 02:42:13 gateway sudo[25538]: Reached target Multi-User System.
+--------
+Jun  2 19:51:56 db02 dbus-daemon[24146]: Reached target Multi-User System.
+--------
+Sep 22 18:00:56 db02 sudo[5074]: Reached target Multi-User System.
+--------
+Sep  9 23:21:44 db02 dbus-daemon[28759]: device eth0 entered promiscuous mode
+--------
+Mar 27 16:43:17 gateway systemd[11383]: device eth0 entered promiscuous mode
+--------
+Dec  5 21:46:36 app-node-3 sshd[17493]: Started Session 473 of user svc_backup.
+--------
+May  5 01:31:52 db02 sudo[3136]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Aug 26 10:08:37 db02 sudo[23977]: device eth0 entered promiscuous mode
+--------
+Feb 22 09:54:05 app-node-3 sshd[21026]: Reached target Multi-User System.
+--------
+Sep  1 05:16:46 gateway cron[23231]: Started Session 578 of user deploy.
+--------
+Aug 19 03:42:45 db02 dbus-daemon[7486]: device eth0 entered promiscuous mode
+--------
+Oct 10 07:34:20 app-node-3 dbus-daemon[644]: Reached target Multi-User System.
+--------
+May 15 08:20:11 web01 sshd[15813]: pam_unix(cron:session): session opened for user postgres
+--------
+Jul 27 20:05:18 web01 sshd[11252]: device eth0 entered promiscuous mode
+--------
+Sep  6 15:01:23 web01 sudo[15868]: Started Session 994 of user jdoe.
+--------
+Feb  3 02:56:10 app-node-3 dbus-daemon[18701]: device eth0 entered promiscuous mode
+--------
+May  7 09:07:39 web01 NetworkManager[20760]: Reached target Multi-User System.
+--------
+Jun  3 15:27:04 db02 dbus-daemon[29240]: device eth0 entered promiscuous mode
+--------
+Jan 12 00:49:19 app-node-3 sudo[2260]: Started Session 978 of user postgres.
+--------
+Aug 26 04:40:41 db02 NetworkManager[17039]: Started Session 988 of user root.
+--------
+Nov 26 11:25:00 db02 sudo[18849]: pam_unix(cron:session): session opened for user jdoe
+--------
+Aug 14 20:27:24 gateway sudo[12774]: device eth0 entered promiscuous mode
+--------
+Nov 10 02:33:40 web01 cron[19566]: Started Session 149 of user svc_backup.
+--------
+Sep 14 11:37:05 web01 cron[26120]: device eth0 entered promiscuous mode
+--------
+May  3 02:56:45 app-node-3 sshd[21834]: pam_unix(cron:session): session opened for user svc_backup
+--------
+May  7 02:32:46 db02 NetworkManager[27100]: device eth0 entered promiscuous mode
+--------
+Aug 24 06:41:33 db02 dbus-daemon[16760]: Reached target Multi-User System.
+--------
+Nov 25 13:29:08 db02 dbus-daemon[19182]: Started Session 318 of user deploy.
+--------
+May 10 05:54:57 db02 systemd[23655]: pam_unix(cron:session): session opened for user admin
+--------
+Jul  9 21:14:30 web01 sudo[5544]: Reached target Multi-User System.
+--------
+Jan 25 20:12:04 gateway cron[4127]: Started Session 376 of user root.
+--------
+May 26 03:59:55 web01 NetworkManager[13257]: Reached target Multi-User System.
+--------
+May  7 23:37:37 web01 systemd[6306]: device eth0 entered promiscuous mode
+--------
+Nov  9 22:13:05 web01 systemd[273]: pam_unix(cron:session): session opened for user deploy
+--------
+Dec 13 23:42:19 gateway sshd[19144]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Jun 23 13:02:01 web01 sudo[19954]: pam_unix(cron:session): session opened for user jdoe
+--------
+Apr  7 10:18:17 web01 dbus-daemon[6197]: device eth0 entered promiscuous mode
+--------
+Jul 20 20:17:24 web01 sudo[11197]: pam_unix(cron:session): session opened for user admin
+--------
+Nov 20 23:14:11 gateway systemd[812]: Started Session 686 of user jdoe.
+--------
+Jul  4 07:10:07 web01 cron[25762]: Reached target Multi-User System.
+--------
+Jul 17 10:08:41 gateway dbus-daemon[9792]: pam_unix(cron:session): session opened for user deploy
+--------
+Feb 18 14:52:08 app-node-3 systemd[5546]: pam_unix(cron:session): session opened for user deploy
+--------
+Mar 13 05:33:05 gateway dbus-daemon[28978]: device eth0 entered promiscuous mode
+--------
+Jul  6 11:03:25 gateway NetworkManager[3682]: Reached target Multi-User System.
+--------
+Jun 28 17:21:46 web01 sudo[23700]: Reached target Multi-User System.
+--------
+Jun  3 20:59:53 db02 sudo[8033]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Apr 18 17:35:31 web01 systemd[28514]: Reached target Multi-User System.
+--------
+Jan 22 19:42:23 app-node-3 dbus-daemon[1059]: Reached target Multi-User System.
+--------
+May 10 01:35:03 db02 sshd[19517]: device eth0 entered promiscuous mode
+--------
+Feb 11 14:21:10 gateway sudo[13796]: device eth0 entered promiscuous mode
+--------
+Oct  4 13:49:05 web01 sudo[29337]: device eth0 entered promiscuous mode
+--------
+Jul 28 21:56:04 web01 NetworkManager[13742]: device eth0 entered promiscuous mode
+--------
+Jun 26 05:42:58 db02 dbus-daemon[24701]: Started Session 873 of user postgres.
+--------
+Jul 28 05:13:20 web01 dbus-daemon[20802]: device eth0 entered promiscuous mode
+--------
+Jun 13 02:35:45 db02 sshd[27544]: device eth0 entered promiscuous mode
+--------
+Nov 10 16:31:12 app-node-3 dbus-daemon[6038]: Started Session 396 of user root.
+--------
+Apr 27 06:29:27 app-node-3 systemd[1199]: Started Session 682 of user postgres.
+--------
+Sep 15 20:26:22 app-node-3 dbus-daemon[9008]: Reached target Multi-User System.
+--------
+Oct 24 20:51:35 db02 dbus-daemon[26300]: Started Session 381 of user postgres.
+--------
+Mar 10 20:37:54 db02 sshd[13857]: Started Session 370 of user postgres.
+--------
+Feb  2 14:17:47 web01 systemd[2729]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Aug 23 05:27:10 app-node-3 sshd[814]: device eth0 entered promiscuous mode
+--------
+Jun 11 12:04:14 gateway NetworkManager[21255]: Reached target Multi-User System.
+--------
+Aug 28 19:55:21 web01 NetworkManager[7489]: device eth0 entered promiscuous mode
+--------
+Dec  7 03:45:47 db02 NetworkManager[20289]: Reached target Multi-User System.
+--------
+Apr  8 16:08:17 app-node-3 cron[7975]: Started Session 1 of user svc_backup.
+--------
+Jul 15 17:12:12 gateway cron[21390]: Started Session 841 of user root.
+--------
+Apr 17 20:23:10 app-node-3 sshd[15524]: Reached target Multi-User System.
+--------
+Oct 24 21:05:12 web01 NetworkManager[25080]: device eth0 entered promiscuous mode
+--------
+Apr  6 17:25:22 db02 systemd[13856]: pam_unix(cron:session): session opened for user root
+--------
+Jul 16 00:03:40 web01 cron[14253]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Sep 12 21:25:07 db02 sudo[11180]: Reached target Multi-User System.
+--------
+Sep 10 21:03:50 app-node-3 systemd[15812]: Reached target Multi-User System.
+--------
+Mar  3 13:32:10 app-node-3 sudo[24273]: pam_unix(cron:session): session opened for user jdoe
+--------
+Mar 18 23:18:07 gateway dbus-daemon[25277]: Started Session 634 of user root.
+--------
+Aug 28 08:29:25 gateway systemd[8703]: Started Session 389 of user jdoe.
+--------
+Jun 24 06:13:26 app-node-3 dbus-daemon[11843]: Started Session 2 of user svc_backup.
+--------
+Oct 11 21:03:35 web01 systemd[25039]: pam_unix(cron:session): session opened for user root
+--------
+Oct 24 12:46:04 web01 systemd[9437]: Reached target Multi-User System.
+--------
+Oct 13 17:43:28 db02 systemd[24862]: Reached target Multi-User System.
+--------
+Nov 27 03:18:36 web01 systemd[28616]: pam_unix(cron:session): session opened for user admin
+--------
+Mar 12 10:42:55 db02 NetworkManager[10354]: pam_unix(cron:session): session opened for user jdoe
+--------
+Jan 17 08:52:36 gateway NetworkManager[23583]: device eth0 entered promiscuous mode
+--------
+Mar 15 11:08:08 web01 dbus-daemon[4891]: Reached target Multi-User System.
+--------
+Apr 25 12:05:48 db02 NetworkManager[24749]: Reached target Multi-User System.
+--------
+Oct 27 21:08:24 web01 dbus-daemon[28769]: device eth0 entered promiscuous mode
+--------
+Jul 16 03:20:03 gateway NetworkManager[22847]: device eth0 entered promiscuous mode
+--------
+Apr  6 23:54:42 db02 sshd[5809]: Started Session 644 of user deploy.
+--------
+Sep  6 21:18:51 gateway sshd[17227]: pam_unix(cron:session): session opened for user admin
+--------
+Dec 13 16:00:07 web01 systemd[25605]: Reached target Multi-User System.
+--------
+Dec  4 06:09:35 web01 sudo[9767]: Started Session 129 of user deploy.
+--------
+Mar 10 20:18:50 app-node-3 sshd[7183]: Reached target Multi-User System.
+--------
+Jul 13 00:50:29 db02 cron[29005]: Reached target Multi-User System.
+--------
+May 12 10:09:06 gateway systemd[20031]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Jan 11 16:49:47 web01 systemd[1012]: Reached target Multi-User System.
+--------
+Dec 24 23:42:49 gateway cron[6243]: Reached target Multi-User System.
+--------
+Aug 21 14:50:20 web01 systemd[19293]: pam_unix(cron:session): session opened for user deploy
+--------
+Jun 14 17:07:58 gateway sudo[25359]: device eth0 entered promiscuous mode
+--------
+Aug 21 11:50:40 gateway sshd[23470]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Sep 25 20:21:18 db02 dbus-daemon[24069]: pam_unix(cron:session): session opened for user deploy
+--------
+Nov  2 01:09:17 app-node-3 sudo[17401]: pam_unix(cron:session): session opened for user admin
+--------
+Feb 18 07:01:42 web01 sudo[1817]: Reached target Multi-User System.
+--------
+Sep 14 19:22:38 db02 dbus-daemon[22646]: device eth0 entered promiscuous mode
+--------
+Jun 17 13:48:22 db02 sshd[5131]: pam_unix(cron:session): session opened for user postgres
+--------
+Aug 25 21:40:03 web01 dbus-daemon[28097]: Reached target Multi-User System.
+--------
+Oct 11 01:40:40 app-node-3 cron[21612]: pam_unix(cron:session): session opened for user deploy
+--------
+May  8 16:12:34 db02 NetworkManager[26911]: device eth0 entered promiscuous mode
+--------
+Feb 13 08:00:30 db02 NetworkManager[21820]: Reached target Multi-User System.
+--------
+Apr  4 08:01:40 gateway sudo[12669]: device eth0 entered promiscuous mode
+--------
+Mar  7 09:08:50 db02 dbus-daemon[28477]: Started Session 920 of user root.
+--------
+Sep 17 01:51:06 db02 cron[28004]: Started Session 836 of user svc_backup.
+--------
+Oct 23 04:25:48 gateway dbus-daemon[24258]: device eth0 entered promiscuous mode
+--------
+Jun 27 04:31:32 web01 systemd[10571]: pam_unix(cron:session): session opened for user root
+--------
+Sep  7 12:05:37 db02 sudo[12373]: pam_unix(cron:session): session opened for user jdoe
+--------
+Feb 16 22:18:11 db02 systemd[24888]: Started Session 37 of user jdoe.
+--------
+Dec 28 09:02:44 gateway cron[28992]: device eth0 entered promiscuous mode
+--------
+Sep 20 04:11:37 gateway dbus-daemon[19813]: pam_unix(cron:session): session opened for user deploy
+--------
+Aug 25 08:22:21 gateway systemd[14062]: pam_unix(cron:session): session opened for user postgres
+--------
+Jun 28 17:32:26 app-node-3 NetworkManager[9518]: Reached target Multi-User System.
+--------
+Jul  6 20:23:05 web01 NetworkManager[17391]: Started Session 497 of user jdoe.
+--------
+May 12 18:59:15 web01 dbus-daemon[1951]: Started Session 287 of user postgres.
+--------
+Apr 22 16:46:15 gateway sshd[10430]: pam_unix(cron:session): session opened for user admin
+--------
+Aug  8 06:32:23 web01 dbus-daemon[14816]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Sep 20 09:41:51 db02 NetworkManager[22194]: Reached target Multi-User System.
+--------
+Feb 22 15:38:23 web01 NetworkManager[16353]: pam_unix(cron:session): session opened for user postgres
+--------
+Jul  5 15:58:27 db02 NetworkManager[20227]: device eth0 entered promiscuous mode
+--------
+Apr  8 19:35:12 gateway sshd[18079]: device eth0 entered promiscuous mode
+--------
+Jul 28 04:45:01 db02 systemd[22006]: Started Session 536 of user root.
+--------
+Sep 10 05:30:14 app-node-3 NetworkManager[15677]: device eth0 entered promiscuous mode
+--------
+Oct 17 01:33:40 gateway sshd[26586]: device eth0 entered promiscuous mode
+--------
+Dec 23 01:57:55 app-node-3 sudo[2425]: Started Session 409 of user postgres.
+--------
+Aug 15 12:06:07 web01 dbus-daemon[3632]: Started Session 138 of user admin.
+--------
+Oct 23 10:07:49 gateway dbus-daemon[22905]: pam_unix(cron:session): session opened for user root
+--------
+Oct 25 23:47:25 app-node-3 sshd[24028]: pam_unix(cron:session): session opened for user jdoe
+--------
+Aug 28 21:29:30 app-node-3 cron[12767]: Started Session 392 of user root.
+--------
+May 27 07:44:10 gateway cron[2820]: Reached target Multi-User System.
+--------
+Jan 17 12:44:14 app-node-3 systemd[3538]: device eth0 entered promiscuous mode
+--------
+Dec  1 10:01:17 web01 sshd[15472]: Reached target Multi-User System.
+--------
+Feb  8 04:37:30 app-node-3 cron[4495]: Started Session 599 of user postgres.
+--------
+Sep 10 13:16:05 gateway NetworkManager[12898]: Started Session 237 of user jdoe.
+--------
+Jan  2 05:35:26 web01 sshd[13458]: Reached target Multi-User System.
+--------
+Sep 23 15:33:07 web01 sudo[15815]: Started Session 293 of user svc_backup.
+--------
+Jan  8 06:04:11 gateway dbus-daemon[15238]: Reached target Multi-User System.
+--------
+Feb 23 23:04:54 gateway dbus-daemon[11105]: Reached target Multi-User System.
+--------
+Nov 17 11:55:12 web01 sudo[18861]: Started Session 919 of user jdoe.
+--------
+Apr 11 13:40:32 db02 cron[9446]: Started Session 548 of user postgres.
+--------
+Jan 23 09:11:28 web01 dbus-daemon[1965]: device eth0 entered promiscuous mode
+--------
+May  8 03:59:22 web01 sudo[6018]: pam_unix(cron:session): session opened for user admin
+--------
+Jun 28 10:56:28 web01 NetworkManager[6376]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Apr 18 00:24:14 web01 cron[25197]: pam_unix(cron:session): session opened for user deploy
+--------
+Apr 22 02:31:29 db02 NetworkManager[18152]: pam_unix(cron:session): session opened for user svc_backup
+--------
+Jul 16 03:21:22 db02 sshd[20524]: device eth0 entered promiscuous mode
