@@ -1,0 +1,4 @@
+{"os": "windows", "raw": "!!!! corrupt \u0000 binary garbage not a log at all 12345", "expect": "drain3"}
+{"os": "windows", "raw": "2024|05|01|weird|pipe|delimited|thing|no|parser|xyz", "expect": "drain3"}
+{"os": "macos", "raw": "random text with no structure whatsoever here", "expect": "drain3"}
+{"os": "macos", "raw": "{ this is not: valid json and not syslog either ]", "expect": "drain3"}

@@ -1,0 +1,34 @@
+Log Name:                 Security
+Source:                   Microsoft-Windows-Security-Auditing
+Date:                     12/15/2024 10:23:44 AM
+Event ID:                 4624
+Task Category:            Logon
+Level:                    Information
+Keywords:                 Audit Success
+User:                     SYSTEM
+Computer:                 DESKTOP-ABC123
+
+Description:
+An account was successfully logged on.
+
+Subject:
+    Security ID:          S-1-5-18
+    Account Name:         DESKTOP-ABC123$
+    Account Domain:       WORKGROUP
+    Logon ID:             0x3E7
+
+Logon Information:
+    Logon Type:           2
+    Restricted Admin Mode:    -
+    Virtual Account:      No
+    Elevated Token:       Yes
+
+New Logon:
+    Security ID:          S-1-5-21-3127476540-1432891972-2345678901-1001
+    Account Name:         jsmith
+    Account Domain:       DESKTOP-ABC123
+    Logon ID:             0x7AF12
+    Linked Logon ID:      0x0
+    Network Account Name: -
+    Network Account Domain:   -
+    Logon GUID:           {00000000-0000-0000-0000-000000000000}

@@ -1,0 +1,3 @@
+2024-12-15T10:23:44Z [GARBLED-HDR/99f] ::ffx:cx_id=0xDEADBEEF; module=flux_capacitor; state=OSCILLATING; delta=-0.003; unit=jiggawatts; ref=bttf_1985; flags=0x1CF|0x4A; payload=dGhpcyBpcyBub3QgYSByZWFsIGxvZyBmb3JtYXQ=
+2024-12-15T10:23:45Z [GARBLED-HDR/99f] ::ffx:cx_id=0xCAFEBABE; module=flux_capacitor; state=STABLE; delta=+1.21; unit=jiggawatts; ref=bttf_1985; flags=0x000|0x00; payload=cmVhY2hpbmdTcGVlZA==
+2024-12-15T10:23:46Z |UNKN| {v=3;t=EXOTIC;src=QQ_proprietary_v7;enc=base128;chk=0xF00DBABE} raw::0x414243444546 seq=1337 ack=0 rst=1

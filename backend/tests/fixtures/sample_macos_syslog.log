@@ -1,0 +1,12 @@
+Aug 26 10:23:44 macbook-pro kernel[0]: AppleKeyStore: operation failed (sel 20, ret 0xe00002c2)
+Aug 26 10:23:45 macbook-pro launchd[1]: (com.apple.xpc.launchd.oneshot.0x10000003.login) Service exited with abnormal code: 1
+Aug 26 10:23:46 macbook-pro WindowServer[412]: Created shield window 0x3 for display 0x1ebe2c6
+Aug 26 10:23:47 macbook-pro loginwindow[89]: Login Window Application Started
+Aug 26 10:23:48 macbook-pro com.apple.SecurityServer[97]: Session 100005 created
+Aug 26 10:23:49 macbook-pro sandboxd[298]: ([99]) mdworker_shared(99) deny(1) file-read-metadata /Library/Application Support
+Aug 26 10:23:50 macbook-pro syslogd[44]: ASL Sender Statistics
+Aug 26 10:23:51 macbook-pro kernel[0]: disk2s5: I/O error.
+Aug 26 10:23:52 macbook-pro launchd[1]: (com.apple.nsurlsessiond) Endpoint has been activated through traffic class: SO_FLOW_DIVERT_TC_LE
+Aug 26 10:23:53 macbook-pro coreauthd[388]: [SFAnalytics] CoreAuthentication has 0 days since last successful analytics upload
+Aug 26 10:23:54 macbook-pro mDNSResponder[282]: D2D_IPC: Gave up waiting for interface mDNSResponder.interface to return
+Aug 26 10:23:55 macbook-pro kernel[0]: wake reason: RTC (Alarm)
