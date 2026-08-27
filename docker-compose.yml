@@ -1,0 +1,263 @@
+networks:
+  ulpf-net:
+    driver: bridge
+
+volumes:
+  duckdb-data:
+  opensearch-data:
+  grafana-data:
+  prometheus-data:
+  minio-data:
+  clickhouse-data:
+  kafka-data:
+
+services:
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ulpf-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DUCKDB_PATH=/data/ulpf.db
+      - PARSERS_DIR=/app/parsers/registry
+      - OPENSEARCH_HOST=opensearch
+      - OPENSEARCH_PORT=9200
+      # Big-data streaming/storage tier (backend degrades gracefully if any are down)
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+      - KAFKA_ENABLED=true
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+      - MINIO_BUCKET=ulpf-raw
+      - CLICKHOUSE_HOST=clickhouse
+      - CLICKHOUSE_PORT=8123
+      - CLICKHOUSE_DATABASE=ulpf
+    volumes:
+      - duckdb-data:/data
+      - ./parsers:/app/parsers:ro
+      - ./ocsf:/app/ocsf:ro
+    networks:
+      - ulpf-net
+    depends_on:
+      opensearch:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+    restart: on-failure
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ulpf-frontend
+    ports:
+      - "3000:80"
+    networks:
+      - ulpf-net
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: on-failure
+
+  opensearch:
+    image: opensearchproject/opensearch:2.13.0
+    container_name: ulpf-opensearch
+    environment:
+      - discovery.type=single-node
+      - DISABLE_SECURITY_PLUGIN=true
+      - OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g
+      - "DISABLE_INSTALL_DEMO_CONFIG=true"
+    volumes:
+      - opensearch-data:/usr/share/opensearch/data
+    ports:
+      - "9200:9200"
+    networks:
+      - ulpf-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:9200/_cluster/health >/dev/null"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 90s
+
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:2.13.0
+    container_name: ulpf-opensearch-dashboards
+    ports:
+      - "5601:5601"
+    environment:
+      - OPENSEARCH_HOSTS=http://opensearch:9200
+      - DISABLE_SECURITY_DASHBOARDS_PLUGIN=true
+    networks:
+      - ulpf-net
+    depends_on:
+      opensearch:
+        condition: service_healthy
+
+  prometheus:
+    image: prom/prometheus:v2.52.0
+    container_name: ulpf-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+    networks:
+      - ulpf-net
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:9090/-/healthy"]
+      interval: 15s
+      timeout: 5s
+      retries: 4
+      start_period: 15s
+
+  grafana:
+    image: grafana/grafana:10.4.3
+    container_name: ulpf-grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    networks:
+      - ulpf-net
+    depends_on:
+      prometheus:
+        condition: service_healthy
+
+  # ── Big-Data streaming / storage tier ──────────────────────────────────────
+  # Kafka = raw event bus (transport/buffer/replay)
+  # MinIO = immutable raw log archive (object store) → raw_object_id + sha256
+  # ClickHouse = normalized OCSF analytics store (search/correlation/detection)
+
+  kafka:
+    # Official Apache Kafka image (KRaft mode, no ZooKeeper). Stable public tag.
+    image: apache/kafka:3.7.1
+    container_name: ulpf-kafka
+    ports:
+      - "9092:9092"
+    environment:
+      - KAFKA_NODE_ID=1
+      - KAFKA_PROCESS_ROLES=broker,controller
+      - KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka:9093
+      - KAFKA_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+      - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+      - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
+      - KAFKA_LOG_DIRS=/var/lib/kafka/data
+      - CLUSTER_ID=ulpf-kafka-cluster-0001
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+    networks:
+      - ulpf-net
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list >/dev/null 2>&1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 40s
+
+  # Streaming ingest worker: consumes logs.raw → same pipeline → DuckDB/CH/OS.
+  kafka-consumer:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ulpf-kafka-consumer
+    command: ["python", "-m", "storage.kafka_consumer"]
+    environment:
+      - DUCKDB_PATH=/data/ulpf.db
+      # DuckDB is single-writer; the API backend owns it. The consumer feeds the
+      # SHARED stores (ClickHouse / MinIO / OpenSearch) instead, avoiding the
+      # file-lock conflict that otherwise fails events.
+      - DUCKDB_WRITER=false
+      - PARSERS_DIR=/app/parsers/registry
+      - OPENSEARCH_HOST=opensearch
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+      - KAFKA_TOPIC_RAW=logs.raw
+      - KAFKA_GROUP_ID=ulpf-parser-engine
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+      - CLICKHOUSE_HOST=clickhouse
+    volumes:
+      - duckdb-data:/data
+      - ./parsers:/app/parsers:ro
+      - ./ocsf:/app/ocsf:ro
+    networks:
+      - ulpf-net
+    depends_on:
+      kafka:
+        condition: service_healthy
+    restart: on-failure
+
+  minio:
+    image: minio/minio:RELEASE.2024-06-13T22-53-53Z
+    container_name: ulpf-minio
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    volumes:
+      - minio-data:/data
+    networks:
+      - ulpf-net
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:9000/minio/health/live"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.3
+    container_name: ulpf-clickhouse
+    ports:
+      - "8123:8123"
+      - "9010:9000"
+    environment:
+      - CLICKHOUSE_DB=ulpf
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_PASSWORD=
+      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    volumes:
+      - clickhouse-data:/var/lib/clickhouse
+    networks:
+      - ulpf-net
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8123/ping"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
