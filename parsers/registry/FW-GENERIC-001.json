@@ -1,0 +1,26 @@
+{
+  "parser_id": "FW-GENERIC-001",
+  "source_name": "Generic Firewall Log (iptables/netfilter/UFW kernel style)",
+  "os_family": "Network",
+  "category": "Network Activity",
+  "ocsf_class_uid": 4001,
+  "description": "Linux netfilter/iptables/UFW firewall log lines emitted via kernel: SRC=/DST=/PROTO= key-value payload, optional [UFW ACTION] prefix, SPT/DPT ports.",
+  "identifiers": {
+    "required_substrings": ["SRC=", "DST=", "PROTO="],
+    "regex_signature": "SRC=[\\d\\.]+\\s+DST=[\\d\\.]+",
+    "known_processes": ["kernel"],
+    "confidence_weight": 0.9
+  },
+  "ngre_pattern": "^(?P<month>\\w{3})\\s+(?P<day>\\d{1,2})\\s+(?P<time>\\d{2}:\\d{2}:\\d{2})\\s+(?P<host>\\S+)\\s+kernel:(?:\\s*\\[[\\d\\. ]+\\])?\\s*(?:\\[(?:UFW\\s+)?(?P<action>ACCEPT|DROP|REJECT|BLOCK|ALLOW)\\])?.*?\\bIN=(?P<in_iface>\\S*).*?SRC=(?P<src_ip>[\\d\\.]+)\\s+DST=(?P<dst_ip>[\\d\\.]+).*?PROTO=(?P<protocol>\\w+)(?:.*?SPT=(?P<src_port>\\d+))?(?:.*?DPT=(?P<dst_port>\\d+))?",
+  "field_mapping": {
+    "host": "device.hostname",
+    "src_ip": "src_endpoint.ip",
+    "dst_ip": "dst_endpoint.ip",
+    "src_port": "src_endpoint.port",
+    "dst_port": "dst_endpoint.port",
+    "protocol": "connection_info.protocol_name",
+    "action": "status"
+  },
+  "sample_log": "Mar 12 14:23:01 gateway kernel: [12345.678901] [UFW BLOCK] IN=eth0 OUT= MAC=00:1a:2b:3c SRC=198.51.100.7 DST=10.0.0.5 LEN=60 TOS=0x00 TTL=54 ID=1234 PROTO=TCP SPT=51000 DPT=445 WINDOW=64240 RES=0x00 SYN URGP=0",
+  "version": "1.0"
+}

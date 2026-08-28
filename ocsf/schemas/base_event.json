@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.1.0",
+  "base_event": {
+    "required": ["class_uid", "time", "severity_id", "category_uid"],
+    "properties": {
+      "class_uid":     { "type": "integer", "description": "OCSF class identifier" },
+      "category_uid":  { "type": "integer", "description": "OCSF category identifier" },
+      "time":          { "type": "string",  "description": "ISO-8601 event timestamp" },
+      "severity_id":   { "type": "integer", "description": "0=Unknown 1=Informational 2=Low 3=Medium 4=High 5=Critical" },
+      "severity":      { "type": "string" },
+      "message":       { "type": "string" },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "version":   { "type": "string" },
+          "product":   { "type": "object" },
+          "uid":       { "type": "string", "description": "Shared event_id for traceability" }
+        }
+      },
+      "device":  { "type": "object" },
+      "actor":   { "type": "object" },
+      "raw_data":{ "type": "string", "description": "Preserved original log text" }
+    }
+  }
+}

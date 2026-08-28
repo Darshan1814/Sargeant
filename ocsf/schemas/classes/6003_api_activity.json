@@ -1,0 +1,13 @@
+{
+  "class_uid": 6003,
+  "class_name": "API Activity",
+  "category_uid": 6,
+  "category_name": "Application Activity",
+  "extends": "base_event",
+  "additional_fields": {
+    "api":        { "type": "object", "properties": { "operation": { "type": "string" }, "service": { "type": "object" }, "request": { "type": "object" }, "response": { "type": "object" } } },
+    "http_request":  { "type": "object", "properties": { "url": { "type": "object" }, "method": { "type": "string" } } },
+    "http_response": { "type": "object", "properties": { "code": { "type": "integer" } } },
+    "actor":      { "type": "object", "properties": { "user": { "type": "object" }, "session": { "type": "object" } } }
+  }
+}

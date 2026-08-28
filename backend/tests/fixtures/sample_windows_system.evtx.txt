@@ -1,0 +1,25 @@
+Log Name:                 System
+Source:                   Service Control Manager
+Date:                     12/15/2024 09:01:15 AM
+Event ID:                 7036
+Task Category:            None
+Level:                    Information
+Keywords:                 Classic
+User:                     N/A
+Computer:                 WORKSTATION-XYZ
+
+Description:
+The Windows Update service entered the running state.
+
+Log Name:                 System
+Source:                   Microsoft-Windows-Kernel-General
+Date:                     12/15/2024 08:55:02 AM
+Event ID:                 12
+Task Category:            None
+Level:                    Information
+Keywords:                 (69)
+User:                     N/A
+Computer:                 WORKSTATION-XYZ
+
+Description:
+The operating system started at system time 2024-12-15T08:55:02.000000000Z.

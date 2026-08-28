@@ -1,0 +1,25 @@
+{
+  "class_uid": 1001,
+  "class_name": "System Activity",
+  "category_uid": 5,
+  "category_name": "Discovery",
+  "extends": "base_event",
+  "additional_fields": {
+    "activity_id": { "type": "integer" },
+    "activity_name": { "type": "string" },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "process": { "type": "object", "properties": { "name": { "type": "string" }, "pid": { "type": "integer" } } },
+        "user":    { "type": "object", "properties": { "name": { "type": "string" }, "uid": { "type": "string" } } }
+      }
+    },
+    "device": {
+      "type": "object",
+      "properties": {
+        "hostname": { "type": "string" },
+        "os":       { "type": "object" }
+      }
+    }
+  }
+}

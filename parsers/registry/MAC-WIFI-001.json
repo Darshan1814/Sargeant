@@ -1,0 +1,22 @@
+{
+  "parser_id": "MAC-WIFI-001",
+  "source_name": "macOS Wi-Fi (airportd)",
+  "os_family": "macOS",
+  "category": "Network Activity",
+  "ocsf_class_uid": 4001,
+  "description": "macOS wifi.log format: Weekday Mon DD HH:MM:SS.mmm <process[pid]>: message. Emitted by airportd and the Wi-Fi subsystem.",
+  "identifiers": {
+    "required_substrings": ["airportd"],
+    "regex_signature": "^\\w{3}\\s+\\w{3}\\s+\\d{1,2}\\s+\\d{2}:\\d{2}:\\d{2}\\.\\d+\\s+<[^\\[]+\\[\\d+\\]>",
+    "known_processes": ["airportd", "airport"],
+    "confidence_weight": 1.0
+  },
+  "ngre_pattern": "^(?P<weekday>\\w{3})\\s+(?P<month>\\w{3})\\s+(?P<day>\\d{1,2})\\s+(?P<time>\\d{2}:\\d{2}:\\d{2})\\.(?P<ms>\\d+)\\s+<(?P<process>[^\\[]+)\\[(?P<pid>\\d+)\\]>\\s*:?\\s*(?P<message>.*)$",
+  "field_mapping": {
+    "process": "actor.process.name",
+    "pid": "actor.process.pid",
+    "message": "message"
+  },
+  "sample_log": "Thu May  1 12:00:00.123 <airportd[95]> airportdProcessDLILEvent: en0 attached (up)",
+  "version": "1.0"
+}

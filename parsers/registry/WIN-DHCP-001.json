@@ -1,0 +1,25 @@
+{
+  "parser_id": "WIN-DHCP-001",
+  "source_name": "Windows DHCP Server",
+  "os_family": "Windows",
+  "category": "Network Activity",
+  "ocsf_class_uid": 4001,
+  "description": "Microsoft DHCP Server audit log (CSV). Fields: ID,Date,Time,Description,IP Address,Host Name,MAC Address.",
+  "identifiers": {
+    "required_substrings": [],
+    "regex_signature": "^\\d{1,3},\\d{2}/\\d{2}/\\d{2},\\d{2}:\\d{2}:\\d{2},(?:Assign|Renew|Release|Expire|Delete|Deny|Offer|Ack|Nack|New)\\b",
+    "known_processes": ["Assign", "Renew", "Release", "Ack", "Nack"],
+    "confidence_weight": 0.6
+  },
+  "ngre_pattern": "^(?P<event_code>\\d{1,3}),(?P<date>\\d{2}/\\d{2}/\\d{2}),(?P<time>\\d{2}:\\d{2}:\\d{2}),(?P<description>[^,]*),(?P<ip>\\d{1,3}(?:\\.\\d{1,3}){3}),(?P<hostname>[^,]*),(?P<mac>[0-9A-Fa-f]*)",
+  "field_mapping": {
+    "ip": "src_endpoint.ip",
+    "hostname": "src_endpoint.hostname",
+    "description": "message"
+  },
+  "static_fields": {
+    "actor.process.name": "DhcpServer"
+  },
+  "sample_log": "10,05/01/24,12:00:00,Assign,10.0.0.42,WKS01,001B0D634A28",
+  "version": "1.0"
+}

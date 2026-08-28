@@ -1,0 +1,28 @@
+{
+  "parser_id": "LINUX-AUTH-001",
+  "source_name": "Linux auth.log SSH authentication (sshd)",
+  "os_family": "Linux",
+  "category": "Authentication",
+  "ocsf_class_uid": 3002,
+  "description": "OpenSSH auth.log events: 'Accepted|Failed <method> for <user> from <ip> port <port>'. Mapped to OCSF Authentication (3002).",
+  "identifiers": {
+    "required_substrings": ["sshd"],
+    "regex_signature": "sshd\\[\\d+\\]:\\s+(?:Accepted|Failed)\\s+\\w+\\s+for",
+    "known_processes": ["sshd"],
+    "confidence_weight": 1.0
+  },
+  "ngre_pattern": "^(?P<month>\\w{3})\\s+(?P<day>\\d{1,2})\\s+(?P<time>\\d{2}:\\d{2}:\\d{2})\\s+(?P<host>\\S+)\\s+sshd\\[(?P<pid>\\d+)\\]:\\s+(?P<result>Accepted|Failed)\\s+(?P<auth_method>\\w+)\\s+for\\s+(?:invalid user\\s+)?(?P<user>\\S+)\\s+from\\s+(?P<src_ip>[\\da-fA-F\\.:]+)\\s+port\\s+(?P<src_port>\\d+)",
+  "field_mapping": {
+    "host": "device.hostname",
+    "user": "actor.user.name",
+    "auth_method": "auth_protocol",
+    "src_ip": "src_endpoint.ip",
+    "src_port": "src_endpoint.port",
+    "result": "status"
+  },
+  "static_fields": {
+    "actor.process.name": "sshd"
+  },
+  "sample_log": "Mar 12 14:23:01 web01 sshd[4821]: Failed password for root from 203.0.113.9 port 51844 ssh2",
+  "version": "1.0"
+}

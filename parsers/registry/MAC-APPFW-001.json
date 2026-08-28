@@ -1,0 +1,25 @@
+{
+  "parser_id": "MAC-APPFW-001",
+  "source_name": "macOS Application Firewall (socketfilterfw)",
+  "os_family": "macOS",
+  "category": "Network Activity",
+  "ocsf_class_uid": 4001,
+  "description": "macOS Application Firewall log lines from socketfilterfw: Mon DD HH:MM:SS host socketfilterfw[pid] <Level>: message.",
+  "identifiers": {
+    "required_substrings": ["socketfilterfw"],
+    "regex_signature": "socketfilterfw\\[\\d+\\]\\s*<[^>]+>:",
+    "known_processes": ["socketfilterfw"],
+    "confidence_weight": 1.0
+  },
+  "ngre_pattern": "^(?P<month>\\w{3})\\s+(?P<day>\\d{1,2})\\s+(?P<time>\\d{2}:\\d{2}:\\d{2})\\s+(?P<host>\\S+)\\s+socketfilterfw\\[(?P<pid>\\d+)\\]\\s*<(?P<level>[^>]+)>:\\s*(?P<message>.*)$",
+  "field_mapping": {
+    "host": "device.hostname",
+    "pid": "actor.process.pid",
+    "message": "message"
+  },
+  "static_fields": {
+    "actor.process.name": "socketfilterfw"
+  },
+  "sample_log": "May  1 12:00:00 MacBook socketfilterfw[142] <Info>: Deny screensharingd connecting from 198.51.100.7",
+  "version": "1.0"
+}

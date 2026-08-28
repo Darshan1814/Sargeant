@@ -1,0 +1,27 @@
+{
+  "parser_id": "MAC-ULOG-001",
+  "source_name": "macOS Syslog / Unified Log (BSD)",
+  "os_family": "macOS",
+  "category": "System Activity",
+  "ocsf_class_uid": 1001,
+  "description": "Generic macOS BSD syslog: Mon DD HH:MM:SS hostname process[pid] (opt-paren): message. Catch-all for kernel/launchd/application logs not claimed by a specialized macOS parser.",
+  "identifiers": {
+    "required_substrings": [],
+    "regex_signature": "^(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s{1,2}\\d{1,2}\\s+\\d{2}:\\d{2}:\\d{2}\\s+[\\w][\\w\\.-]*\\s+[^\\[]+\\[\\d+\\](?:\\s*\\([^)]*\\))?:",
+    "known_processes": [
+      "kernel", "launchd", "WindowServer", "loginwindow", "syslogd",
+      "sandboxd", "mDNSResponder", "configd", "symptomsd", "coreauthd",
+      "com.apple.CDScheduler", "networkd", "blued", "UserEventAgent"
+    ],
+    "confidence_weight": 0.92
+  },
+  "ngre_pattern": "^(?P<month>(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\\s{1,2}(?P<day>\\d{1,2})\\s+(?P<time>\\d{2}:\\d{2}:\\d{2})\\s+(?P<host>[\\w][\\w\\.-]*)\\s+(?P<process>[^\\[\\s][^\\[]*?)\\[(?P<pid>\\d+)\\](?:\\s*\\([^)]*\\))?:\\s*(?P<message>.*)$",
+  "field_mapping": {
+    "host": "device.hostname",
+    "process": "actor.process.name",
+    "pid": "actor.process.pid",
+    "message": "message"
+  },
+  "sample_log": "Jul  1 09:00:55 calvisitor-10-105-160-95 kernel[0]: IOThunderboltSwitch<0>(0x0)::listenerCallback",
+  "version": "1.2"
+}

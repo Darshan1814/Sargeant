@@ -1,0 +1,999 @@
+Apr  7 18:20:46 MacBook socketfilterfw[169] <Info>: Deny screensharingd connecting from 29.44.32.143
+--------
+Aug  8 11:06:40 iMac-Pro socketfilterfw[784] <Error>: Allow ARDAgent connecting from 84.154.55.202
+--------
+Jun 19 00:23:46 iMac-Pro socketfilterfw[709] <Info>: Deny screensharingd connecting from 185.128.16.148
+--------
+Nov 20 05:41:54 MacBook socketfilterfw[143] <Error>: Allow python3 connecting from 190.73.172.22
+--------
+Sep 25 12:54:45 iMac-Pro socketfilterfw[738] <Info>: Deny java connecting from 35.154.97.132
+--------
+Sep  5 07:18:44 MacBook socketfilterfw[645] <Info>: Deny ARDAgent connecting from 85.78.5.38
+--------
+Jan 27 22:12:57 MacBook socketfilterfw[833] <Info>: Allow screensharingd connecting from 72.14.223.243
+--------
+Oct 21 11:48:50 MacBook socketfilterfw[365] <Error>: Allow ARDAgent connecting from 207.255.227.196
+--------
+Oct 23 02:45:09 iMac-Pro socketfilterfw[792] <Error>: Allow screensharingd connecting from 145.2.70.252
+--------
+Dec 18 14:26:52 iMac-Pro socketfilterfw[200] <Error>: Allow ARDAgent connecting from 148.247.115.191
+--------
+Aug 25 20:47:12 iMac-Pro socketfilterfw[414] <Error>: Deny sshd-keygen-wrapper connecting from 6.137.95.252
+--------
+Jan  8 13:52:56 MacBook socketfilterfw[757] <Error>: Deny python3 connecting from 149.55.38.38
+--------
+Aug 14 11:34:42 MacBook socketfilterfw[439] <Info>: Allow ARDAgent connecting from 48.73.187.237
+--------
+May  8 22:59:08 iMac-Pro socketfilterfw[673] <Info>: Deny ARDAgent connecting from 166.234.78.33
+--------
+Oct 25 08:55:23 MacBook socketfilterfw[545] <Info>: Allow sshd-keygen-wrapper connecting from 92.80.62.180
+--------
+May 22 22:17:05 iMac-Pro socketfilterfw[313] <Error>: Deny python3 connecting from 15.105.150.95
+--------
+Aug  6 03:40:29 MacBook socketfilterfw[128] <Error>: Allow screensharingd connecting from 157.248.202.133
+--------
+Jan 14 16:42:52 MacBook socketfilterfw[594] <Error>: Deny python3 connecting from 28.93.103.167
+--------
+Dec 16 03:47:14 MacBook socketfilterfw[583] <Info>: Deny ARDAgent connecting from 75.185.188.28
+--------
+Jun 24 19:19:29 MacBook socketfilterfw[107] <Error>: Allow sshd-keygen-wrapper connecting from 139.204.217.40
+--------
+Oct 14 02:46:48 MacBook socketfilterfw[162] <Info>: Allow ARDAgent connecting from 133.199.239.145
+--------
+Oct 25 14:14:38 iMac-Pro socketfilterfw[645] <Error>: Deny screensharingd connecting from 153.246.190.145
+--------
+Feb 28 12:56:40 iMac-Pro socketfilterfw[891] <Error>: Deny ARDAgent connecting from 188.67.102.5
+--------
+Mar 14 14:58:13 MacBook socketfilterfw[298] <Error>: Allow java connecting from 118.3.159.229
+--------
+Nov  3 19:33:46 MacBook socketfilterfw[448] <Info>: Allow ARDAgent connecting from 108.212.224.242
+--------
+Jun 26 13:06:37 iMac-Pro socketfilterfw[451] <Error>: Deny screensharingd connecting from 95.99.200.123
+--------
+Nov 13 18:55:36 MacBook socketfilterfw[647] <Error>: Deny screensharingd connecting from 78.6.243.227
+--------
+Dec 12 06:00:17 MacBook socketfilterfw[183] <Error>: Allow java connecting from 114.135.67.111
+--------
+Jul 20 02:46:50 MacBook socketfilterfw[845] <Info>: Allow screensharingd connecting from 136.36.221.81
+--------
+Aug 22 18:29:49 MacBook socketfilterfw[109] <Error>: Deny java connecting from 128.23.244.136
+--------
+Sep 21 08:55:31 iMac-Pro socketfilterfw[521] <Error>: Deny screensharingd connecting from 104.34.180.150
+--------
+Sep 11 15:40:01 iMac-Pro socketfilterfw[252] <Info>: Allow python3 connecting from 136.235.46.146
+--------
+Sep  5 06:51:48 MacBook socketfilterfw[269] <Info>: Allow java connecting from 165.239.243.56
+--------
+Nov 21 17:45:26 iMac-Pro socketfilterfw[626] <Error>: Allow ARDAgent connecting from 98.46.23.204
+--------
+Apr 10 12:43:41 iMac-Pro socketfilterfw[175] <Error>: Allow ARDAgent connecting from 199.76.125.175
+--------
+May 28 08:36:02 MacBook socketfilterfw[563] <Info>: Allow sshd-keygen-wrapper connecting from 12.211.113.111
+--------
+Oct  9 23:34:52 iMac-Pro socketfilterfw[203] <Error>: Allow ARDAgent connecting from 1.245.59.45
+--------
+Jul 25 11:49:56 MacBook socketfilterfw[787] <Info>: Allow python3 connecting from 2.244.107.246
+--------
+Apr 18 01:07:16 MacBook socketfilterfw[704] <Error>: Allow python3 connecting from 117.179.153.36
+--------
+Apr  5 07:52:22 MacBook socketfilterfw[198] <Error>: Allow screensharingd connecting from 22.73.90.112
+--------
+Oct 24 10:16:29 iMac-Pro socketfilterfw[806] <Info>: Deny java connecting from 24.100.209.36
+--------
+Aug 24 00:44:10 MacBook socketfilterfw[946] <Info>: Deny java connecting from 35.203.151.230
+--------
+Aug  4 15:49:46 MacBook socketfilterfw[972] <Info>: Allow python3 connecting from 73.111.90.58
+--------
+Jun 23 11:19:12 MacBook socketfilterfw[234] <Error>: Deny java connecting from 145.134.69.89
+--------
+Jun 22 15:10:52 MacBook socketfilterfw[694] <Info>: Deny sshd-keygen-wrapper connecting from 143.251.44.38
+--------
+Jul 19 07:49:42 MacBook socketfilterfw[642] <Info>: Allow ARDAgent connecting from 40.24.3.227
+--------
+Jun  6 11:49:33 iMac-Pro socketfilterfw[431] <Error>: Allow screensharingd connecting from 167.76.236.142
+--------
+Sep 28 16:04:15 MacBook socketfilterfw[995] <Error>: Allow sshd-keygen-wrapper connecting from 65.119.65.116
+--------
+Mar 14 11:18:59 iMac-Pro socketfilterfw[928] <Error>: Deny python3 connecting from 70.7.14.164
+--------
+May 10 14:33:09 MacBook socketfilterfw[251] <Error>: Deny python3 connecting from 133.167.19.246
+--------
+Sep 14 22:51:25 iMac-Pro socketfilterfw[592] <Error>: Allow sshd-keygen-wrapper connecting from 96.174.140.246
+--------
+Jun  7 02:47:56 iMac-Pro socketfilterfw[994] <Error>: Deny ARDAgent connecting from 42.11.60.105
+--------
+Feb 27 07:55:22 iMac-Pro socketfilterfw[698] <Info>: Deny java connecting from 99.30.230.159
+--------
+Apr 14 16:12:51 iMac-Pro socketfilterfw[225] <Error>: Allow python3 connecting from 24.131.182.241
+--------
+Jul 26 17:43:26 iMac-Pro socketfilterfw[511] <Info>: Deny python3 connecting from 52.245.1.43
+--------
+Sep  8 07:56:01 iMac-Pro socketfilterfw[642] <Error>: Allow sshd-keygen-wrapper connecting from 6.113.177.83
+--------
+Mar  5 14:56:34 iMac-Pro socketfilterfw[189] <Error>: Allow sshd-keygen-wrapper connecting from 173.198.39.191
+--------
+Feb 18 04:07:02 MacBook socketfilterfw[314] <Info>: Deny python3 connecting from 21.54.196.57
+--------
+Nov  8 11:58:20 iMac-Pro socketfilterfw[854] <Info>: Deny java connecting from 73.197.126.10
+--------
+Jun 12 23:26:22 MacBook socketfilterfw[497] <Info>: Deny python3 connecting from 200.83.114.203
+--------
+Jan 13 05:05:48 MacBook socketfilterfw[337] <Info>: Allow screensharingd connecting from 33.159.224.173
+--------
+Nov  1 13:26:42 iMac-Pro socketfilterfw[517] <Info>: Allow python3 connecting from 215.66.170.67
+--------
+Apr 23 17:39:40 MacBook socketfilterfw[306] <Error>: Allow java connecting from 203.153.248.113
+--------
+Aug  2 22:23:08 MacBook socketfilterfw[579] <Info>: Deny sshd-keygen-wrapper connecting from 158.113.185.33
+--------
+Feb 10 18:12:30 MacBook socketfilterfw[321] <Info>: Allow sshd-keygen-wrapper connecting from 175.98.87.116
+--------
+Aug 15 13:56:17 iMac-Pro socketfilterfw[590] <Info>: Allow ARDAgent connecting from 183.247.97.143
+--------
+Oct 15 20:05:26 MacBook socketfilterfw[857] <Error>: Deny sshd-keygen-wrapper connecting from 171.26.79.162
+--------
+Feb 22 03:45:35 MacBook socketfilterfw[322] <Error>: Allow sshd-keygen-wrapper connecting from 121.167.246.190
+--------
+Jul 20 06:45:37 iMac-Pro socketfilterfw[943] <Error>: Allow screensharingd connecting from 135.121.87.188
+--------
+Jan  4 01:58:32 iMac-Pro socketfilterfw[345] <Info>: Allow ARDAgent connecting from 190.217.137.41
+--------
+Aug 14 19:26:28 iMac-Pro socketfilterfw[352] <Error>: Allow ARDAgent connecting from 49.31.149.141
+--------
+May  4 18:14:17 MacBook socketfilterfw[642] <Error>: Allow java connecting from 94.235.119.28
+--------
+Feb  8 16:14:08 MacBook socketfilterfw[892] <Error>: Allow sshd-keygen-wrapper connecting from 215.14.59.200
+--------
+Oct 17 19:05:41 MacBook socketfilterfw[174] <Info>: Allow python3 connecting from 106.132.68.227
+--------
+Oct 24 12:42:04 iMac-Pro socketfilterfw[201] <Error>: Allow python3 connecting from 65.133.148.25
+--------
+Jul 19 00:51:39 MacBook socketfilterfw[332] <Info>: Deny screensharingd connecting from 175.140.150.119
+--------
+May 19 14:59:39 iMac-Pro socketfilterfw[677] <Error>: Deny ARDAgent connecting from 41.173.177.149
+--------
+Aug 21 06:34:06 MacBook socketfilterfw[832] <Error>: Deny ARDAgent connecting from 92.48.201.235
+--------
+May 15 13:28:07 MacBook socketfilterfw[944] <Error>: Deny ARDAgent connecting from 142.155.86.157
+--------
+Mar 20 06:00:08 MacBook socketfilterfw[599] <Info>: Deny screensharingd connecting from 89.75.200.108
+--------
+Sep  8 16:25:25 iMac-Pro socketfilterfw[318] <Error>: Deny screensharingd connecting from 151.166.18.56
+--------
+Nov  2 07:32:58 iMac-Pro socketfilterfw[867] <Info>: Allow python3 connecting from 198.126.198.173
+--------
+Nov 23 06:52:59 MacBook socketfilterfw[984] <Error>: Deny java connecting from 89.36.136.31
+--------
+Mar 19 03:00:44 iMac-Pro socketfilterfw[636] <Info>: Allow python3 connecting from 126.208.115.96
+--------
+Oct 26 17:45:55 MacBook socketfilterfw[519] <Info>: Allow screensharingd connecting from 100.20.26.155
+--------
+Aug 27 19:10:15 MacBook socketfilterfw[469] <Info>: Deny python3 connecting from 215.42.46.120
+--------
+Sep 18 17:29:11 MacBook socketfilterfw[926] <Error>: Allow screensharingd connecting from 63.249.251.230
+--------
+Jun 27 14:19:11 iMac-Pro socketfilterfw[278] <Info>: Allow java connecting from 99.223.181.81
+--------
+Dec 20 23:58:07 MacBook socketfilterfw[812] <Info>: Deny screensharingd connecting from 105.5.209.22
+--------
+Nov  9 20:54:18 MacBook socketfilterfw[399] <Info>: Deny java connecting from 158.80.47.25
+--------
+Feb 20 14:01:31 MacBook socketfilterfw[399] <Error>: Allow screensharingd connecting from 2.99.40.198
+--------
+Nov 14 20:30:33 iMac-Pro socketfilterfw[183] <Info>: Deny screensharingd connecting from 181.133.4.133
+--------
+Aug  4 20:15:01 MacBook socketfilterfw[289] <Error>: Deny python3 connecting from 19.25.162.156
+--------
+Jul  1 19:59:34 MacBook socketfilterfw[450] <Error>: Allow ARDAgent connecting from 120.101.150.219
+--------
+Jun 20 02:16:29 MacBook socketfilterfw[539] <Error>: Allow ARDAgent connecting from 123.31.178.245
+--------
+Jun  6 16:31:53 iMac-Pro socketfilterfw[350] <Info>: Deny screensharingd connecting from 144.60.89.47
+--------
+Nov 10 19:44:13 MacBook socketfilterfw[536] <Error>: Allow sshd-keygen-wrapper connecting from 88.42.123.22
+--------
+Sep 14 22:27:41 MacBook socketfilterfw[222] <Error>: Allow ARDAgent connecting from 191.31.150.157
+--------
+Apr 18 11:29:27 MacBook socketfilterfw[604] <Error>: Allow sshd-keygen-wrapper connecting from 104.0.222.73
+--------
+Apr  1 20:33:56 iMac-Pro socketfilterfw[707] <Error>: Deny java connecting from 114.253.245.236
+--------
+Mar 15 05:46:32 MacBook socketfilterfw[243] <Error>: Allow sshd-keygen-wrapper connecting from 134.116.143.39
+--------
+May 10 23:23:13 iMac-Pro socketfilterfw[623] <Info>: Allow java connecting from 2.19.75.22
+--------
+Jun 20 07:53:07 iMac-Pro socketfilterfw[685] <Error>: Allow screensharingd connecting from 211.87.95.9
+--------
+Aug  1 18:11:32 iMac-Pro socketfilterfw[701] <Info>: Allow ARDAgent connecting from 128.57.202.190
+--------
+Dec  8 18:45:24 iMac-Pro socketfilterfw[774] <Error>: Allow python3 connecting from 97.205.63.94
+--------
+Dec 10 07:52:04 MacBook socketfilterfw[466] <Error>: Allow python3 connecting from 143.165.120.103
+--------
+Feb 19 17:18:23 MacBook socketfilterfw[331] <Error>: Allow java connecting from 101.213.193.243
+--------
+Jul 19 23:45:33 MacBook socketfilterfw[493] <Info>: Deny python3 connecting from 38.253.92.170
+--------
+Nov 11 01:08:07 MacBook socketfilterfw[959] <Info>: Allow java connecting from 112.127.215.9
+--------
+Jul 17 04:17:14 MacBook socketfilterfw[153] <Info>: Allow python3 connecting from 50.214.205.204
+--------
+Apr  2 02:32:30 MacBook socketfilterfw[692] <Info>: Deny java connecting from 89.124.141.70
+--------
+Oct 20 09:07:54 MacBook socketfilterfw[429] <Error>: Allow java connecting from 112.97.99.14
+--------
+Jun 15 11:05:48 MacBook socketfilterfw[115] <Info>: Allow python3 connecting from 223.208.174.26
+--------
+Oct 16 06:52:38 iMac-Pro socketfilterfw[148] <Info>: Deny ARDAgent connecting from 43.110.163.195
+--------
+Dec  7 22:36:28 MacBook socketfilterfw[470] <Info>: Allow screensharingd connecting from 3.28.164.141
+--------
+Oct 11 04:47:30 iMac-Pro socketfilterfw[547] <Error>: Deny ARDAgent connecting from 19.71.88.61
+--------
+Dec 25 10:56:27 iMac-Pro socketfilterfw[919] <Info>: Deny screensharingd connecting from 94.133.211.200
+--------
+Nov  6 09:46:23 MacBook socketfilterfw[234] <Error>: Allow sshd-keygen-wrapper connecting from 85.17.232.179
+--------
+Jul 15 06:21:10 MacBook socketfilterfw[716] <Info>: Allow ARDAgent connecting from 147.43.126.200
+--------
+May 27 21:31:48 MacBook socketfilterfw[936] <Info>: Deny screensharingd connecting from 108.242.15.34
+--------
+Jun 11 04:28:54 iMac-Pro socketfilterfw[883] <Error>: Deny screensharingd connecting from 72.77.24.142
+--------
+Mar 28 03:32:46 iMac-Pro socketfilterfw[747] <Error>: Allow ARDAgent connecting from 56.196.112.149
+--------
+May 26 06:18:19 iMac-Pro socketfilterfw[121] <Error>: Allow sshd-keygen-wrapper connecting from 147.64.165.248
+--------
+Apr 13 19:01:16 iMac-Pro socketfilterfw[467] <Error>: Allow ARDAgent connecting from 96.31.132.22
+--------
+Jun  7 13:06:20 iMac-Pro socketfilterfw[867] <Error>: Allow screensharingd connecting from 88.10.194.88
+--------
+Aug 17 12:22:15 MacBook socketfilterfw[699] <Error>: Allow python3 connecting from 215.200.95.146
+--------
+Dec 27 16:48:30 MacBook socketfilterfw[991] <Error>: Deny screensharingd connecting from 5.141.131.144
+--------
+Aug 10 08:31:47 iMac-Pro socketfilterfw[883] <Info>: Deny python3 connecting from 66.188.0.220
+--------
+Nov 21 04:07:43 MacBook socketfilterfw[687] <Info>: Allow screensharingd connecting from 117.75.167.107
+--------
+Oct  5 01:58:00 MacBook socketfilterfw[142] <Error>: Deny python3 connecting from 91.12.78.239
+--------
+Nov 23 21:16:16 MacBook socketfilterfw[404] <Info>: Allow sshd-keygen-wrapper connecting from 146.37.57.243
+--------
+Oct 22 14:28:53 iMac-Pro socketfilterfw[815] <Error>: Deny java connecting from 156.178.30.212
+--------
+Feb 23 23:06:44 MacBook socketfilterfw[327] <Info>: Allow screensharingd connecting from 135.3.229.9
+--------
+Jun  5 18:24:53 iMac-Pro socketfilterfw[489] <Error>: Allow ARDAgent connecting from 48.188.221.42
+--------
+Apr 23 11:54:27 iMac-Pro socketfilterfw[947] <Error>: Deny screensharingd connecting from 45.80.255.79
+--------
+Feb 23 16:09:00 MacBook socketfilterfw[729] <Info>: Allow java connecting from 64.212.3.212
+--------
+Dec 20 20:15:14 MacBook socketfilterfw[347] <Info>: Allow java connecting from 19.211.219.31
+--------
+Mar  7 21:22:46 iMac-Pro socketfilterfw[152] <Error>: Deny java connecting from 85.140.17.190
+--------
+Dec 16 21:55:40 MacBook socketfilterfw[488] <Info>: Allow java connecting from 202.18.248.252
+--------
+Aug  2 19:41:47 iMac-Pro socketfilterfw[505] <Info>: Allow python3 connecting from 8.19.69.226
+--------
+Jan  5 15:37:49 MacBook socketfilterfw[952] <Error>: Deny java connecting from 96.137.97.58
+--------
+Aug 10 05:09:36 MacBook socketfilterfw[448] <Error>: Deny java connecting from 103.138.77.92
+--------
+Jul 16 18:56:38 iMac-Pro socketfilterfw[235] <Info>: Deny sshd-keygen-wrapper connecting from 105.199.228.185
+--------
+Aug 13 00:45:11 MacBook socketfilterfw[645] <Error>: Deny screensharingd connecting from 117.183.172.118
+--------
+Mar  7 19:00:49 MacBook socketfilterfw[585] <Error>: Allow sshd-keygen-wrapper connecting from 130.239.243.28
+--------
+Aug 13 01:58:49 MacBook socketfilterfw[357] <Error>: Deny sshd-keygen-wrapper connecting from 78.245.227.148
+--------
+May  3 21:52:08 iMac-Pro socketfilterfw[552] <Error>: Allow sshd-keygen-wrapper connecting from 214.93.187.244
+--------
+Feb  2 04:40:02 iMac-Pro socketfilterfw[752] <Error>: Allow sshd-keygen-wrapper connecting from 61.148.47.109
+--------
+Sep 10 10:52:23 MacBook socketfilterfw[958] <Info>: Allow java connecting from 161.152.180.203
+--------
+Apr 14 14:25:11 iMac-Pro socketfilterfw[511] <Info>: Allow screensharingd connecting from 141.181.195.101
+--------
+Mar 28 18:24:47 MacBook socketfilterfw[914] <Info>: Deny ARDAgent connecting from 165.58.43.154
+--------
+Mar 11 13:58:07 MacBook socketfilterfw[908] <Error>: Allow sshd-keygen-wrapper connecting from 172.251.75.125
+--------
+Dec 14 06:14:55 iMac-Pro socketfilterfw[424] <Info>: Allow ARDAgent connecting from 165.141.4.226
+--------
+Jan  4 20:26:37 iMac-Pro socketfilterfw[591] <Error>: Deny sshd-keygen-wrapper connecting from 191.47.254.69
+--------
+Nov 15 17:42:51 MacBook socketfilterfw[911] <Info>: Allow sshd-keygen-wrapper connecting from 102.27.38.222
+--------
+Mar  7 16:51:06 MacBook socketfilterfw[270] <Info>: Deny ARDAgent connecting from 165.215.116.194
+--------
+May 18 07:05:09 MacBook socketfilterfw[675] <Error>: Deny ARDAgent connecting from 209.15.14.161
+--------
+Aug  1 04:20:44 MacBook socketfilterfw[489] <Info>: Deny sshd-keygen-wrapper connecting from 205.51.185.55
+--------
+Sep 20 15:16:52 MacBook socketfilterfw[183] <Info>: Deny python3 connecting from 58.36.3.176
+--------
+Apr  6 09:59:32 iMac-Pro socketfilterfw[631] <Info>: Allow ARDAgent connecting from 164.31.7.92
+--------
+Jun 11 05:28:13 MacBook socketfilterfw[273] <Error>: Allow python3 connecting from 219.124.116.213
+--------
+Feb 18 04:00:23 iMac-Pro socketfilterfw[278] <Error>: Deny sshd-keygen-wrapper connecting from 132.29.118.122
+--------
+Feb 16 20:20:31 iMac-Pro socketfilterfw[702] <Error>: Deny sshd-keygen-wrapper connecting from 24.219.137.47
+--------
+Jul 27 07:19:30 MacBook socketfilterfw[208] <Error>: Allow ARDAgent connecting from 44.242.105.98
+--------
+Jul 11 15:07:59 iMac-Pro socketfilterfw[716] <Info>: Allow python3 connecting from 78.130.218.95
+--------
+Aug 17 21:00:25 iMac-Pro socketfilterfw[139] <Info>: Allow python3 connecting from 196.85.37.233
+--------
+Aug 21 22:50:57 MacBook socketfilterfw[766] <Info>: Allow screensharingd connecting from 209.122.250.137
+--------
+Jun 19 10:00:34 iMac-Pro socketfilterfw[732] <Info>: Deny java connecting from 104.78.242.137
+--------
+Dec 17 13:53:10 MacBook socketfilterfw[386] <Error>: Allow java connecting from 100.163.63.170
+--------
+Oct 13 05:07:47 iMac-Pro socketfilterfw[530] <Info>: Allow java connecting from 62.194.90.221
+--------
+Jul 12 10:08:53 iMac-Pro socketfilterfw[853] <Info>: Deny screensharingd connecting from 102.38.32.24
+--------
+Mar 12 22:41:08 iMac-Pro socketfilterfw[766] <Error>: Deny java connecting from 53.29.144.247
+--------
+Nov 17 22:01:38 iMac-Pro socketfilterfw[541] <Info>: Deny screensharingd connecting from 115.242.53.147
+--------
+Apr  6 04:24:42 MacBook socketfilterfw[555] <Error>: Allow screensharingd connecting from 134.231.108.108
+--------
+Apr 26 06:03:49 iMac-Pro socketfilterfw[357] <Info>: Deny java connecting from 117.176.139.88
+--------
+Feb  4 05:32:30 MacBook socketfilterfw[188] <Info>: Deny screensharingd connecting from 11.184.68.120
+--------
+Jan  4 15:44:53 iMac-Pro socketfilterfw[375] <Info>: Allow python3 connecting from 123.99.144.84
+--------
+Aug  3 20:40:05 iMac-Pro socketfilterfw[538] <Info>: Allow python3 connecting from 92.63.252.16
+--------
+Nov 18 08:12:35 iMac-Pro socketfilterfw[913] <Error>: Deny sshd-keygen-wrapper connecting from 206.106.214.213
+--------
+Apr  8 08:00:12 iMac-Pro socketfilterfw[212] <Info>: Deny ARDAgent connecting from 157.79.201.103
+--------
+Feb 16 03:14:00 MacBook socketfilterfw[993] <Info>: Deny ARDAgent connecting from 59.98.244.187
+--------
+Feb  3 15:46:01 MacBook socketfilterfw[234] <Error>: Deny screensharingd connecting from 27.130.131.77
+--------
+May 23 01:43:03 MacBook socketfilterfw[677] <Error>: Allow screensharingd connecting from 208.124.218.233
+--------
+Jun 19 04:23:44 MacBook socketfilterfw[578] <Info>: Deny ARDAgent connecting from 161.77.124.234
+--------
+Jul  2 05:38:13 iMac-Pro socketfilterfw[876] <Info>: Allow python3 connecting from 106.122.154.25
+--------
+Jun  7 09:57:21 iMac-Pro socketfilterfw[991] <Error>: Allow screensharingd connecting from 156.51.7.215
+--------
+Sep 23 22:46:21 MacBook socketfilterfw[281] <Info>: Allow java connecting from 12.84.187.108
+--------
+Feb 23 02:24:00 iMac-Pro socketfilterfw[190] <Error>: Deny python3 connecting from 8.158.137.123
+--------
+Aug 15 18:30:45 iMac-Pro socketfilterfw[891] <Info>: Allow python3 connecting from 98.123.77.124
+--------
+Feb 17 15:57:12 iMac-Pro socketfilterfw[821] <Info>: Allow ARDAgent connecting from 169.123.233.127
+--------
+Dec 15 13:19:24 iMac-Pro socketfilterfw[954] <Info>: Deny python3 connecting from 18.75.171.6
+--------
+Jan  2 19:38:41 MacBook socketfilterfw[321] <Error>: Allow sshd-keygen-wrapper connecting from 34.209.247.124
+--------
+Dec 14 23:11:07 MacBook socketfilterfw[906] <Info>: Deny sshd-keygen-wrapper connecting from 23.218.123.149
+--------
+Sep 19 01:23:42 MacBook socketfilterfw[498] <Info>: Allow java connecting from 155.237.10.5
+--------
+Oct  6 00:01:07 MacBook socketfilterfw[246] <Error>: Deny java connecting from 196.255.165.26
+--------
+Feb 16 12:01:52 iMac-Pro socketfilterfw[350] <Info>: Deny python3 connecting from 34.79.153.114
+--------
+May  3 22:39:35 iMac-Pro socketfilterfw[113] <Info>: Deny java connecting from 63.111.125.152
+--------
+Jun 17 02:53:18 iMac-Pro socketfilterfw[166] <Info>: Allow sshd-keygen-wrapper connecting from 69.124.251.231
+--------
+Jun 24 06:58:50 iMac-Pro socketfilterfw[973] <Info>: Deny python3 connecting from 206.27.215.145
+--------
+Jun  9 22:36:04 iMac-Pro socketfilterfw[754] <Info>: Deny java connecting from 15.232.232.156
+--------
+Aug 11 22:15:57 MacBook socketfilterfw[822] <Error>: Deny python3 connecting from 157.151.52.138
+--------
+Jul  7 16:23:04 iMac-Pro socketfilterfw[785] <Info>: Allow screensharingd connecting from 82.76.240.142
+--------
+Nov 16 18:26:58 iMac-Pro socketfilterfw[975] <Error>: Deny python3 connecting from 139.84.145.35
+--------
+Jul 10 15:33:31 MacBook socketfilterfw[814] <Error>: Deny sshd-keygen-wrapper connecting from 15.33.76.46
+--------
+Sep 26 08:47:50 iMac-Pro socketfilterfw[323] <Error>: Deny java connecting from 96.6.214.47
+--------
+Feb 24 02:39:58 MacBook socketfilterfw[653] <Info>: Deny python3 connecting from 101.233.84.59
+--------
+Jun 26 04:57:36 iMac-Pro socketfilterfw[301] <Info>: Allow java connecting from 220.84.244.65
+--------
+Oct 19 16:38:05 MacBook socketfilterfw[696] <Error>: Allow java connecting from 219.15.205.193
+--------
+Jun 17 07:31:22 iMac-Pro socketfilterfw[253] <Info>: Deny ARDAgent connecting from 56.152.252.49
+--------
+Oct 15 00:24:26 iMac-Pro socketfilterfw[480] <Error>: Deny sshd-keygen-wrapper connecting from 140.160.171.249
+--------
+Jan 10 10:50:07 MacBook socketfilterfw[616] <Info>: Allow screensharingd connecting from 122.233.73.126
+--------
+Jul 24 23:49:46 iMac-Pro socketfilterfw[657] <Info>: Allow python3 connecting from 89.154.59.99
+--------
+Feb 10 22:56:08 iMac-Pro socketfilterfw[630] <Info>: Allow ARDAgent connecting from 5.172.87.134
+--------
+Nov  2 14:11:11 iMac-Pro socketfilterfw[125] <Info>: Deny sshd-keygen-wrapper connecting from 222.157.137.41
+--------
+Jul  1 00:29:33 MacBook socketfilterfw[711] <Info>: Deny sshd-keygen-wrapper connecting from 197.151.184.124
+--------
+Nov  5 05:39:19 iMac-Pro socketfilterfw[377] <Info>: Deny java connecting from 128.99.22.234
+--------
+Dec 13 05:21:16 iMac-Pro socketfilterfw[212] <Info>: Deny ARDAgent connecting from 119.217.246.145
+--------
+Mar  5 19:04:01 iMac-Pro socketfilterfw[165] <Error>: Deny screensharingd connecting from 1.122.135.76
+--------
+Apr  8 08:36:51 iMac-Pro socketfilterfw[732] <Error>: Allow sshd-keygen-wrapper connecting from 193.188.211.49
+--------
+Feb 25 07:01:40 iMac-Pro socketfilterfw[360] <Info>: Deny sshd-keygen-wrapper connecting from 6.33.141.150
+--------
+Nov  4 23:10:39 MacBook socketfilterfw[415] <Info>: Allow sshd-keygen-wrapper connecting from 93.27.140.89
+--------
+May  9 01:35:09 iMac-Pro socketfilterfw[455] <Info>: Deny screensharingd connecting from 58.61.171.219
+--------
+Jun 17 18:23:21 iMac-Pro socketfilterfw[107] <Error>: Allow java connecting from 86.61.25.64
+--------
+Aug 27 06:36:01 MacBook socketfilterfw[216] <Error>: Allow java connecting from 185.110.210.114
+--------
+Dec  8 23:16:15 MacBook socketfilterfw[837] <Info>: Deny ARDAgent connecting from 45.247.161.84
+--------
+May 15 21:30:04 MacBook socketfilterfw[930] <Error>: Deny java connecting from 122.32.117.173
+--------
+Jul  8 15:39:42 MacBook socketfilterfw[505] <Error>: Allow sshd-keygen-wrapper connecting from 218.88.253.161
+--------
+Jan 23 02:16:53 iMac-Pro socketfilterfw[859] <Info>: Deny ARDAgent connecting from 136.24.62.207
+--------
+Jan 27 03:32:43 iMac-Pro socketfilterfw[467] <Error>: Deny python3 connecting from 192.181.240.105
+--------
+Mar 17 03:21:38 MacBook socketfilterfw[940] <Error>: Deny sshd-keygen-wrapper connecting from 162.221.42.232
+--------
+Nov 28 08:09:27 MacBook socketfilterfw[422] <Info>: Allow ARDAgent connecting from 36.251.141.66
+--------
+Jun  3 20:05:35 MacBook socketfilterfw[194] <Error>: Allow python3 connecting from 202.22.4.168
+--------
+Nov 15 09:00:10 iMac-Pro socketfilterfw[336] <Error>: Allow java connecting from 12.11.238.2
+--------
+Apr 27 14:43:22 iMac-Pro socketfilterfw[504] <Info>: Deny ARDAgent connecting from 173.183.135.69
+--------
+Sep  4 05:14:51 MacBook socketfilterfw[607] <Error>: Deny ARDAgent connecting from 54.102.133.22
+--------
+Jan 16 21:26:14 iMac-Pro socketfilterfw[678] <Info>: Allow java connecting from 152.250.15.151
+--------
+Oct 14 03:20:03 MacBook socketfilterfw[723] <Info>: Deny sshd-keygen-wrapper connecting from 102.131.26.131
+--------
+Mar 17 17:43:21 MacBook socketfilterfw[383] <Info>: Deny java connecting from 108.233.28.31
+--------
+Sep 13 08:44:00 iMac-Pro socketfilterfw[267] <Info>: Allow ARDAgent connecting from 130.221.219.182
+--------
+May 21 22:58:48 MacBook socketfilterfw[613] <Info>: Deny screensharingd connecting from 115.117.134.170
+--------
+May 11 10:04:59 MacBook socketfilterfw[700] <Info>: Allow screensharingd connecting from 114.54.3.53
+--------
+Jul 11 04:36:03 iMac-Pro socketfilterfw[317] <Error>: Deny python3 connecting from 23.58.143.188
+--------
+Oct 15 21:10:15 MacBook socketfilterfw[843] <Error>: Deny java connecting from 221.190.34.230
+--------
+May  9 13:07:39 MacBook socketfilterfw[797] <Info>: Allow java connecting from 155.20.20.179
+--------
+Sep 15 08:37:26 iMac-Pro socketfilterfw[806] <Error>: Allow screensharingd connecting from 30.140.96.233
+--------
+Jul 22 15:48:47 MacBook socketfilterfw[858] <Info>: Allow sshd-keygen-wrapper connecting from 145.61.95.100
+--------
+Mar 15 09:32:53 MacBook socketfilterfw[221] <Info>: Deny sshd-keygen-wrapper connecting from 181.161.80.3
+--------
+Mar 26 17:08:22 MacBook socketfilterfw[850] <Error>: Deny java connecting from 110.76.196.50
+--------
+May 10 11:05:16 iMac-Pro socketfilterfw[658] <Error>: Deny screensharingd connecting from 113.115.151.124
+--------
+Jun 21 16:18:04 MacBook socketfilterfw[314] <Info>: Deny java connecting from 15.55.50.17
+--------
+Jun 14 19:39:33 iMac-Pro socketfilterfw[329] <Error>: Allow screensharingd connecting from 213.241.115.74
+--------
+Feb 13 19:13:13 MacBook socketfilterfw[906] <Error>: Deny screensharingd connecting from 23.234.2.157
+--------
+Jan 26 19:28:04 iMac-Pro socketfilterfw[527] <Error>: Allow screensharingd connecting from 143.89.207.73
+--------
+Mar  8 16:29:50 MacBook socketfilterfw[810] <Info>: Deny ARDAgent connecting from 39.101.73.243
+--------
+Jul  1 08:47:57 MacBook socketfilterfw[707] <Info>: Allow ARDAgent connecting from 112.83.164.95
+--------
+Nov 11 14:04:08 iMac-Pro socketfilterfw[237] <Error>: Deny python3 connecting from 18.121.5.198
+--------
+Dec 28 00:48:34 MacBook socketfilterfw[745] <Error>: Deny java connecting from 177.16.46.24
+--------
+Jun  2 22:41:16 iMac-Pro socketfilterfw[489] <Error>: Deny java connecting from 14.156.200.105
+--------
+Jan 14 18:36:54 MacBook socketfilterfw[758] <Info>: Allow python3 connecting from 24.14.200.93
+--------
+Dec 12 00:44:28 MacBook socketfilterfw[783] <Error>: Allow python3 connecting from 5.51.111.115
+--------
+Nov 13 14:29:21 MacBook socketfilterfw[835] <Info>: Deny sshd-keygen-wrapper connecting from 178.117.8.142
+--------
+Mar 19 00:35:09 iMac-Pro socketfilterfw[380] <Info>: Allow python3 connecting from 64.57.212.84
+--------
+May  1 13:19:57 iMac-Pro socketfilterfw[959] <Info>: Deny sshd-keygen-wrapper connecting from 82.254.158.242
+--------
+Apr 11 07:24:55 iMac-Pro socketfilterfw[805] <Info>: Deny python3 connecting from 47.146.214.225
+--------
+Nov  9 13:33:51 iMac-Pro socketfilterfw[419] <Error>: Deny sshd-keygen-wrapper connecting from 73.228.116.128
+--------
+Sep 10 01:55:51 MacBook socketfilterfw[215] <Info>: Deny python3 connecting from 12.200.245.26
+--------
+Mar 11 01:46:06 iMac-Pro socketfilterfw[314] <Error>: Deny java connecting from 59.163.204.143
+--------
+Jan  4 18:23:31 MacBook socketfilterfw[394] <Info>: Allow screensharingd connecting from 200.166.66.159
+--------
+Dec  6 08:54:52 iMac-Pro socketfilterfw[260] <Info>: Deny java connecting from 36.166.93.62
+--------
+Mar 13 23:34:43 iMac-Pro socketfilterfw[903] <Error>: Deny sshd-keygen-wrapper connecting from 195.141.165.3
+--------
+May 26 14:13:35 iMac-Pro socketfilterfw[538] <Error>: Allow java connecting from 2.2.93.197
+--------
+Dec 24 21:08:00 MacBook socketfilterfw[906] <Error>: Allow python3 connecting from 190.58.228.205
+--------
+Aug 28 05:24:11 MacBook socketfilterfw[694] <Error>: Deny ARDAgent connecting from 201.112.128.145
+--------
+Apr 11 19:03:53 MacBook socketfilterfw[166] <Info>: Deny screensharingd connecting from 139.231.204.13
+--------
+Jun 13 03:02:06 iMac-Pro socketfilterfw[813] <Error>: Deny java connecting from 55.154.36.144
+--------
+Sep 21 18:34:26 iMac-Pro socketfilterfw[160] <Error>: Allow java connecting from 113.125.39.207
+--------
+Jan 23 04:43:47 iMac-Pro socketfilterfw[922] <Error>: Allow ARDAgent connecting from 114.81.145.81
+--------
+Aug  7 11:00:04 MacBook socketfilterfw[102] <Error>: Deny sshd-keygen-wrapper connecting from 219.146.240.89
+--------
+Apr  3 10:37:55 MacBook socketfilterfw[628] <Error>: Allow ARDAgent connecting from 78.157.196.131
+--------
+Mar 28 15:24:56 iMac-Pro socketfilterfw[194] <Info>: Allow ARDAgent connecting from 16.82.125.190
+--------
+Nov 24 11:41:47 iMac-Pro socketfilterfw[849] <Error>: Allow ARDAgent connecting from 164.128.155.135
+--------
+Jan 19 05:58:58 MacBook socketfilterfw[549] <Info>: Allow java connecting from 109.30.143.49
+--------
+Apr 17 21:49:29 iMac-Pro socketfilterfw[304] <Info>: Allow sshd-keygen-wrapper connecting from 40.6.160.37
+--------
+Jan 26 02:20:52 MacBook socketfilterfw[201] <Error>: Allow screensharingd connecting from 202.1.48.174
+--------
+Mar 27 15:55:29 iMac-Pro socketfilterfw[758] <Info>: Deny screensharingd connecting from 184.188.177.165
+--------
+Dec 15 07:44:53 MacBook socketfilterfw[684] <Info>: Allow ARDAgent connecting from 167.107.103.236
+--------
+Jun 21 16:58:24 iMac-Pro socketfilterfw[630] <Info>: Allow sshd-keygen-wrapper connecting from 110.233.16.129
+--------
+Sep 12 17:17:15 MacBook socketfilterfw[343] <Error>: Allow sshd-keygen-wrapper connecting from 207.251.250.3
+--------
+Feb  9 12:48:38 iMac-Pro socketfilterfw[776] <Info>: Deny java connecting from 132.42.31.23
+--------
+May 16 09:59:48 MacBook socketfilterfw[495] <Info>: Deny java connecting from 105.207.52.23
+--------
+Dec  1 21:37:07 MacBook socketfilterfw[483] <Error>: Allow python3 connecting from 67.178.96.34
+--------
+Aug 18 00:27:07 iMac-Pro socketfilterfw[374] <Error>: Allow java connecting from 147.39.41.83
+--------
+Aug 27 01:55:49 MacBook socketfilterfw[159] <Error>: Allow java connecting from 40.58.218.204
+--------
+Jul 25 19:43:06 MacBook socketfilterfw[311] <Info>: Allow ARDAgent connecting from 119.107.240.190
+--------
+Oct 18 12:56:48 iMac-Pro socketfilterfw[486] <Error>: Deny screensharingd connecting from 126.196.251.197
+--------
+Feb 16 23:08:45 MacBook socketfilterfw[259] <Info>: Deny ARDAgent connecting from 23.29.13.218
+--------
+Nov 20 06:26:11 MacBook socketfilterfw[727] <Error>: Deny sshd-keygen-wrapper connecting from 61.239.188.144
+--------
+Jul 21 13:56:34 MacBook socketfilterfw[758] <Error>: Deny sshd-keygen-wrapper connecting from 125.69.213.8
+--------
+Dec 13 19:55:17 iMac-Pro socketfilterfw[586] <Info>: Deny ARDAgent connecting from 193.102.89.119
+--------
+Jun 11 18:17:37 MacBook socketfilterfw[508] <Info>: Deny ARDAgent connecting from 120.156.3.76
+--------
+May  1 00:20:59 MacBook socketfilterfw[590] <Info>: Deny java connecting from 126.130.207.223
+--------
+Mar  6 10:24:13 MacBook socketfilterfw[442] <Error>: Allow screensharingd connecting from 125.68.19.164
+--------
+Sep 11 11:38:43 MacBook socketfilterfw[612] <Info>: Allow sshd-keygen-wrapper connecting from 135.123.26.110
+--------
+Oct 16 19:33:40 MacBook socketfilterfw[203] <Info>: Allow java connecting from 128.245.21.227
+--------
+Jul 19 09:08:52 MacBook socketfilterfw[451] <Info>: Deny python3 connecting from 144.184.110.152
+--------
+May 10 03:41:29 MacBook socketfilterfw[934] <Error>: Deny sshd-keygen-wrapper connecting from 193.126.159.97
+--------
+Aug  4 23:07:00 iMac-Pro socketfilterfw[740] <Info>: Deny python3 connecting from 197.101.141.55
+--------
+Dec  4 10:09:42 MacBook socketfilterfw[706] <Info>: Allow ARDAgent connecting from 177.45.38.61
+--------
+Feb  7 16:29:14 iMac-Pro socketfilterfw[240] <Info>: Allow sshd-keygen-wrapper connecting from 64.95.78.222
+--------
+May 24 08:50:03 MacBook socketfilterfw[127] <Error>: Allow java connecting from 158.50.169.4
+--------
+Mar 25 21:50:18 MacBook socketfilterfw[895] <Info>: Deny screensharingd connecting from 215.163.56.198
+--------
+Apr 19 03:04:04 iMac-Pro socketfilterfw[743] <Info>: Allow screensharingd connecting from 10.49.159.51
+--------
+Sep  6 00:02:45 MacBook socketfilterfw[603] <Error>: Allow java connecting from 134.79.7.213
+--------
+Mar  7 19:21:01 MacBook socketfilterfw[836] <Info>: Deny sshd-keygen-wrapper connecting from 13.65.108.90
+--------
+Apr 15 11:31:03 iMac-Pro socketfilterfw[632] <Error>: Allow python3 connecting from 34.24.248.110
+--------
+Jun 28 04:27:38 iMac-Pro socketfilterfw[200] <Error>: Allow ARDAgent connecting from 146.204.180.115
+--------
+Aug 16 08:44:42 MacBook socketfilterfw[598] <Error>: Allow screensharingd connecting from 128.124.167.66
+--------
+Feb 23 14:35:26 MacBook socketfilterfw[449] <Error>: Allow screensharingd connecting from 34.19.64.33
+--------
+Oct  8 05:29:56 MacBook socketfilterfw[319] <Info>: Allow ARDAgent connecting from 55.95.207.251
+--------
+Jan 12 07:07:41 MacBook socketfilterfw[210] <Info>: Allow ARDAgent connecting from 123.136.49.74
+--------
+Aug  1 02:27:09 iMac-Pro socketfilterfw[539] <Error>: Deny screensharingd connecting from 142.184.89.50
+--------
+Mar 13 16:13:30 iMac-Pro socketfilterfw[417] <Error>: Allow java connecting from 129.179.143.55
+--------
+Oct  1 12:38:26 MacBook socketfilterfw[409] <Info>: Deny screensharingd connecting from 162.23.110.169
+--------
+Jan 19 06:36:31 iMac-Pro socketfilterfw[326] <Error>: Deny sshd-keygen-wrapper connecting from 120.138.85.147
+--------
+Feb 16 16:03:21 MacBook socketfilterfw[449] <Info>: Deny sshd-keygen-wrapper connecting from 190.144.16.71
+--------
+Aug  8 09:06:13 MacBook socketfilterfw[869] <Info>: Deny sshd-keygen-wrapper connecting from 126.46.7.210
+--------
+Feb  2 06:01:46 iMac-Pro socketfilterfw[464] <Info>: Deny ARDAgent connecting from 96.5.128.49
+--------
+Sep 25 05:20:59 iMac-Pro socketfilterfw[622] <Info>: Deny ARDAgent connecting from 173.154.118.144
+--------
+Feb 15 18:50:09 iMac-Pro socketfilterfw[161] <Info>: Deny screensharingd connecting from 30.163.126.195
+--------
+Oct  5 20:04:13 iMac-Pro socketfilterfw[179] <Error>: Allow java connecting from 5.185.84.65
+--------
+Apr 24 14:48:51 MacBook socketfilterfw[971] <Error>: Deny sshd-keygen-wrapper connecting from 213.250.145.99
+--------
+Aug 18 06:58:46 MacBook socketfilterfw[520] <Info>: Allow python3 connecting from 204.248.77.247
+--------
+Jun 14 13:11:29 iMac-Pro socketfilterfw[543] <Error>: Deny python3 connecting from 39.88.200.246
+--------
+Aug 21 14:27:47 MacBook socketfilterfw[131] <Error>: Deny sshd-keygen-wrapper connecting from 206.114.15.248
+--------
+Jan 28 06:29:16 iMac-Pro socketfilterfw[966] <Error>: Allow java connecting from 35.6.61.26
+--------
+Sep 28 13:38:38 MacBook socketfilterfw[647] <Error>: Allow sshd-keygen-wrapper connecting from 179.144.206.14
+--------
+Mar  1 01:19:08 iMac-Pro socketfilterfw[185] <Info>: Deny screensharingd connecting from 222.170.184.106
+--------
+Nov 26 15:53:32 MacBook socketfilterfw[102] <Info>: Allow screensharingd connecting from 170.179.52.172
+--------
+May 17 23:00:33 MacBook socketfilterfw[710] <Info>: Allow ARDAgent connecting from 100.8.1.25
+--------
+Oct 14 18:27:23 MacBook socketfilterfw[924] <Info>: Allow screensharingd connecting from 170.69.151.163
+--------
+Mar 24 05:19:21 iMac-Pro socketfilterfw[970] <Error>: Allow java connecting from 96.118.179.47
+--------
+Jun  4 06:12:26 iMac-Pro socketfilterfw[759] <Info>: Deny sshd-keygen-wrapper connecting from 164.55.153.190
+--------
+May 12 10:08:11 MacBook socketfilterfw[696] <Error>: Allow java connecting from 145.224.226.217
+--------
+Jul 13 11:48:10 MacBook socketfilterfw[534] <Info>: Deny screensharingd connecting from 135.220.8.191
+--------
+Dec  7 01:50:30 iMac-Pro socketfilterfw[566] <Info>: Allow java connecting from 54.163.115.244
+--------
+Aug 28 10:05:45 iMac-Pro socketfilterfw[593] <Info>: Deny java connecting from 138.252.17.61
+--------
+Feb 28 14:38:53 MacBook socketfilterfw[516] <Info>: Allow sshd-keygen-wrapper connecting from 152.151.202.224
+--------
+May  7 19:11:54 iMac-Pro socketfilterfw[781] <Info>: Deny sshd-keygen-wrapper connecting from 141.204.117.202
+--------
+Jun 17 12:02:11 MacBook socketfilterfw[982] <Info>: Deny python3 connecting from 171.208.95.131
+--------
+Sep 11 19:33:30 MacBook socketfilterfw[738] <Info>: Deny java connecting from 62.147.70.198
+--------
+Oct  6 17:08:45 iMac-Pro socketfilterfw[255] <Error>: Allow screensharingd connecting from 32.70.13.45
+--------
+Jul 27 04:26:12 iMac-Pro socketfilterfw[774] <Error>: Deny ARDAgent connecting from 78.140.43.175
+--------
+Aug  1 14:23:37 iMac-Pro socketfilterfw[230] <Info>: Allow python3 connecting from 195.120.12.88
+--------
+Sep  2 00:54:01 MacBook socketfilterfw[560] <Info>: Deny ARDAgent connecting from 205.115.248.142
+--------
+Jan 21 23:50:54 iMac-Pro socketfilterfw[245] <Info>: Deny screensharingd connecting from 170.22.208.230
+--------
+Jan 24 16:35:36 MacBook socketfilterfw[882] <Info>: Allow ARDAgent connecting from 82.48.68.30
+--------
+Sep 11 02:32:26 MacBook socketfilterfw[878] <Info>: Deny screensharingd connecting from 113.52.237.195
+--------
+Dec 17 13:00:15 iMac-Pro socketfilterfw[642] <Error>: Allow sshd-keygen-wrapper connecting from 144.168.40.237
+--------
+Sep 11 23:39:42 iMac-Pro socketfilterfw[650] <Error>: Allow java connecting from 61.55.183.28
+--------
+Dec 22 20:36:20 MacBook socketfilterfw[285] <Error>: Deny java connecting from 51.168.165.186
+--------
+Oct 22 11:43:21 iMac-Pro socketfilterfw[452] <Info>: Deny sshd-keygen-wrapper connecting from 77.193.177.146
+--------
+Jan 19 23:52:10 MacBook socketfilterfw[496] <Info>: Allow ARDAgent connecting from 33.221.48.130
+--------
+Dec 15 19:22:52 iMac-Pro socketfilterfw[356] <Error>: Deny ARDAgent connecting from 92.32.76.99
+--------
+Jun 18 00:12:16 MacBook socketfilterfw[264] <Info>: Allow ARDAgent connecting from 156.142.56.167
+--------
+May  7 03:04:53 iMac-Pro socketfilterfw[569] <Info>: Allow python3 connecting from 23.13.149.77
+--------
+Dec 27 00:09:36 iMac-Pro socketfilterfw[481] <Error>: Allow java connecting from 97.201.214.164
+--------
+Feb 12 11:46:33 MacBook socketfilterfw[588] <Error>: Allow ARDAgent connecting from 129.107.27.46
+--------
+Apr 25 08:43:40 iMac-Pro socketfilterfw[881] <Error>: Deny ARDAgent connecting from 82.45.24.6
+--------
+Nov 28 16:53:50 MacBook socketfilterfw[243] <Info>: Deny sshd-keygen-wrapper connecting from 131.17.230.67
+--------
+Jun 28 22:27:59 MacBook socketfilterfw[484] <Info>: Allow ARDAgent connecting from 91.237.145.4
+--------
+Aug  8 07:31:23 iMac-Pro socketfilterfw[156] <Info>: Deny ARDAgent connecting from 46.242.215.232
+--------
+Mar  4 15:56:40 MacBook socketfilterfw[696] <Info>: Deny sshd-keygen-wrapper connecting from 59.84.175.129
+--------
+Feb 27 15:05:14 MacBook socketfilterfw[326] <Info>: Deny screensharingd connecting from 40.101.126.61
+--------
+Feb 18 03:30:03 MacBook socketfilterfw[928] <Info>: Deny sshd-keygen-wrapper connecting from 156.50.194.219
+--------
+Apr 17 23:52:04 iMac-Pro socketfilterfw[328] <Info>: Allow python3 connecting from 201.138.118.231
+--------
+Apr 17 17:19:55 MacBook socketfilterfw[824] <Error>: Allow sshd-keygen-wrapper connecting from 122.208.229.39
+--------
+Mar 16 07:58:28 iMac-Pro socketfilterfw[542] <Info>: Deny screensharingd connecting from 79.106.186.148
+--------
+Aug 12 06:13:05 iMac-Pro socketfilterfw[630] <Info>: Deny python3 connecting from 207.231.139.128
+--------
+Jun 10 00:01:54 MacBook socketfilterfw[620] <Error>: Deny java connecting from 89.9.221.127
+--------
+Aug 20 04:39:22 iMac-Pro socketfilterfw[704] <Info>: Allow screensharingd connecting from 122.109.90.31
+--------
+May 23 16:38:33 MacBook socketfilterfw[373] <Error>: Deny ARDAgent connecting from 214.73.188.60
+--------
+Jan 26 16:28:06 iMac-Pro socketfilterfw[354] <Error>: Allow sshd-keygen-wrapper connecting from 141.252.96.21
+--------
+Jul 24 11:52:08 MacBook socketfilterfw[339] <Info>: Deny ARDAgent connecting from 195.253.162.43
+--------
+Nov  9 04:46:01 iMac-Pro socketfilterfw[239] <Error>: Allow sshd-keygen-wrapper connecting from 172.9.73.15
+--------
+Nov  1 04:25:41 MacBook socketfilterfw[942] <Info>: Deny java connecting from 83.3.89.131
+--------
+Apr 13 16:06:02 iMac-Pro socketfilterfw[823] <Error>: Deny ARDAgent connecting from 31.248.4.99
+--------
+Jun 24 12:02:07 iMac-Pro socketfilterfw[808] <Error>: Deny ARDAgent connecting from 194.249.20.17
+--------
+Sep  2 14:50:04 MacBook socketfilterfw[731] <Error>: Deny python3 connecting from 144.64.214.12
+--------
+Jan  1 03:20:13 MacBook socketfilterfw[275] <Info>: Allow screensharingd connecting from 203.70.218.98
+--------
+Jun 22 10:49:19 MacBook socketfilterfw[313] <Info>: Allow ARDAgent connecting from 149.212.143.214
+--------
+Apr 21 21:04:34 MacBook socketfilterfw[196] <Info>: Allow sshd-keygen-wrapper connecting from 192.56.79.161
+--------
+Jul 11 19:32:58 MacBook socketfilterfw[156] <Error>: Allow ARDAgent connecting from 217.216.254.38
+--------
+Jan 16 03:09:02 MacBook socketfilterfw[413] <Error>: Allow java connecting from 80.216.193.99
+--------
+Apr 18 16:19:59 MacBook socketfilterfw[769] <Error>: Allow screensharingd connecting from 75.22.217.31
+--------
+Feb 18 06:15:42 MacBook socketfilterfw[780] <Info>: Deny java connecting from 111.46.184.143
+--------
+Sep 16 02:28:24 iMac-Pro socketfilterfw[749] <Error>: Allow java connecting from 39.56.14.9
+--------
+Apr 13 03:11:49 MacBook socketfilterfw[870] <Error>: Deny python3 connecting from 210.206.130.45
+--------
+Mar 25 13:30:25 iMac-Pro socketfilterfw[150] <Error>: Deny screensharingd connecting from 69.133.124.45
+--------
+Jul 12 07:58:03 iMac-Pro socketfilterfw[392] <Error>: Deny screensharingd connecting from 157.121.27.49
+--------
+Oct 22 15:48:45 iMac-Pro socketfilterfw[684] <Error>: Deny ARDAgent connecting from 1.90.137.112
+--------
+Oct 13 17:45:10 MacBook socketfilterfw[301] <Info>: Allow sshd-keygen-wrapper connecting from 123.217.186.90
+--------
+Mar 27 13:25:45 MacBook socketfilterfw[989] <Info>: Deny python3 connecting from 42.11.83.98
+--------
+Nov  2 09:54:09 MacBook socketfilterfw[213] <Info>: Allow java connecting from 160.137.84.95
+--------
+Sep 19 01:24:31 iMac-Pro socketfilterfw[933] <Error>: Deny java connecting from 207.174.224.225
+--------
+May 28 11:26:04 MacBook socketfilterfw[800] <Error>: Deny python3 connecting from 81.241.109.29
+--------
+Oct 18 09:45:24 MacBook socketfilterfw[730] <Info>: Allow ARDAgent connecting from 101.114.214.61
+--------
+Apr 26 22:45:24 MacBook socketfilterfw[705] <Info>: Deny java connecting from 80.121.111.163
+--------
+May 10 20:51:08 MacBook socketfilterfw[123] <Info>: Deny sshd-keygen-wrapper connecting from 107.28.174.79
+--------
+Feb 24 15:10:41 iMac-Pro socketfilterfw[565] <Error>: Allow screensharingd connecting from 183.197.78.108
+--------
+Aug 17 09:26:55 iMac-Pro socketfilterfw[901] <Error>: Allow sshd-keygen-wrapper connecting from 100.136.231.194
+--------
+Sep  2 02:46:18 iMac-Pro socketfilterfw[718] <Info>: Deny screensharingd connecting from 46.79.210.223
+--------
+Apr  7 22:20:04 iMac-Pro socketfilterfw[444] <Info>: Deny python3 connecting from 10.203.10.90
+--------
+Aug  1 23:50:19 iMac-Pro socketfilterfw[580] <Info>: Deny ARDAgent connecting from 191.128.132.44
+--------
+Jun  3 11:40:10 iMac-Pro socketfilterfw[546] <Info>: Deny python3 connecting from 58.100.179.179
+--------
+Sep 11 08:07:43 iMac-Pro socketfilterfw[486] <Info>: Allow ARDAgent connecting from 123.107.148.74
+--------
+Feb 25 15:27:37 MacBook socketfilterfw[444] <Info>: Allow python3 connecting from 222.115.160.234
+--------
+Jul 16 20:31:51 MacBook socketfilterfw[349] <Info>: Deny screensharingd connecting from 117.178.213.100
+--------
+Dec 21 18:11:14 MacBook socketfilterfw[698] <Info>: Deny sshd-keygen-wrapper connecting from 1.226.247.96
+--------
+Apr 19 11:07:42 iMac-Pro socketfilterfw[871] <Info>: Deny python3 connecting from 21.9.23.174
+--------
+Aug 10 18:44:24 MacBook socketfilterfw[861] <Info>: Deny screensharingd connecting from 60.178.69.124
+--------
+Jun 27 21:52:38 iMac-Pro socketfilterfw[757] <Error>: Allow python3 connecting from 202.251.215.88
+--------
+Apr 22 23:01:00 iMac-Pro socketfilterfw[617] <Error>: Allow screensharingd connecting from 1.77.44.158
+--------
+May  5 17:10:12 iMac-Pro socketfilterfw[531] <Info>: Deny java connecting from 215.245.127.171
+--------
+Dec 28 16:37:42 MacBook socketfilterfw[975] <Error>: Allow screensharingd connecting from 137.247.38.151
+--------
+Jul 27 15:52:30 MacBook socketfilterfw[648] <Error>: Deny python3 connecting from 68.13.194.197
+--------
+May 15 16:55:32 iMac-Pro socketfilterfw[823] <Info>: Allow ARDAgent connecting from 84.243.184.224
+--------
+Jan 15 15:39:52 MacBook socketfilterfw[955] <Error>: Deny screensharingd connecting from 34.32.27.229
+--------
+May 19 03:09:43 iMac-Pro socketfilterfw[146] <Error>: Deny screensharingd connecting from 171.13.23.18
+--------
+Dec  5 16:26:04 MacBook socketfilterfw[276] <Error>: Allow java connecting from 5.232.95.90
+--------
+May 22 01:06:35 iMac-Pro socketfilterfw[294] <Error>: Deny screensharingd connecting from 168.19.237.190
+--------
+Jan 24 13:56:42 iMac-Pro socketfilterfw[396] <Info>: Allow sshd-keygen-wrapper connecting from 126.202.205.77
+--------
+Feb 19 10:13:11 iMac-Pro socketfilterfw[858] <Info>: Allow python3 connecting from 60.191.252.79
+--------
+Nov  6 19:56:15 MacBook socketfilterfw[511] <Info>: Allow java connecting from 185.104.160.246
+--------
+May 10 08:01:57 iMac-Pro socketfilterfw[392] <Info>: Allow ARDAgent connecting from 152.225.61.122
+--------
+May 26 00:47:43 iMac-Pro socketfilterfw[388] <Info>: Allow java connecting from 95.90.176.112
+--------
+Aug 25 23:18:17 iMac-Pro socketfilterfw[984] <Info>: Deny java connecting from 70.218.146.77
+--------
+Nov 19 11:21:01 MacBook socketfilterfw[485] <Info>: Allow screensharingd connecting from 219.77.139.4
+--------
+Apr  2 00:50:11 iMac-Pro socketfilterfw[562] <Error>: Allow python3 connecting from 42.221.194.65
+--------
+Nov 21 22:19:37 iMac-Pro socketfilterfw[596] <Error>: Deny java connecting from 125.241.57.135
+--------
+Nov 18 10:23:11 iMac-Pro socketfilterfw[922] <Info>: Deny ARDAgent connecting from 15.165.66.124
+--------
+Oct 28 15:36:10 MacBook socketfilterfw[563] <Error>: Deny python3 connecting from 134.98.228.160
+--------
+Jan 20 15:17:25 iMac-Pro socketfilterfw[873] <Error>: Allow python3 connecting from 155.224.229.86
+--------
+Aug 18 02:16:08 iMac-Pro socketfilterfw[617] <Error>: Allow sshd-keygen-wrapper connecting from 93.66.216.230
+--------
+Aug  7 14:03:09 MacBook socketfilterfw[754] <Info>: Deny sshd-keygen-wrapper connecting from 178.69.129.231
+--------
+Dec 19 05:05:24 MacBook socketfilterfw[833] <Error>: Allow ARDAgent connecting from 79.236.102.166
+--------
+Jan 25 13:52:59 MacBook socketfilterfw[604] <Error>: Deny sshd-keygen-wrapper connecting from 131.153.99.195
+--------
+Jan 24 11:19:04 MacBook socketfilterfw[102] <Info>: Allow screensharingd connecting from 161.177.240.108
+--------
+Nov  8 20:09:29 iMac-Pro socketfilterfw[927] <Error>: Deny screensharingd connecting from 57.161.207.183
+--------
+Apr 15 02:50:57 MacBook socketfilterfw[712] <Info>: Allow sshd-keygen-wrapper connecting from 97.137.117.116
+--------
+Oct  4 23:20:08 iMac-Pro socketfilterfw[519] <Error>: Deny ARDAgent connecting from 127.194.116.15
+--------
+Nov 15 01:20:23 iMac-Pro socketfilterfw[723] <Info>: Allow java connecting from 157.2.108.88
+--------
+Feb  3 11:26:28 MacBook socketfilterfw[495] <Error>: Allow ARDAgent connecting from 143.254.198.143
+--------
+Aug 15 13:00:17 MacBook socketfilterfw[270] <Error>: Deny screensharingd connecting from 103.66.5.134
+--------
+Jan 27 04:37:04 iMac-Pro socketfilterfw[938] <Error>: Deny ARDAgent connecting from 14.3.6.238
+--------
+Sep 21 00:34:47 MacBook socketfilterfw[866] <Error>: Allow screensharingd connecting from 35.222.163.162
+--------
+Oct 17 05:32:23 MacBook socketfilterfw[421] <Error>: Allow sshd-keygen-wrapper connecting from 219.103.58.232
+--------
+Nov 18 00:10:04 iMac-Pro socketfilterfw[910] <Info>: Deny sshd-keygen-wrapper connecting from 130.115.36.234
+--------
+Jul  3 07:06:05 iMac-Pro socketfilterfw[932] <Info>: Deny ARDAgent connecting from 179.183.183.144
+--------
+Feb 11 04:54:50 iMac-Pro socketfilterfw[555] <Error>: Deny ARDAgent connecting from 18.153.122.21
+--------
+Sep  3 15:43:36 iMac-Pro socketfilterfw[527] <Error>: Deny java connecting from 179.216.153.224
+--------
+Dec 26 21:34:15 iMac-Pro socketfilterfw[829] <Error>: Allow python3 connecting from 9.156.111.203
+--------
+Dec  5 01:10:39 iMac-Pro socketfilterfw[135] <Info>: Allow screensharingd connecting from 33.251.226.228
+--------
+May 24 00:45:52 MacBook socketfilterfw[575] <Info>: Allow java connecting from 141.21.34.23
+--------
+Nov 20 04:30:46 iMac-Pro socketfilterfw[436] <Error>: Allow ARDAgent connecting from 26.66.1.162
+--------
+Sep 27 10:13:27 iMac-Pro socketfilterfw[520] <Info>: Allow sshd-keygen-wrapper connecting from 55.99.80.185
+--------
+Feb 16 13:16:24 MacBook socketfilterfw[661] <Info>: Allow sshd-keygen-wrapper connecting from 151.207.107.123
+--------
+Feb 10 08:30:18 iMac-Pro socketfilterfw[676] <Info>: Allow ARDAgent connecting from 221.75.25.95
+--------
+Nov  5 15:25:12 iMac-Pro socketfilterfw[746] <Info>: Allow python3 connecting from 27.69.243.225
+--------
+Nov 22 23:51:38 iMac-Pro socketfilterfw[328] <Error>: Deny python3 connecting from 10.102.33.154
+--------
+Aug 15 16:56:18 MacBook socketfilterfw[295] <Info>: Allow ARDAgent connecting from 12.146.46.147
+--------
+Oct 13 03:04:13 MacBook socketfilterfw[778] <Info>: Allow java connecting from 167.187.12.68
+--------
+Sep 25 07:48:24 MacBook socketfilterfw[125] <Info>: Allow sshd-keygen-wrapper connecting from 88.211.72.108
+--------
+Oct 27 15:03:43 iMac-Pro socketfilterfw[760] <Error>: Allow screensharingd connecting from 46.37.233.50
+--------
+Aug  1 20:01:26 iMac-Pro socketfilterfw[210] <Info>: Allow ARDAgent connecting from 219.111.28.246
+--------
+Jun 27 11:12:32 iMac-Pro socketfilterfw[574] <Error>: Deny java connecting from 3.215.90.105
+--------
+Dec 12 14:14:16 iMac-Pro socketfilterfw[289] <Error>: Allow java connecting from 25.87.219.140
+--------
+Apr 24 23:16:05 MacBook socketfilterfw[634] <Info>: Allow ARDAgent connecting from 96.108.217.244
+--------
+Feb 15 13:45:55 iMac-Pro socketfilterfw[618] <Info>: Deny sshd-keygen-wrapper connecting from 94.157.197.95
+--------
+Jul 15 11:48:56 MacBook socketfilterfw[309] <Error>: Allow java connecting from 139.131.152.33
+--------
+Aug 22 17:02:42 MacBook socketfilterfw[223] <Error>: Allow ARDAgent connecting from 24.118.84.181
+--------
+Feb 15 21:09:22 iMac-Pro socketfilterfw[813] <Error>: Deny sshd-keygen-wrapper connecting from 67.74.2.245
+--------
+Jul 16 18:27:42 MacBook socketfilterfw[360] <Error>: Deny ARDAgent connecting from 8.148.121.144
+--------
+Mar  9 13:26:05 iMac-Pro socketfilterfw[460] <Info>: Allow ARDAgent connecting from 123.132.148.68
+--------
+Oct 24 11:01:51 iMac-Pro socketfilterfw[323] <Error>: Allow sshd-keygen-wrapper connecting from 177.166.122.219
+--------
+Nov 23 06:24:34 iMac-Pro socketfilterfw[504] <Info>: Allow screensharingd connecting from 200.67.33.201
+--------
+Dec  1 12:52:16 iMac-Pro socketfilterfw[200] <Info>: Deny python3 connecting from 219.129.41.69
+--------
+Sep 13 07:16:20 iMac-Pro socketfilterfw[644] <Info>: Deny screensharingd connecting from 195.125.134.23
+--------
+Nov  8 04:49:11 iMac-Pro socketfilterfw[884] <Info>: Deny java connecting from 128.66.113.41
+--------
+Feb  3 11:48:27 MacBook socketfilterfw[314] <Info>: Deny sshd-keygen-wrapper connecting from 163.79.39.64
+--------
+Jul  2 07:32:32 MacBook socketfilterfw[393] <Error>: Allow java connecting from 82.109.70.38
+--------
+Feb 28 11:03:07 MacBook socketfilterfw[230] <Info>: Deny screensharingd connecting from 215.220.180.159
+--------
+Jul 11 03:17:04 MacBook socketfilterfw[169] <Error>: Deny screensharingd connecting from 22.44.87.111
+--------
+Dec 20 14:41:03 iMac-Pro socketfilterfw[814] <Error>: Deny sshd-keygen-wrapper connecting from 141.75.226.60
+--------
+May 15 09:08:24 MacBook socketfilterfw[397] <Info>: Deny java connecting from 152.124.170.143
+--------
+May 10 19:11:07 MacBook socketfilterfw[685] <Info>: Deny screensharingd connecting from 88.140.20.173
+--------
+May 15 11:52:00 MacBook socketfilterfw[389] <Error>: Allow ARDAgent connecting from 144.168.144.217
+--------
+Dec  6 18:05:12 iMac-Pro socketfilterfw[164] <Error>: Deny sshd-keygen-wrapper connecting from 118.239.148.174
+--------
+Dec 14 23:11:36 MacBook socketfilterfw[590] <Info>: Allow python3 connecting from 162.242.246.22
+--------
+Nov  9 07:40:55 iMac-Pro socketfilterfw[685] <Error>: Deny screensharingd connecting from 165.143.62.244
+--------
+Jun  5 05:27:15 MacBook socketfilterfw[118] <Info>: Allow java connecting from 197.86.9.3

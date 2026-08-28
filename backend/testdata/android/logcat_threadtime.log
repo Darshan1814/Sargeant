@@ -1,0 +1,6 @@
+08-10 09:20:19.692  3907  3921 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder
+08-10 09:20:19.700  1000  1000 I am_proc_start: [0,6944,10123,com.example.app,activity]
+08-10 09:20:19.760  3907  3907 E OplusStorageUFSBandwidth: Alarm set to trigger in 10 seconds
+08-10 09:20:20.001  1200  1200 I ConnectivityService: NetworkAgent switched to WIFI
+08-10 09:20:20.130  6944  6944 D ActivityManager: Start proc com.example.app for activity
+08-10 09:20:20.500  6944  6970 V dalvikvm: GC_CONCURRENT freed 512K

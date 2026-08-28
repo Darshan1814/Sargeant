@@ -1,0 +1,24 @@
+{
+  "parser_id": "WIN-EVTLOG-001",
+  "source_name": "Windows Event Log (generic)",
+  "os_family": "Windows",
+  "category": "System Activity",
+  "ocsf_class_uid": 1001,
+  "description": "Generic Windows Event Log text block (wevtutil/Get-WinEvent /f:text). Catch-all for any Log Name/Source/Event ID block not claimed by a specialized Event-ID parser. Caps at 0.9 so specialized parsers (which add known_processes → 1.0) win.",
+  "identifiers": {
+    "required_substrings": ["Log Name:", "Source:", "Event ID:", "Level:", "Computer:"],
+    "regex_signature": "Log Name:\\s*[^\\n]+[\\s\\S]*?Event ID:\\s*\\d+",
+    "sid_pattern": "S-1-5-21-\\d+-\\d+-\\d+-\\d+",
+    "confidence_weight": 0.9
+  },
+  "ngre_pattern": "Log Name:\\s*(?P<log_name>[^\\r\\n]+)[\\s\\S]*?Source:\\s*(?P<source>[^\\r\\n]+)[\\s\\S]*?Event ID:\\s*(?P<event_id>\\d+)[\\s\\S]*?Level:\\s*(?P<level>[^\\r\\n]+)[\\s\\S]*?(?:User:\\s*(?P<user>[^\\r\\n]+)[\\s\\S]*?)?Computer:\\s*(?P<computer>[^\\r\\n]+)",
+  "field_mapping": {
+    "log_name": "metadata.log_name",
+    "source": "metadata.log_provider",
+    "event_id": "metadata.event_code",
+    "user": "actor.user.name",
+    "computer": "device.hostname"
+  },
+  "sample_log": "Log Name:      Application\nSource:        Application Error\nEvent ID:      1000\nLevel:         Error\nUser:          CORP\\jsmith\nComputer:      WKS01.corp.local\nDescription:   Faulting application name: app.exe",
+  "version": "2.0"
+}

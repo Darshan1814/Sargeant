@@ -1,0 +1,18 @@
+fastapi>=0.110.0,<0.120.0
+uvicorn[standard]>=0.29.0,<0.35.0
+python-multipart>=0.0.9
+drain3>=0.9.10
+duckdb>=0.10.0,<2.0.0
+opensearch-py>=2.4.0,<3.0.0
+prometheus-fastapi-instrumentator>=6.0.0
+prometheus-client>=0.19.0,<0.22.0
+python-dateutil>=2.8.0
+pydantic>=2.6.0,<3.0.0
+pytest>=8.0.0
+httpx>=0.27.0
+# Big-data streaming/storage tier (optional at runtime; clients degrade gracefully)
+minio>=7.2.0,<8.0.0
+clickhouse-connect>=0.7.0,<1.0.0
+confluent-kafka>=2.3.0,<3.0.0
+# Windows binary .evtx decoding (offline-installable) for the Windows parser family
+python-evtx>=0.7.4

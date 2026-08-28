@@ -1,0 +1,22 @@
+{
+  "parser_id": "MAC-ULOG-UNIFIED-JSON",
+  "source_name": "macOS Unified Log (log show ndjson)",
+  "os_family": "macOS",
+  "category": "System Activity",
+  "ocsf_class_uid": 1001,
+  "description": "macOS Unified Log exported via `log show --style ndjson` (one JSON object per line). Extracts timestamp, messageType, eventMessage, process path, pid, subsystem, category.",
+  "identifiers": {
+    "required_substrings": ["\"eventMessage\"", "\"timestamp\""],
+    "regex_signature": "\"eventMessage\"\\s*:\\s*\"[\\s\\S]*?\"(?:processImagePath|subsystem)\"",
+    "known_processes": [],
+    "confidence_weight": 0.9
+  },
+  "ngre_pattern": "\"timestamp\"\\s*:\\s*\"(?P<timestamp>[^\"]+)\"[\\s\\S]*?\"messageType\"\\s*:\\s*\"(?P<message_type>[^\"]*)\"[\\s\\S]*?\"eventMessage\"\\s*:\\s*\"(?P<message>(?:[^\"\\\\]|\\\\.)*)\"[\\s\\S]*?\"processImagePath\"\\s*:\\s*\"(?P<process_path>[^\"]*)\"[\\s\\S]*?\"processID\"\\s*:\\s*(?P<pid>\\d+)[\\s\\S]*?\"subsystem\"\\s*:\\s*\"(?P<subsystem>[^\"]*)\"[\\s\\S]*?\"category\"\\s*:\\s*\"(?P<log_category>[^\"]*)\"",
+  "field_mapping": {
+    "process_path": "actor.process.name",
+    "pid": "actor.process.pid",
+    "message": "message"
+  },
+  "sample_log": "{\"timestamp\":\"2024-05-01 12:00:00.000000-0700\",\"messageType\":\"Error\",\"eventMessage\":\"Failed to acquire assertion\",\"processImagePath\":\"/usr/libexec/symptomsd\",\"processID\":123,\"subsystem\":\"com.apple.symptoms\",\"category\":\"session\"}",
+  "version": "1.0"
+}

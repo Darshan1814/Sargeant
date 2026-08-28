@@ -1,0 +1,26 @@
+# Python
+**/__pycache__/
+**/*.pyc
+**/.venv/
+**/venv/
+.pytest_cache/
+**/.pytest_cache/
+
+# Node / frontend
+**/node_modules/
+frontend/dist/
+
+# Local data / DBs
+*.db
+backend/data/
+
+# Air-gapped bundle output
+dist/
+
+# External test corpus (loghub) — large third-party dataset, not part of the repo
+loghub/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/

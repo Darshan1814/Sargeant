@@ -1,0 +1,31 @@
+{
+  "parser_id": "WIN-SEC-4625",
+  "source_name": "Windows Security Auditing",
+  "os_family": "Windows",
+  "category": "Authentication",
+  "ocsf_class_uid": 3002,
+  "activity_id": 1,
+  "activity_name": "Logon",
+  "description": "Security event 4625 — failed account logon. Extracted from Security.evtx text block.",
+  "identifiers": {
+    "required_substrings": ["Event ID:", "4625", "Logon Type:"],
+    "regex_signature": "Event ID:\\s*4625\\b",
+    "known_processes": ["Microsoft-Windows-Security-Auditing"],
+    "confidence_weight": 1.0
+  },
+  "ngre_pattern": "Event ID:\\s*(?P<event_id>4625)[\\s\\S]*?Computer:\\s*(?P<computer>[^\\r\\n]+)[\\s\\S]*?Account Name:\\s*(?P<account_name>[^\\r\\n]+)[\\s\\S]*?Account Domain:\\s*(?P<account_domain>[^\\r\\n]+)[\\s\\S]*?Logon Type:\\s*(?P<logon_type>\\d+)[\\s\\S]*?(?:Failure Reason:\\s*(?P<failure_reason>[^\\r\\n]+)[\\s\\S]*?)?Source Network Address:\\s*(?P<src_ip>[^\\r\\n]+)",
+  "field_mapping": {
+    "computer": "device.hostname",
+    "account_name": "actor.user.name",
+    "account_domain": "actor.user.domain",
+    "src_ip": "src_endpoint.ip"
+  },
+  "static_fields": {
+    "status": "Failure",
+    "status_id": 2,
+    "severity_id": 3,
+    "severity": "Medium"
+  },
+  "sample_log": "Log Name:      Security\nSource:        Microsoft-Windows-Security-Auditing\nEvent ID:      4625\nLevel:         Information\nComputer:      DC01.corp.local\nAn account failed to log on.\n  Account Name:  admin\n  Account Domain:  CORP\n  Logon Type:  3\n  Failure Reason:  Unknown user name or bad password\n  Source Network Address:  198.51.100.7",
+  "version": "1.0"
+}

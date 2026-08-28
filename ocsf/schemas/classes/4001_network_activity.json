@@ -1,0 +1,15 @@
+{
+  "class_uid": 4001,
+  "class_name": "Network Activity",
+  "category_uid": 4,
+  "category_name": "Network Activity",
+  "extends": "base_event",
+  "additional_fields": {
+    "action":       { "type": "string" },
+    "action_id":    { "type": "integer" },
+    "src_endpoint": { "type": "object", "properties": { "ip": { "type": "string" }, "port": { "type": "integer" } } },
+    "dst_endpoint": { "type": "object", "properties": { "ip": { "type": "string" }, "port": { "type": "integer" } } },
+    "connection_info": { "type": "object", "properties": { "protocol_name": { "type": "string" }, "direction": { "type": "string" } } },
+    "traffic":      { "type": "object", "properties": { "bytes_in": { "type": "integer" }, "bytes_out": { "type": "integer" } } }
+  }
+}
