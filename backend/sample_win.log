@@ -1,0 +1,18 @@
+2026-08-27 08:17:12 INFO [Windows Event Log]
+Provider=Microsoft-Windows-Security-Auditing EventID=4688
+Level=Information Computer=WIN-DEV01 User=darshan
+NewProcessName=C:\Windows\System32\cmd.exe ParentProcessName=C:\Windows\explorer.exe
+CommandLine=powershell.exe -ExecutionPolicy Bypass -File C:\x.ps1
+Message=A new process has been created.
+2026-08-27 08:18:37 ERROR [Windows Event Log]
+Provider=Service Control Manager EventID=7031 Level=Error
+Computer=WIN-APP01 User=SYSTEM ServiceName=LegacyAgent
+Message=The LegacyAgent service terminated unexpectedly.
+2026-08-27 08:55:34 ERROR [Windows Event Log] Provider=Application Error
+EventID=1000 Level=Error Computer=WIN-APP01 User=darshan
+FaultingApplication=reporting.exe Message=Faulting application terminated.
+2026-08-27 08:51:03 INFO [Windows Event Log]
+Provider=Microsoft-Windows-Security-Auditing EventID=4729
+Level=Information Computer=WIN-DC01 User=administrator
+MemberName=CN=analyst,OU=Users,DC=example,DC=local GroupName=Domain Admins
+Message=A member was removed from a security-enabled global group.
