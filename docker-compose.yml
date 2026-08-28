@@ -230,7 +230,10 @@ services:
     networks:
       - ulpf-net
     healthcheck:
-      test: ["CMD", "curl", "-sf", "http://localhost:9000/minio/health/live"]
+      # NOTE: the minio image ships neither curl nor wget, so an HTTP-based
+      # probe always fails with "executable file not found". `mc` is bundled
+      # and `mc ready local` is the supported liveness check for this image.
+      test: ["CMD", "mc", "ready", "local"]
       interval: 15s
       timeout: 5s
       retries: 6

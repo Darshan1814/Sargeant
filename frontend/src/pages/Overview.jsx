@@ -1,180 +1,339 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import {
-  PieChart, Pie, Cell, Tooltip, Legend,
-  BarChart, Bar, XAxis, YAxis, ResponsiveContainer,
-  LineChart, Line, CartesianGrid,
-} from 'recharts'
+import { Panel, Kpi, BarList, StatusBadge, Confidence } from '../components/ui'
 
-const COLORS = ['#06b6d4', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444', '#3b82f6']
+/**
+ * Operational overview.
+ *
+ * Answers, at a glance: how many events arrived, how many were processed
+ * successfully, how many need review, which source families were seen, which
+ * event categories were identified, how many reached the common schema, and
+ * whether the platform is healthy.
+ *
+ * Everything rendered here comes from GET /api/overview. No percentage, count or
+ * rate is computed or assumed in the browser — if the backend cannot determine a
+ * figure, the tile shows an explicit dash instead of a fabricated value.
+ *
+ * Internal vocabulary (parser identifiers, fallback engine names, pipeline path
+ * tokens, database names) is intentionally absent from this screen. Those remain
+ * available per event under "Processing Details".
+ */
 
-function StatCard({ label, value, sub }) {
+const REFRESH_MS = 10000
+
+function num(n) {
+  return n == null ? '—' : Number(n).toLocaleString()
+}
+
+/** Pipeline funnel. Each stage explains how its number was derived on hover. */
+function Pipeline({ stages }) {
+  if (!stages?.length) return <p className="text-xs text-gray-500">No events processed yet.</p>
+  const first = stages[0]?.count || 0
   return (
-    <div className="bg-gray-800 rounded-xl p-5 flex flex-col gap-1 border border-gray-700">
-      <span className="text-gray-400 text-xs uppercase tracking-widest">{label}</span>
-      <span className="text-3xl font-bold text-cyan-400">{value ?? '—'}</span>
-      {sub && <span className="text-gray-500 text-xs">{sub}</span>}
-    </div>
+    <ol className="space-y-1.5">
+      {stages.map((s, i) => {
+        const width = first ? Math.max((s.count / first) * 100, 1) : 0
+        const dropped = i > 0 ? (stages[i - 1].count - s.count) : 0
+        return (
+          <li
+            key={s.stage}
+            className="grid grid-cols-[minmax(7rem,9.5rem)_1fr_auto] items-center gap-3"
+            title={s.definition}
+          >
+            <span className="flex items-center gap-2 truncate text-xs text-gray-300">
+              <span className="w-4 text-right text-[10px] tabular-nums text-gray-600">
+                {i + 1}
+              </span>
+              {s.stage}
+            </span>
+            <span className="h-5 rounded-sm bg-gray-800/80">
+              <span
+                className="flex h-full items-center rounded-sm bg-gradient-to-r from-cyan-600/50 to-cyan-500/30"
+                style={{ width: `${width}%` }}
+              />
+            </span>
+            <span className="w-32 text-right text-xs tabular-nums">
+              <span className="text-gray-200">{num(s.count)}</span>
+              <span className="ml-1.5 text-gray-600">{s.pct}%</span>
+              {dropped > 0 && (
+                <span
+                  className="ml-1.5 text-amber-500/70"
+                  title={`${num(dropped)} fewer than the previous stage`}
+                >
+                  −{num(dropped)}
+                </span>
+              )}
+            </span>
+          </li>
+        )
+      })}
+    </ol>
   )
 }
 
-// Honest parse-path coverage: what fraction was structurally parsed by a real
-// NGRE parser vs. fell back to Drain3 vs. last-resort DLQ. No "100%" claims —
-// these are measured from what actually flowed through the pipeline.
-function CoveragePanel({ cov }) {
-  if (!cov || !cov.total) {
-    return (
-      <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
-        <h2 className="text-sm font-semibold text-gray-300 mb-2">Parse Coverage</h2>
-        <p className="text-gray-500 text-xs">No events yet — ingest logs to measure coverage.</p>
-      </div>
-    )
-  }
-  const segments = [
-    { key: 'ngre_windows', label: 'Windows NGRE', color: '#3b82f6', n: cov.ngre_windows, pct: cov.pct_ngre_windows },
-    { key: 'ngre_macos',   label: 'macOS NGRE',   color: '#8b5cf6', n: cov.ngre_macos,   pct: cov.pct_ngre_macos },
-    { key: 'ngre_other',   label: 'Other NGRE',   color: '#10b981', n: cov.ngre_other,   pct: cov.total ? +(100*cov.ngre_other/cov.total).toFixed(1) : 0 },
-    { key: 'drain3',       label: 'Drain3 fallback', color: '#f59e0b', n: cov.drain3, pct: cov.pct_drain3 },
-    { key: 'dlq',          label: 'DLQ (unparsed)',  color: '#ef4444', n: cov.dlq,    pct: cov.pct_dlq },
-  ].filter(s => s.n > 0)
-
+/** Quality breakdown: parsing and mapping are separate concerns, never merged. */
+function QualityRows({ rows }) {
+  if (!rows?.length) return <p className="text-xs text-gray-500">Not yet measured.</p>
   return (
-    <div className="bg-gray-800 rounded-xl p-5 border border-gray-700 md:col-span-2">
-      <div className="flex items-baseline justify-between mb-3">
-        <h2 className="text-sm font-semibold text-gray-300">Parse Coverage (measured)</h2>
-        <span className="text-xs text-gray-500">
-          {cov.pct_ngre}% via NGRE · {cov.pct_drain3}% Drain3 · {cov.pct_dlq}% DLQ · n={cov.total}
-        </span>
-      </div>
-      {/* stacked proportion bar */}
-      <div className="flex w-full h-5 rounded-lg overflow-hidden border border-gray-700">
-        {segments.map(s => (
-          <div key={s.key} style={{ width: `${s.pct}%`, backgroundColor: s.color }}
-               title={`${s.label}: ${s.n} (${s.pct}%)`} />
-        ))}
-      </div>
-      {/* legend + per-bucket counts */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mt-4">
-        {segments.map(s => (
-          <div key={s.key} className="flex flex-col gap-0.5">
-            <div className="flex items-center gap-1.5">
-              <span className="inline-block w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: s.color }} />
-              <span className="text-gray-400 text-[11px]">{s.label}</span>
-            </div>
-            <span className="text-white text-sm font-semibold">{s.pct}%</span>
-            <span className="text-gray-500 text-[11px]">{s.n} events</span>
+    <ul className="space-y-2.5">
+      {rows.map(r => (
+        <li key={r.label}>
+          <div className="flex items-baseline justify-between gap-2">
+            <span className="text-xs text-gray-300">{r.label}</span>
+            <span className="text-xs tabular-nums">
+              <span className="text-gray-100">{r.pct}%</span>
+              <span className="ml-2 text-gray-600">{num(r.count)}</span>
+            </span>
           </div>
-        ))}
-      </div>
-    </div>
+          <div className="mt-1 h-1.5 rounded-sm bg-gray-800">
+            <div
+              className="h-full rounded-sm bg-gray-500"
+              style={{ width: `${Math.max(r.pct, 0.5)}%` }}
+            />
+          </div>
+        </li>
+      ))}
+    </ul>
   )
 }
 
 export default function Overview() {
-  const [stats, setStats] = useState(null)
-  const [recent, setRecent] = useState([])
+  const [data, setData] = useState(null)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    axios.get('/api/stats').then(r => setStats(r.data)).catch(() => {})
-    axios.get('/api/events?limit=10').then(r => setRecent(r.data)).catch(() => {})
-    const id = setInterval(() => {
-      axios.get('/api/stats').then(r => setStats(r.data)).catch(() => {})
-      axios.get('/api/events?limit=10').then(r => setRecent(r.data)).catch(() => {})
-    }, 10000)
-    return () => clearInterval(id)
+    let alive = true
+    const load = () =>
+      axios
+        .get('/api/overview')
+        .then(r => { if (alive) { setData(r.data); setError(null) } })
+        .catch(e => { if (alive) setError(e.message || 'Request failed') })
+    load()
+    const id = setInterval(load, REFRESH_MS)
+    return () => { alive = false; clearInterval(id) }
   }, [])
 
+  const k = data?.kpis
+  const rate = k?.processing_rate
+
+  // Source rows. An "Unidentified" bucket is surfaced honestly rather than being
+  // silently folded into another family.
+  const sourceRows = (data?.sources || []).map(s => ({
+    label: s.label, count: s.count, pct: s.pct, muted: !s.identified,
+  }))
+  const unidentified = (data?.sources || []).find(s => !s.identified)
+
+  const typeRows = (data?.event_types || []).map(t => ({
+    label: t.name, count: t.count, pct: t.pct,
+  }))
+
+  // The health payload carries a top-level `status` verdict ("ok" / "degraded")
+  // alongside one entry per dependency. `status` must be excluded from the
+  // per-service scan — treating it as a service would make "ok" look like an
+  // unrecognised (therefore degraded) state and permanently show a false warning.
+  // A "yellow" OpenSearch cluster is expected on a single node and is not a fault.
+  const HEALTHY = ['up', 'green', 'yellow', 'disabled']
+  const services = Object.entries(data?.health || {}).filter(([kk]) => kk !== 'status')
+  const unhealthy = services.filter(
+    ([, v]) => typeof v === 'string' && !HEALTHY.includes(v)
+  )
+
   return (
-    <div className="space-y-6">
-      <h1 className="text-xl font-bold text-white">Overview</h1>
+    <div className="mx-auto max-w-[1600px] space-y-4">
+      {/* ── Masthead ── */}
+      <header className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-b border-gray-800 pb-4">
+        <div>
+          <div className="flex items-baseline gap-3">
+            <h1 className="text-2xl font-bold tracking-tight text-white">ULPF</h1>
+            <span className="text-sm text-gray-400">
+              Universal Log Pre-processing Framework
+            </span>
+          </div>
+          <p className="mt-1 max-w-3xl text-xs leading-relaxed text-gray-500">
+            Convert heterogeneous logs into a common, lossless, analytics-ready
+            representation.
+          </p>
+        </div>
+        <div className="flex items-center gap-3 text-[11px]">
+          <span className="text-gray-600">Air-gapped deployment</span>
+          <span className="text-gray-700">·</span>
+          {error ? (
+            <span className="text-red-400">Backend unreachable</span>
+          ) : unhealthy.length === 0 ? (
+            <span className="flex items-center gap-1.5 text-emerald-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              All services operational
+            </span>
+          ) : (
+            <span
+              className="flex items-center gap-1.5 text-amber-300"
+              title={unhealthy.map(([kk, vv]) => `${kk}: ${vv}`).join('\n')}
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+              {unhealthy.length} service{unhealthy.length > 1 ? 's' : ''} degraded
+            </span>
+          )}
+        </div>
+      </header>
 
-      {/* Stat cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard label="Total Events" value={stats?.total_events} />
-        <StatCard label="Needs Review" value={stats?.needs_review} sub="Drain3 fallbacks" />
-        <StatCard label="Parsers" value={stats?.by_parser?.length} />
-        <StatCard label="OCSF Classes" value={stats?.by_ocsf_class?.length} />
+      {error && !data && (
+        <div className="rounded-lg border border-red-500/30 bg-red-500/5 p-4 text-xs text-red-300">
+          Could not load the overview: {error}
+        </div>
+      )}
+
+      {/* ── KPI row ── */}
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
+        <Kpi label="Total Events" value={num(k?.total_events)} tone="text-white" />
+        <Kpi
+          label="Successfully Parsed"
+          value={k?.successfully_parsed ? num(k.successfully_parsed.count) : null}
+          pct={k?.successfully_parsed?.pct}
+          tone="text-emerald-300"
+          hint="Parsed and confidently mapped"
+        />
+        <Kpi
+          label="OCSF Mapped"
+          value={k?.ocsf_mapped ? num(k.ocsf_mapped.count) : null}
+          pct={k?.ocsf_mapped?.pct}
+          tone="text-cyan-300"
+          hint="Reached the common schema"
+        />
+        <Kpi
+          label="Needs Review"
+          value={k?.needs_review ? num(k.needs_review.count) : null}
+          pct={k?.needs_review?.pct}
+          tone="text-amber-300"
+          hint="Low mapping confidence"
+        />
+        <Kpi
+          label="Unresolved"
+          value={k?.unresolved ? num(k.unresolved.count) : null}
+          pct={k?.unresolved?.pct}
+          tone="text-slate-300"
+          hint="Retained, not discarded"
+        />
+        <Kpi
+          label="Processing Rate"
+          value={rate ? `${num(Math.round(rate.throughput_eps))}` : null}
+          tone="text-white"
+          hint={
+            rate
+              ? `events/sec · measured over ${num(rate.events)} events`
+              : 'Not yet measured — run an upload'
+          }
+        />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Honest parse-path coverage */}
-        <CoveragePanel cov={stats?.coverage} />
+      {/* ── Pipeline + quality ── */}
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
+        <Panel
+          className="xl:col-span-2"
+          title="Processing Pipeline"
+          subtitle="Every record reaches a canonical representation. Hover a stage for how its figure is derived."
+        >
+          <Pipeline stages={data?.pipeline} />
+        </Panel>
 
-        {/* By parser donut */}
-        <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
-          <h2 className="text-sm font-semibold text-gray-300 mb-4">Events by Parser</h2>
-          <ResponsiveContainer width="100%" height={240}>
-            <PieChart>
-              <Pie data={stats?.by_parser ?? []} dataKey="count" nameKey="parser_id" cx="50%" cy="50%" outerRadius={90} label>
-                {(stats?.by_parser ?? []).map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* NGRE vs Drain3 */}
-        <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
-          <h2 className="text-sm font-semibold text-gray-300 mb-4">OCSF Class Breakdown</h2>
-          <ResponsiveContainer width="100%" height={240}>
-            <BarChart data={stats?.by_ocsf_class ?? []}>
-              <XAxis dataKey="class_uid" stroke="#6b7280" />
-              <YAxis stroke="#6b7280" />
-              <Tooltip />
-              <Bar dataKey="count" fill="#06b6d4" radius={[4,4,0,0]} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* Events over time */}
-        <div className="bg-gray-800 rounded-xl p-5 border border-gray-700 md:col-span-2">
-          <h2 className="text-sm font-semibold text-gray-300 mb-4">Events Over Time (14 days)</h2>
-          <ResponsiveContainer width="100%" height={200}>
-            <LineChart data={[...(stats?.by_day ?? [])].reverse()}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-              <XAxis dataKey="day" stroke="#6b7280" tick={{ fontSize: 11 }} />
-              <YAxis stroke="#6b7280" />
-              <Tooltip />
-              <Line type="monotone" dataKey="count" stroke="#06b6d4" dot={false} />
-            </LineChart>
-          </ResponsiveContainer>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-1">
+          <Panel title="Parsing Quality" subtitle="Was the record's structure understood?">
+            <QualityRows rows={data?.quality?.parsing} />
+          </Panel>
+          <Panel title="Mapping Quality" subtitle="Did it reach the common schema?">
+            <QualityRows rows={data?.quality?.mapping} />
+          </Panel>
         </div>
       </div>
 
-      {/* Last 10 events ticker */}
-      <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
-        <h2 className="text-sm font-semibold text-gray-300 mb-3">Last 10 Events</h2>
+      {/* ── Distributions ── */}
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <Panel
+          title="Log Sources"
+          subtitle="Originating system family, determined during processing"
+        >
+          <BarList rows={sourceRows} topN={6} emptyMessage="No events processed yet" />
+          {unidentified?.count > 0 && (
+            <p className="mt-3 border-t border-gray-800 pt-2.5 text-[11px] leading-snug text-gray-500">
+              Source identification unavailable for {num(unidentified.count)} events
+              ({unidentified.pct}%). These are retained in full and listed under
+              Unresolved Events.
+            </p>
+          )}
+        </Panel>
+
+        <Panel
+          title="Event Types"
+          subtitle="Identified event category, with its schema class as secondary detail"
+        >
+          <BarList rows={typeRows} topN={6} emptyMessage="No events classified yet" />
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t border-gray-800 pt-2.5">
+            {(data?.event_types || []).slice(0, 6).map(t => (
+              <span key={t.name} className="text-[10px] text-gray-600">
+                {t.name}
+                {t.class_uid != null && (
+                  <span className="ml-1 text-gray-700">· OCSF Class {t.class_uid}</span>
+                )}
+              </span>
+            ))}
+          </div>
+        </Panel>
+      </div>
+
+      {/* ── Recent activity ── */}
+      <Panel
+        title="Recent Activity"
+        subtitle="Most recently processed events"
+      >
         <div className="overflow-x-auto">
-          <table className="w-full text-xs">
+          <table className="w-full text-left text-xs">
             <thead>
-              <tr className="text-gray-500 border-b border-gray-700">
-                <th className="text-left pb-2">Event ID</th>
-                <th className="text-left pb-2">Source</th>
-                <th className="text-left pb-2">Parser</th>
-                <th className="text-left pb-2">Confidence</th>
-                <th className="text-left pb-2">OCSF Class</th>
-                <th className="text-left pb-2">Ingested</th>
+              <tr className="border-b border-gray-800 text-[10px] uppercase tracking-wider text-gray-500">
+                <th className="pb-2 pr-3 font-medium">Time</th>
+                <th className="pb-2 pr-3 font-medium">Source</th>
+                <th className="pb-2 pr-3 font-medium">Event Type</th>
+                <th className="pb-2 pr-3 font-medium">Activity</th>
+                <th className="pb-2 pr-3 font-medium">Host</th>
+                <th className="pb-2 pr-3 font-medium">Status</th>
+                <th className="pb-2 pr-3 font-medium">Confidence</th>
               </tr>
             </thead>
             <tbody>
-              {recent.map(e => (
-                <tr key={e.event_id} className="border-b border-gray-700/50 hover:bg-gray-700/30">
-                  <td className="py-1.5 text-cyan-400 truncate max-w-[120px]">{e.event_id?.slice(0, 8)}…</td>
-                  <td className="py-1.5">{e.source}</td>
-                  <td className="py-1.5">{e.parser_id}</td>
-                  <td className="py-1.5">{e.confidence != null ? (e.confidence * 100).toFixed(0) + '%' : '—'}</td>
-                  <td className="py-1.5">{e.ocsf_class}</td>
-                  <td className="py-1.5 text-gray-400">{e.ingested_at?.slice(0, 19)}</td>
+              {(data?.recent || []).map(r => (
+                <tr
+                  key={r.event_id}
+                  className="border-b border-gray-800/60 last:border-0 hover:bg-gray-800/30"
+                >
+                  <td className="py-2 pr-3 tabular-nums text-gray-400">
+                    {(r.time || '').toString().slice(11, 19) || '—'}
+                  </td>
+                  <td className="py-2 pr-3 text-gray-200">{r.source}</td>
+                  <td className="py-2 pr-3 text-gray-200">
+                    {r.event_type}
+                    {r.class_uid != null && (
+                      <span className="ml-1.5 text-[10px] text-gray-600">
+                        {r.class_uid}
+                      </span>
+                    )}
+                  </td>
+                  <td className="py-2 pr-3 text-gray-400">{r.activity}</td>
+                  <td className="py-2 pr-3 truncate max-w-[10rem] text-gray-300" title={r.host || ''}>
+                    {r.host || '—'}
+                  </td>
+                  <td className="py-2 pr-3"><StatusBadge status={r.status} /></td>
+                  <td className="py-2 pr-3"><Confidence value={r.confidence} /></td>
                 </tr>
               ))}
-              {recent.length === 0 && (
-                <tr><td colSpan={6} className="py-4 text-center text-gray-500">No events yet — ingest some logs.</td></tr>
+              {!data?.recent?.length && (
+                <tr>
+                  <td colSpan={7} className="py-6 text-center text-gray-600">
+                    No events yet. Upload a log file to begin.
+                  </td>
+                </tr>
               )}
             </tbody>
           </table>
         </div>
-      </div>
+      </Panel>
     </div>
   )
 }

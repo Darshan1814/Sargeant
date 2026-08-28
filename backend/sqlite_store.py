@@ -477,3 +477,134 @@ def delete_dlq(event_id: str):
         conn = get_conn()
         conn.execute("DELETE FROM dlq_events WHERE event_id = ?", [event_id])
         conn.commit()
+
+
+# ── Evaluator-facing semantic aggregates ──────────────────────────────────────
+# These group by what the event MEANS (parse outcome, mapping outcome, OS family,
+# OCSF class, activity) rather than by parser_id string prefixes. The existing
+# `get_stats` coverage buckets infer a family from the parser_id (so a Windows
+# Firewall event counts as "firewall", not "windows"); these read the normalized
+# envelope itself, which is the authoritative record.
+
+_OVERVIEW_PATHS = {
+    "by_os_family": "$.device.os.family",
+    "by_class": "$.class_uid",
+    "by_activity": "$.activity_name",
+    "by_severity": "$.severity",
+}
+
+# Confident OCSF classes — must stay in step with ocsf_mapper._CONFIDENT_OCSF_CLASSES.
+_CONFIDENT_CLASSES_SQL = "(1007, 3002, 3005, 4001, 4002, 6003)"
+
+# ── Backward-compatibility derivation ─────────────────────────────────────────
+# `parse_status` / `ocsf_mapping_status` were added to the envelope after a large
+# volume of events had already been persisted, so older rows carry neither. If we
+# grouped on the stored value alone, ~56K historical events would fall into a NULL
+# bucket and the dashboard would report "0% parsed" for data that in fact parsed
+# correctly — a worse lie than showing nothing.
+#
+# So: use the stored value when present, otherwise DERIVE it by applying the exact
+# same rule the live pipeline applies (ocsf_mapper._apply_provenance) to inputs
+# that ARE stored — parser_id, ocsf_class and activity_id. This is the identical
+# deterministic function, not a guess, so old and new rows are classified
+# consistently. Remove the fallback arms once historical data has been replayed.
+_EFF_PARSE_STATUS = f"""
+    CASE
+      WHEN json_extract(normalized, '$.parse_status') IS NOT NULL
+           THEN json_extract(normalized, '$.parse_status')
+      WHEN parser_id = 'DRAIN3-FALLBACK' THEN 'fallback'
+      WHEN parser_id = 'DLQ'             THEN 'failed'
+      WHEN ocsf_class IN {_CONFIDENT_CLASSES_SQL} THEN 'parsed'
+      WHEN CAST(COALESCE(json_extract(normalized, '$.activity_id'), 0) AS INTEGER) > 0
+           THEN 'parsed'
+      ELSE 'partially_parsed'
+    END
+"""
+
+_EFF_MAPPING_STATUS = f"""
+    CASE
+      WHEN json_extract(normalized, '$.ocsf_mapping_status') IS NOT NULL
+           THEN json_extract(normalized, '$.ocsf_mapping_status')
+      WHEN parser_id IN ('DRAIN3-FALLBACK', 'DLQ') THEN 'unmapped'
+      WHEN ocsf_class IN {_CONFIDENT_CLASSES_SQL} THEN 'mapped'
+      WHEN CAST(COALESCE(json_extract(normalized, '$.activity_id'), 0) AS INTEGER) > 0
+           THEN 'mapped'
+      ELSE 'unmapped'
+    END
+"""
+
+
+def get_overview() -> dict:
+    """Semantic aggregates over the hot tier. Same shape as ``db.get_overview``."""
+    out: dict = {}
+    with _LOCK:
+        conn = get_conn()
+        out["total"] = conn.execute(
+            "SELECT COUNT(*) FROM normalized_events").fetchone()[0]
+        for name, path in _OVERVIEW_PATHS.items():
+            rows = conn.execute(
+                "SELECT json_extract(normalized, ?) AS k, COUNT(*) AS c "
+                "FROM normalized_events GROUP BY k ORDER BY c DESC",
+                (path,),
+            ).fetchall()
+            out[name] = [{"key": r[0], "count": r[1]} for r in rows]
+
+        for name, expr in (("by_parse_status", _EFF_PARSE_STATUS),
+                           ("by_mapping_status", _EFF_MAPPING_STATUS)):
+            rows = conn.execute(
+                f"SELECT {expr} AS k, COUNT(*) AS c "
+                f"FROM normalized_events GROUP BY k ORDER BY c DESC"
+            ).fetchall()
+            out[name] = [{"key": r[0], "count": r[1]} for r in rows]
+
+        # Cross-tab of mapping outcome against the review flag, so "mapped",
+        # "mapped but flagged for review" and "unmapped" can be reported as three
+        # MUTUALLY EXCLUSIVE buckets that sum to the total. Reporting mapped and
+        # needs_review as independent percentages would double-count.
+        rows = conn.execute(
+            f"""SELECT {_EFF_MAPPING_STATUS} AS m,
+                       CASE WHEN needs_review = 1 THEN 1 ELSE 0 END AS rev,
+                       COUNT(*) AS c
+                FROM normalized_events GROUP BY m, rev"""
+        ).fetchall()
+        out["by_mapping_review"] = [
+            {"key": f"{r[0]}|{r[1]}", "count": r[2]} for r in rows
+        ]
+    return out
+
+
+def list_recent(limit: int = 10) -> list:
+    """Most recent events WITH their semantic fields already extracted.
+
+    ``list_events`` returns only ids/parser/confidence, which would force a
+    recent-activity table to issue one detail request per row. This returns
+    everything such a table needs in a single query.
+    """
+    with _LOCK:
+        conn = get_conn()
+        rows = conn.execute(
+            """SELECT event_id,
+                      json_extract(normalized, '$.time'),
+                      json_extract(normalized, '$.device.os.family'),
+                      json_extract(normalized, '$.class_uid'),
+                      json_extract(normalized, '$.activity_name'),
+                      json_extract(normalized, '$.device.hostname'),
+                      json_extract(normalized, '$.parse_status'),
+                      json_extract(normalized, '$.ocsf_mapping_status'),
+                      json_extract(normalized, '$.severity'),
+                      json_extract(normalized, '$.message'),
+                      confidence, ingested_at
+               FROM normalized_events
+               ORDER BY ingested_at DESC LIMIT ?""",
+            (limit,),
+        ).fetchall()
+    return [_recent_row(r) for r in rows]
+
+
+def _recent_row(r) -> dict:
+    return {
+        "event_id": r[0], "time": r[1], "os_family": r[2],
+        "class_uid": r[3], "activity_name": r[4], "hostname": r[5],
+        "parse_status": r[6], "mapping_status": r[7], "severity": r[8],
+        "message": r[9], "confidence": r[10], "ingested_at": r[11],
+    }

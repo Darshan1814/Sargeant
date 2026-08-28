@@ -378,3 +378,120 @@ def get_stats() -> dict:
         "by_day": [{"day": r[0], "count": r[1]} for r in by_day],
         "by_source": [{"source": r[0], "count": r[1]} for r in by_source],
     }
+
+
+# ── Evaluator-facing semantic aggregates (cold tier) ──────────────────────────
+# Mirrors ``sqlite_store.get_overview`` / ``list_recent`` so ``store`` can merge
+# both tiers. Groups by the normalized envelope's own semantic fields rather than
+# by parser_id prefix, so a Windows Firewall event is counted as Windows.
+
+_OVERVIEW_PATHS = {
+    "by_os_family": "$.device.os.family",
+    "by_class": "$.class_uid",
+    "by_activity": "$.activity_name",
+    "by_severity": "$.severity",
+}
+
+_CONFIDENT_CLASSES_SQL = "(1007, 3002, 3005, 4001, 4002, 6003)"
+
+# Backward-compatibility derivation for rows persisted before parse_status /
+# ocsf_mapping_status existed. Applies the same deterministic rule as the live
+# pipeline to stored inputs, so historical events are classified identically to
+# new ones instead of collapsing into a NULL bucket. See sqlite_store for the
+# full rationale.
+_EFF_PARSE_STATUS = f"""
+    CASE
+      WHEN json_extract_string(normalized, '$.parse_status') IS NOT NULL
+           THEN json_extract_string(normalized, '$.parse_status')
+      WHEN parser_id = 'DRAIN3-FALLBACK' THEN 'fallback'
+      WHEN parser_id = 'DLQ'             THEN 'failed'
+      WHEN ocsf_class IN {_CONFIDENT_CLASSES_SQL} THEN 'parsed'
+      WHEN COALESCE(TRY_CAST(json_extract_string(normalized, '$.activity_id') AS INTEGER), 0) > 0
+           THEN 'parsed'
+      ELSE 'partially_parsed'
+    END
+"""
+
+_EFF_MAPPING_STATUS = f"""
+    CASE
+      WHEN json_extract_string(normalized, '$.ocsf_mapping_status') IS NOT NULL
+           THEN json_extract_string(normalized, '$.ocsf_mapping_status')
+      WHEN parser_id IN ('DRAIN3-FALLBACK', 'DLQ') THEN 'unmapped'
+      WHEN ocsf_class IN {_CONFIDENT_CLASSES_SQL} THEN 'mapped'
+      WHEN COALESCE(TRY_CAST(json_extract_string(normalized, '$.activity_id') AS INTEGER), 0) > 0
+           THEN 'mapped'
+      ELSE 'unmapped'
+    END
+"""
+
+
+def get_overview() -> dict:
+    """Semantic aggregates over the cold tier. Same shape as the hot tier's."""
+    conn = get_conn()
+    out: dict = {}
+    try:
+        out["total"] = conn.execute(
+            "SELECT COUNT(*) FROM normalized_events").fetchone()[0]
+        for name, path in _OVERVIEW_PATHS.items():
+            rows = conn.execute(
+                "SELECT json_extract_string(normalized, ?) AS k, COUNT(*) AS c "
+                "FROM normalized_events GROUP BY k ORDER BY c DESC",
+                [path],
+            ).fetchall()
+            out[name] = [{"key": r[0], "count": r[1]} for r in rows]
+
+        for name, expr in (("by_parse_status", _EFF_PARSE_STATUS),
+                           ("by_mapping_status", _EFF_MAPPING_STATUS)):
+            rows = conn.execute(
+                f"SELECT {expr} AS k, COUNT(*) AS c "
+                f"FROM normalized_events GROUP BY k ORDER BY c DESC"
+            ).fetchall()
+            out[name] = [{"key": r[0], "count": r[1]} for r in rows]
+
+        # Mutually exclusive mapping outcome × review flag (see sqlite_store).
+        rows = conn.execute(
+            f"""SELECT {_EFF_MAPPING_STATUS} AS m,
+                       CASE WHEN needs_review THEN 1 ELSE 0 END AS rev,
+                       COUNT(*) AS c
+                FROM normalized_events GROUP BY m, rev"""
+        ).fetchall()
+        out["by_mapping_review"] = [
+            {"key": f"{r[0]}|{r[1]}", "count": r[2]} for r in rows
+        ]
+    finally:
+        conn.close()
+    return out
+
+
+def list_recent(limit: int = 10) -> list[dict]:
+    """Most recent cold-tier events with semantic fields already extracted."""
+    conn = get_conn()
+    try:
+        rows = conn.execute(
+            """SELECT event_id,
+                      json_extract_string(normalized, '$.time'),
+                      json_extract_string(normalized, '$.device.os.family'),
+                      json_extract_string(normalized, '$.class_uid'),
+                      json_extract_string(normalized, '$.activity_name'),
+                      json_extract_string(normalized, '$.device.hostname'),
+                      json_extract_string(normalized, '$.parse_status'),
+                      json_extract_string(normalized, '$.ocsf_mapping_status'),
+                      json_extract_string(normalized, '$.severity'),
+                      json_extract_string(normalized, '$.message'),
+                      confidence, ingested_at
+               FROM normalized_events
+               ORDER BY ingested_at DESC LIMIT ?""",
+            [limit],
+        ).fetchall()
+    finally:
+        conn.close()
+    return [
+        {
+            "event_id": r[0], "time": r[1], "os_family": r[2],
+            "class_uid": int(r[3]) if str(r[3] or "").isdigit() else r[3],
+            "activity_name": r[4], "hostname": r[5],
+            "parse_status": r[6], "mapping_status": r[7], "severity": r[8],
+            "message": r[9], "confidence": r[10], "ingested_at": str(r[11]),
+        }
+        for r in rows
+    ]

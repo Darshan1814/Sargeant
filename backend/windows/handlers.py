@@ -235,6 +235,13 @@ def _defender(ev: WindowsEvent) -> SemanticResult:
 # ── Generic Windows event fallback (still lossless) ───────────────────────────
 
 def _generic(ev: WindowsEvent) -> SemanticResult:
+    """Fallback taxonomy: structure is parsed, high-level semantics undetermined.
+
+    Activity stays (0, "Unknown") and status stays None ON PURPOSE — this is the
+    honest landing for a provider/EventID combination we have no documented
+    meaning for. Do NOT invent an activity here; add a documented entry to
+    ``_SYSTEM_EVENTS`` instead so the determination is evidence-based.
+    """
     return SemanticResult(
         ocsf_class_uid=CLS_SYSTEM, activity=(0, "Unknown"),
         category="System Activity",
@@ -245,6 +252,66 @@ def _generic(ev: WindowsEvent) -> SemanticResult:
             "Computer": "device.hostname",
         }.items() if k},
     )
+
+
+# ── Well-known non-Security system events ─────────────────────────────────────
+# Documented Windows operational events whose activity IS determinable from the
+# (provider, EventID) pair. Keyed by a provider substring + EventID so we only
+# claim a semantic when the evidence actually supports it.
+#
+# `status` is left None for purely informational lifecycle events: "the OS
+# started" is neither a Success nor a Failure outcome in the OCSF sense, and
+# asserting one would be fabrication. It is set only where the event itself
+# describes an outcome (e.g. update failed, unexpected shutdown).
+#
+# Each tuple: (activity_id, activity_name, status_or_None, category)
+_SYSTEM_EVENTS: dict[tuple[str, str], tuple[int, str, Optional[str], str]] = {
+    # Microsoft-Windows-Kernel-General — OS lifecycle
+    ("kernel-general", "12"): (1, "System Startup", None, "System Activity"),
+    ("kernel-general", "13"): (2, "System Shutdown", None, "System Activity"),
+    ("kernel-general", "1"):  (3, "System Time Changed", None, "System Activity"),
+    # EventLog service lifecycle
+    ("eventlog", "6005"): (1, "Event Log Service Started", None, "System Activity"),
+    ("eventlog", "6006"): (2, "Event Log Service Stopped", None, "System Activity"),
+    ("eventlog", "6008"): (4, "Unexpected Shutdown", "Failure", "System Activity"),
+    ("eventlog", "6013"): (5, "System Uptime Report", None, "System Activity"),
+    # User32 — operator-initiated shutdown/restart
+    ("user32", "1074"): (2, "System Shutdown Initiated", None, "System Activity"),
+    # Service Control Manager
+    ("service control manager", "7036"): (6, "Service State Changed", None, "System Activity"),
+    ("service control manager", "7040"): (7, "Service Start Type Changed", None, "System Activity"),
+    ("service control manager", "7045"): (8, "Service Installed", None, "System Activity"),
+    ("service control manager", "7034"): (9, "Service Terminated Unexpectedly", "Failure", "System Activity"),
+    # Winlogon — interactive session lifecycle
+    ("winlogon", "7001"): (1, "Logon", None, "Authentication"),
+    ("winlogon", "7002"): (2, "Logoff", None, "Authentication"),
+    # Windows Update client
+    ("windowsupdateclient", "19"): (10, "Update Installed", "Success", "System Activity"),
+    ("windowsupdateclient", "20"): (11, "Update Failed", "Failure", "System Activity"),
+}
+
+
+def _well_known(ev: WindowsEvent) -> Optional[SemanticResult]:
+    """Resolve a documented (provider, EventID) pair, or None if undocumented."""
+    provider = (ev.provider or "").lower()
+    eid = str(ev.event_id or "").strip()
+    if not eid:
+        return None
+    for (prov_key, want_eid), (act_id, act_name, status, category) in _SYSTEM_EVENTS.items():
+        if want_eid == eid and prov_key in provider:
+            base = _generic(ev)
+            return SemanticResult(
+                ocsf_class_uid=base.ocsf_class_uid,
+                activity=(act_id, act_name),
+                status=status,
+                severity=base.severity,
+                category=category,
+                source_name=base.source_name,
+                summary=base.summary,
+                mapping=base.mapping,
+                fields=base.fields,
+            )
+    return None
 
 
 # ── Security Event-ID dispatch table ──────────────────────────────────────────
@@ -300,5 +367,11 @@ def classify(ev: WindowsEvent) -> SemanticResult:
         h = _SECURITY_HANDLERS.get(eid)
         if h:
             return h(ev)
+
+    # Documented operational events (OS/service/update lifecycle) before the
+    # undetermined fallback, so a known EventID yields a real activity.
+    wk = _well_known(ev)
+    if wk is not None:
+        return wk
 
     return _generic(ev)

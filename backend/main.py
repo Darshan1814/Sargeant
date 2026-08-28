@@ -23,6 +23,7 @@ from prometheus_client import Counter, Histogram
 import store as db  # two-tier façade (SQLite hot + DuckDB cold); same surface as db
 import opensearch_client as os_client
 from pipeline import process
+from ocsf_mapper import CLASS_INFO
 from fingerprint import fingerprint
 
 # Parallel processing engine (spec #12–#14). `group_records` is the SINGLE source
@@ -434,6 +435,11 @@ _STAGE_BY_PATH = {
 _COLLECT_CAP = 500   # per-line detail rows returned for manual uploads
 _BATCH_CAP   = 200   # summary rows returned for generated-batch runs
 
+# Throughput actually observed on the most recent completed job. Stays None until
+# a batch/upload has run, so the UI can honestly show "not yet measured" instead
+# of a fabricated events/sec figure.
+_LAST_JOB_PERF: dict | None = None
+
 
 def _run_job(job_id: str, raw_lines: list[str], source_hint: str | None,
              collect: bool = False):
@@ -451,6 +457,11 @@ def _run_job(job_id: str, raw_lines: list[str], source_hint: str | None,
     ingestion_time = datetime.now(timezone.utc).isoformat()
     counts = {"ngre": 0, "drain3": 0, "dlq": 0, "error": 0}
     cap = _COLLECT_CAP if collect else _BATCH_CAP
+    # Wall-clock start, so the reported throughput is MEASURED work rather than a
+    # nominal figure. Consumed by the job status payload and /api/overview.
+    _job_t0 = time.perf_counter()
+    with _JOBS_LOCK:
+        JOBS[job_id]["started_at"] = ingestion_time
 
     # Chunked persistence for the whole job: SQLite rows and OpenSearch docs are
     # buffered and flushed per chunk instead of once per record (the 20K-batch
@@ -523,9 +534,23 @@ def _run_job(job_id: str, raw_lines: list[str], source_hint: str | None,
                 "final sink flush failed for job %s: %s\n%s",
                 job_id, exc, traceback.format_exc())
 
+    elapsed = max(time.perf_counter() - _job_t0, 1e-9)
     with _JOBS_LOCK:
-        JOBS[job_id]["current_stage"] = "done"
-        JOBS[job_id]["status"] = "completed"
+        job = JOBS[job_id]
+        job["current_stage"] = "done"
+        job["status"] = "completed"
+        job["elapsed_seconds"] = round(elapsed, 3)
+        job["throughput_eps"] = round(job.get("processed", 0) / elapsed, 1)
+        job["finished_at"] = datetime.now(timezone.utc).isoformat()
+        # Remember the most recent measurement so the overview can report a real
+        # observed rate instead of inventing one. None until a job has run.
+        global _LAST_JOB_PERF
+        _LAST_JOB_PERF = {
+            "events": job.get("processed", 0),
+            "elapsed_seconds": round(elapsed, 3),
+            "throughput_eps": job["throughput_eps"],
+            "measured_at": job["finished_at"],
+        }
 
 
 @app.post("/api/ingest/batch")
@@ -781,6 +806,224 @@ def compare_events(event_a: Optional[str] = None, event_b: Optional[str] = None)
 @app.get("/api/stats")
 def get_stats():
     return db.get_stats()
+
+
+# ── Evaluator-facing overview ─────────────────────────────────────────────────
+# One request that answers the seven questions an evaluator asks in the first ten
+# seconds: how many events arrived, how many were parsed, how many need review,
+# what sources were seen, what event categories were identified, how many reached
+# the common schema, and whether processing is healthy.
+#
+# It speaks in OUTCOMES and SOURCE FAMILIES. Parser ids, fallback engine names and
+# internal path tokens are deliberately absent — those stay on the per-event
+# technical details payload, which is where a developer needs them.
+
+# os_family (as recorded in the normalized envelope) → operator-facing label.
+_SOURCE_LABEL = {
+    "windows": "Windows",
+    "linux": "Linux",
+    "darwin": "macOS",
+    "macos": "macOS",
+    "mac": "macOS",
+    "android": "Android",
+}
+
+# The five user-facing statuses. Mutually exclusive and derived only from
+# recorded outcomes — never from a guess about intent.
+_STATUS_SUCCESS = ("SUCCESS", "Successfully parsed and mapped")
+_STATUS_PARTIAL = ("PARTIAL", "Parsed, but some fields could not be mapped")
+_STATUS_REVIEW = ("REVIEW", "Processed with low mapping confidence")
+_STATUS_UNRESOLVED = ("UNRESOLVED", "Source or event type could not be determined")
+_STATUS_ERROR = ("ERROR", "Processing failed")
+
+
+def _user_facing_status(parse_status: str | None, mapping_status: str | None,
+                        field_coverage: float | None = None) -> dict:
+    """Collapse the internal parse/mapping state into one operator-facing status.
+
+    Kept in ONE place so the overview table, the per-event card and the review
+    queue can never disagree about what a given event's status is.
+    """
+    ps = (parse_status or "").lower()
+    ms = (mapping_status or "").lower()
+    if ps == "failed":
+        code, label = _STATUS_ERROR
+    elif ps == "fallback":
+        code, label = _STATUS_UNRESOLVED
+    elif ms == "mapped":
+        # Mapped confidently. If some extracted fields still had no canonical
+        # home, that is PARTIAL rather than a clean success — an honest
+        # distinction the previous UI collapsed into one label.
+        if field_coverage is not None and field_coverage < 1.0:
+            code, label = _STATUS_PARTIAL
+        else:
+            code, label = _STATUS_SUCCESS
+    else:
+        code, label = _STATUS_REVIEW
+    return {"code": code, "label": label}
+
+
+@app.get("/api/overview")
+def overview():
+    """Operational summary for the Overview page. Every figure is derived from
+    persisted events — no hardcoded counts or percentages."""
+    stats = db.get_stats()
+    ov = db.get_overview()
+    total = int(ov.get("total", 0) or 0)
+
+    def pct(n: int) -> float:
+        return round(100.0 * n / total, 1) if total else 0.0
+
+    def as_map(group: str) -> dict:
+        return {r["key"]: r["count"] for r in ov.get(group, [])}
+
+    parse = as_map("by_parse_status")
+    mapping = as_map("by_mapping_status")
+    mr = as_map("by_mapping_review")
+
+    parsed_ok = int(parse.get("parsed", 0))
+    partial = int(parse.get("partially_parsed", 0))
+    fallback = int(parse.get("fallback", 0))
+    failed = int(parse.get("failed", 0))
+    unresolved = fallback + failed
+    mapped = int(mapping.get("mapped", 0))
+    unmapped = int(mapping.get("unmapped", 0))
+    needs_review = int(stats.get("needs_review", 0) or 0)
+
+    # Mutually exclusive mapping buckets (sum to total).
+    mapped_clean = int(mr.get("mapped|0", 0))
+    mapped_flagged = int(mr.get("mapped|1", 0))
+
+    # ── Source families ──
+    src_acc: dict = {}
+    for row in ov.get("by_os_family", []):
+        fam = row.get("key")
+        key = str(fam or "").strip().lower()
+        if not key or key == "unknown":
+            label = "Unidentified"
+        else:
+            label = _SOURCE_LABEL.get(key, str(fam))
+        src_acc[label] = src_acc.get(label, 0) + int(row.get("count", 0))
+    sources = [
+        {"label": k, "count": v, "pct": pct(v),
+         "identified": k != "Unidentified"}
+        for k, v in sorted(src_acc.items(), key=lambda kv: kv[1], reverse=True)
+    ]
+
+    # ── Event types: human names first, numeric class as secondary detail ──
+    types_acc: dict = {}
+    for row in ov.get("by_class", []):
+        raw_uid = row.get("key")
+        try:
+            uid = int(raw_uid)
+        except (TypeError, ValueError):
+            uid = None
+        info = CLASS_INFO.get(uid) if uid is not None else None
+        name = info[0] if info else "Unclassified"
+        entry = types_acc.setdefault(name, {"name": name, "class_uid": uid, "count": 0})
+        entry["count"] += int(row.get("count", 0))
+    event_types = sorted(types_acc.values(), key=lambda r: r["count"], reverse=True)
+    for e in event_types:
+        e["pct"] = pct(e["count"])
+
+    # ── Activities (what actually happened), human labels only ──
+    activities = [
+        {"name": r["key"] or "Unknown", "count": r["count"], "pct": pct(r["count"])}
+        for r in ov.get("by_activity", []) if r.get("count")
+    ][:12]
+
+    severities = [
+        {"name": r["key"] or "Unknown", "count": r["count"], "pct": pct(r["count"])}
+        for r in ov.get("by_severity", [])
+    ]
+
+    # ── Pipeline funnel. Each stage carries the definition used to compute it so
+    # the UI can explain the number instead of asserting it. ──
+    identified_source = total - src_acc.get("Unidentified", 0)
+    pipeline = [
+        {"stage": "Received", "count": total, "pct": pct(total),
+         "definition": "Raw records accepted for processing"},
+        {"stage": "Format Detected", "count": total - failed, "pct": pct(total - failed),
+         "definition": "A log format was determined for the record"},
+        {"stage": "Source Identified", "count": identified_source, "pct": pct(identified_source),
+         "definition": "The originating system family was determined"},
+        {"stage": "Parsed", "count": parsed_ok + partial, "pct": pct(parsed_ok + partial),
+         "definition": "Fields were extracted by a matched parser"},
+        {"stage": "Normalized", "count": total, "pct": pct(total),
+         "definition": "A canonical event was produced. Every record reaches this "
+                       "stage by design — nothing is discarded"},
+        {"stage": "OCSF Mapped", "count": mapped, "pct": pct(mapped),
+         "definition": "Event semantics were confidently mapped to an OCSF class"},
+        {"stage": "Validated", "count": mapped_clean, "pct": pct(mapped_clean),
+         "definition": "Mapped and passing schema validation without review flags"},
+        {"stage": "Ready", "count": mapped_clean, "pct": pct(mapped_clean),
+         "definition": "Searchable and analytics-ready"},
+    ]
+
+    # ── Recent activity ──
+    recent = []
+    for r in db.list_recent(12):
+        st = _user_facing_status(r.get("parse_status"), r.get("mapping_status"))
+        uid = r.get("class_uid")
+        try:
+            uid = int(uid)
+        except (TypeError, ValueError):
+            uid = None
+        info = CLASS_INFO.get(uid) if uid is not None else None
+        fam = str(r.get("os_family") or "").strip().lower()
+        recent.append({
+            "event_id": r.get("event_id"),
+            "time": r.get("time") or r.get("ingested_at"),
+            "source": _SOURCE_LABEL.get(fam, r.get("os_family") or "Unidentified"),
+            "event_type": info[0] if info else "Unclassified",
+            "class_uid": uid,
+            "activity": r.get("activity_name") or "Unknown",
+            "host": r.get("hostname"),
+            "severity": r.get("severity"),
+            "status": st,
+            "confidence": r.get("confidence"),
+        })
+
+    # ── Throughput: only ever a MEASURED figure. None until a job has run. ──
+    perf = _LAST_JOB_PERF
+
+    return {
+        "title": "ULPF",
+        "subtitle": "Universal Log Pre-processing Framework",
+        "tagline": "Convert heterogeneous logs into a common, lossless, "
+                   "analytics-ready representation.",
+        "kpis": {
+            "total_events": total,
+            "successfully_parsed": {"count": parsed_ok, "pct": pct(parsed_ok)},
+            "needs_review": {"count": needs_review, "pct": pct(needs_review)},
+            "unresolved": {"count": unresolved, "pct": pct(unresolved)},
+            "ocsf_mapped": {"count": mapped, "pct": pct(mapped)},
+            "processing_rate": perf,
+        },
+        "pipeline": pipeline,
+        "sources": sources,
+        "event_types": event_types,
+        "activities": activities,
+        "severities": severities,
+        "quality": {
+            "parsing": [
+                {"label": "Successfully Parsed", "count": parsed_ok, "pct": pct(parsed_ok)},
+                {"label": "Partially Parsed", "count": partial, "pct": pct(partial)},
+                {"label": "Unresolved", "count": unresolved, "pct": pct(unresolved)},
+            ],
+            "mapping": [
+                {"label": "OCSF Mapped", "count": mapped_clean, "pct": pct(mapped_clean)},
+                # Named precisely to avoid colliding with the overall "Needs
+                # Review" KPI: this row counts only events that DID map but
+                # still carry a review flag, so the three rows stay exclusive.
+                {"label": "Mapped, flagged for review", "count": mapped_flagged,
+                 "pct": pct(mapped_flagged)},
+                {"label": "Unmapped", "count": unmapped, "pct": pct(unmapped)},
+            ],
+        },
+        "recent": recent,
+        "health": _health_report(),
+    }
 
 
 # ── Coverage (per-parser NGRE / Drain3 / failure) ──────────────────────────────

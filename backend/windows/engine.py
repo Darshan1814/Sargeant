@@ -219,6 +219,27 @@ def parse(raw_log: str) -> Optional[WindowsParseResult]:
 
     field_mapping = dict(sem.mapping)
 
+    # ── Promote source-native identifiers to canonical OCSF metadata homes ──
+    # The EventID and Provider are the two fields an operator most needs to see,
+    # but they previously had no canonical home and were only reachable inside
+    # the `unmapped` leftovers dict. Mapping them here means a user-facing screen
+    # can show "Event ID 12 / Microsoft-Windows-Kernel-General" from real
+    # canonical fields instead of digging through internal structures.
+    if ev.event_id not in (None, ""):
+        fields["event_code"] = str(ev.event_id)
+        field_mapping["event_code"] = "metadata.event_code"
+        # Route the raw label carrying the same value to the same target so the
+        # promotion does not leave a duplicate copy behind in `unmapped`.
+        for dup in ("EventID", "Event ID", "EventId"):
+            if str(fields.get(dup, "")).strip() == str(ev.event_id).strip() and dup in fields:
+                field_mapping[dup] = "metadata.event_code"
+    if ev.provider not in (None, ""):
+        # log_provider is already populated from sem.source_name; mapping the raw
+        # key to the same destination consumes it losslessly (same value, no dup).
+        for dup in ("Provider", "ProviderName"):
+            if dup in fields:
+                field_mapping[dup] = "metadata.log_provider"
+
     static_fields: dict = {
         "activity_id": sem.activity[0],
         "activity_name": sem.activity[1],

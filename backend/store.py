@@ -350,3 +350,36 @@ def start_tiering():
 
 def stop_tiering():
     _TIER_STOP.set()
+
+
+# ── Evaluator-facing semantic aggregates (both tiers) ─────────────────────────
+
+_OVERVIEW_GROUPS = (
+    "by_parse_status", "by_mapping_status", "by_os_family",
+    "by_class", "by_activity", "by_severity", "by_mapping_review",
+)
+
+
+def get_overview() -> dict:
+    """Union the semantic aggregates across the hot and cold tiers."""
+    hot = sqlite_store.get_overview()
+    cold = db.get_overview()
+    out = {"total": hot.get("total", 0) + cold.get("total", 0)}
+    for group in _OVERVIEW_GROUPS:
+        merged = _merge_counts(hot.get(group, []), cold.get(group, []), "key")
+        merged.sort(key=lambda r: r["count"], reverse=True)
+        out[group] = merged
+    return out
+
+
+def list_recent(limit: int = 10) -> list:
+    """Most recent events across both tiers, newest first.
+
+    The hot tier holds the newest rows, so it is queried first and only topped up
+    from the cold tier when it cannot satisfy the limit on its own.
+    """
+    rows = list(sqlite_store.list_recent(limit))
+    if len(rows) < limit:
+        rows.extend(db.list_recent(limit - len(rows)))
+    rows.sort(key=lambda r: str(r.get("ingested_at") or ""), reverse=True)
+    return rows[:limit]

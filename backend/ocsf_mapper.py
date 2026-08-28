@@ -283,6 +283,11 @@ def _canonical_envelope(class_uid: int, event_id: str, parser: dict) -> dict:
                 "feature": {"name": parser.get("category", "Unknown")},
             },
             "log_provider": parser.get("source_name", "Unknown"),
+            # Source-native event identifier (Windows EventID, syslog msgid,
+            # vendor signature id). Always present in the skeleton so every
+            # family has one canonical home for it; explicit null when the
+            # source genuinely carries no such code.
+            "event_code": None,
             # Three distinct time axes are kept separate (spec #6): when the
             # event happened (original_time / ev["time"]), when we ingested it
             # (ingestion_time — filled by main._persist_result), and when we
@@ -451,8 +456,14 @@ def map_to_ocsf(
         # message → represented in ev["message"]
         "message",
     }
+    # Case-insensitive consumed check: winkv/EVTX sources capitalise their keys
+    # ("Level", "Message") while syslog/registry sources use lowercase. Matching
+    # case-sensitively duplicated the capitalised twins into `unmapped` even
+    # though their value was already represented in severity/message, which both
+    # polluted `unmapped` and deflated field_coverage.
+    _consumed_lower = {k.lower() for k in _CONSUMED}
     for key, value in fields.items():
-        if key in _CONSUMED or key in mapped_src_keys:
+        if key.lower() in _consumed_lower or key in mapped_src_keys:
             continue
         if value is None or value == "":
             continue
@@ -545,6 +556,15 @@ def _apply_provenance(ev: dict, parser: dict, class_uid: int, is_drain3: bool,
     # Deterministic parse. Is the OCSF class a confident semantic class, or a
     # generic "we parsed it but don't know the high-level class" landing?
     confident_ocsf = class_uid in _CONFIDENT_OCSF_CLASSES
+    if not confident_ocsf and int(ev.get("activity_id") or 0) > 0:
+        # A generic class landing is STILL a confident mapping when the taxonomy
+        # determined a specific activity from documented evidence (e.g. Windows
+        # Kernel-General EventID 12 → "System Startup", OCSF 1001). What makes a
+        # mapping unconfident is the absence of determined semantics, not the
+        # class number itself. Judging on class alone marked genuinely-identified
+        # operational events as "requires review", which both understated real
+        # coverage and buried true review candidates in noise.
+        confident_ocsf = True
     ev["ocsf_mapping_status"] = "mapped" if confident_ocsf else "unmapped"
     ev["parse_status"] = "parsed" if confident_ocsf else "partially_parsed"
     if not confident_ocsf:
