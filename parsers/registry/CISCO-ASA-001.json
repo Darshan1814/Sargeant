@@ -1,0 +1,22 @@
+{
+  "parser_id": "CISCO-ASA-001",
+  "source_name": "Cisco ASA Firewall",
+  "os_family": "Network",
+  "category": "Network Activity",
+  "ocsf_class_uid": 4001,
+  "description": "Cisco ASA syslog messages for firewall ACL and connection events. Handles %ASA-severity-msgid: format with optional BSD syslog prefix. Covers message IDs: 106001/106006/106007/106010/106015/106023/302013-302016/710001-710006. Used as registry fallback when the firewall family engine cannot load.",
+  "identifiers": {
+    "required_substrings": ["%ASA-"],
+    "regex_signature": "%ASA-\\d+-\\d+\\s*:",
+    "known_processes": [],
+    "confidence_weight": 0.95
+  },
+  "ngre_pattern": "(?:<(?P<priority>\\d+)>)?(?:(?P<month>\\w{3})\\s+(?P<day>\\d{1,2})\\s+(?P<time>\\d{2}:\\d{2}:\\d{2})\\s+(?P<host>\\S+)\\s+)?%ASA-(?P<asa_severity>\\d+)-(?P<asa_msgid>\\d+):\\s*(?P<message>.*)",
+  "field_mapping": {
+    "host":         "device.hostname",
+    "asa_severity": "unmapped.asa_severity",
+    "asa_msgid":    "unmapped.asa_msgid"
+  },
+  "sample_log": "<166>May  4 09:00:00 asa-fw %ASA-6-106015: Deny TCP (no connection) from 10.0.0.5/12345 to 192.168.1.1/80 flags RST  on interface outside",
+  "version": "1.0"
+}

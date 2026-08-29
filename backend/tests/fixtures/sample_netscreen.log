@@ -1,0 +1,1 @@
+May  4 09:00:00 ns-fw NetScreen: system-info-00257(session): start_time="2004-11-08 01:30:18" duration=28 policy_id=110 service=ftp proto=6 src zone=Trust dst zone=Untrust action=Permit sent=1940 rcvd=6488 src=10.1.1.1 dst=10.2.2.2 src_port=1254 dst_port=21 session_id=458 reason=Traffic

@@ -1,0 +1,26 @@
+{
+  "parser_id": "JUNIPER-SRX-001",
+  "source_name": "Juniper SRX Firewall",
+  "os_family": "Network",
+  "category": "Network Activity",
+  "ocsf_class_uid": 4001,
+  "description": "Juniper SRX RT_FLOW session events via BSD syslog. Handles RT_FLOW_SESSION_CREATE, RT_FLOW_SESSION_CLOSE and RT_FLOW_SESSION_DENY events. Extracts src/dst IP and port from flow tuple notation (IP/port->IP/port). Used as NGRE fallback.",
+  "identifiers": {
+    "required_substrings": ["RT_FLOW"],
+    "regex_signature": "RT_FLOW(?:_SESSION)?_(?:CREATE|CLOSE|DENY)",
+    "known_processes": ["RT_FLOW"],
+    "confidence_weight": 0.92
+  },
+  "ngre_pattern": "(?:<(?P<priority>\\d+)>)?(?:(?P<month>\\w{3})\\s+(?P<day>\\d{1,2})\\s+(?P<time>\\d{2}:\\d{2}:\\d{2})\\s+(?P<host>\\S+)\\s+)?(?:RT_FLOW\\s*:\\s*)?RT_FLOW(?:_SESSION)?_(?P<srx_event>CREATE|CLOSE|DENY)[:\\s]+(?:session (?:created|closed|denied)[:\\s]+)?(?P<reason>[^:]+:\\s*)?(?P<src_ip>\\d{1,3}(?:\\.\\d{1,3}){3})/(?P<src_port>\\d+)\\s*->\\s*(?P<dst_ip>\\d{1,3}(?:\\.\\d{1,3}){3})/(?P<dst_port>\\d+)",
+  "field_mapping": {
+    "host":      "device.hostname",
+    "src_ip":    "src_endpoint.ip",
+    "src_port":  "src_endpoint.port",
+    "dst_ip":    "dst_endpoint.ip",
+    "dst_port":  "dst_endpoint.port",
+    "srx_event": "unmapped.srx_event",
+    "reason":    "unmapped.reason"
+  },
+  "sample_log": "May 14 09:33:21 srx1 RT_FLOW: RT_FLOW_SESSION_CREATE: session created 10.0.0.1/1234->192.168.1.1/80 0x0 None 10.0.0.1/1234->192.168.1.1/80 0x0 None 6 trust-to-untrust trust untrust 123456",
+  "version": "1.0"
+}

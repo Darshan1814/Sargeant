@@ -1,0 +1,28 @@
+{
+  "parser_id": "NETSCREEN-001",
+  "source_name": "Juniper NetScreen Firewall",
+  "os_family": "Network",
+  "category": "Network Activity",
+  "ocsf_class_uid": 4001,
+  "description": "Juniper NetScreen legacy firewall session logs. Handles the structured key=value syslog format including device_id=, action=, src=, dst=, src_port=, dst_port=, proto=. Note: 'src zone=' and 'dst zone=' contain embedded spaces and are captured separately.",
+  "identifiers": {
+    "required_substrings": ["device_id="],
+    "regex_signature": "device_id=\\w+.*action=\\w+",
+    "known_processes": ["NetScreen"],
+    "confidence_weight": 0.90
+  },
+  "ngre_pattern": "(?:<(?P<priority>\\d+)>)?(?:(?P<month>\\w{3})\\s+(?P<day>\\d{1,2})\\s+(?P<time>\\d{2}:\\d{2}:\\d{2})\\s+(?P<host>\\S+)\\s+)?(?:\\S+\\s+)?device_id=(?P<device_id>\\w+).*?action=(?P<action>\\w+).*?sent=(?P<sent>\\d+)\\s+rcvd=(?P<rcvd>\\d+)\\s+src=(?P<src_ip>[\\d.]+)\\s+dst=(?P<dst_ip>[\\d.]+)(?:\\s+src_port=(?P<src_port>\\d+)\\s+dst_port=(?P<dst_port>\\d+))?",
+  "field_mapping": {
+    "host":      "device.hostname",
+    "src_ip":    "src_endpoint.ip",
+    "src_port":  "src_endpoint.port",
+    "dst_ip":    "dst_endpoint.ip",
+    "dst_port":  "dst_endpoint.port",
+    "action":    "status",
+    "device_id": "unmapped.device_id",
+    "sent":      "unmapped.sent_bytes",
+    "rcvd":      "unmapped.rcvd_bytes"
+  },
+  "sample_log": "May  4 09:00:00 ns-fw NetScreen: system-info-00257(session): start_time=\"2004-11-08 01:30:18\" duration=28 policy_id=110 service=ftp proto=6 src zone=Trust dst zone=Untrust action=Permit sent=1940 rcvd=6488 src=10.1.1.1 dst=10.2.2.2 src_port=1254 dst_port=21",
+  "version": "1.0"
+}

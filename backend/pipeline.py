@@ -31,6 +31,11 @@ try:
 except Exception:  # pragma: no cover
     _linux_parse = None
 
+try:
+    from firewall import parse as _firewall_parse  # Firewall family (CEF/FortiGate/Cisco ASA/Juniper/NetScreen)
+except Exception:  # pragma: no cover
+    _firewall_parse = None
+
 PARSERS_DIR = Path(os.getenv("PARSERS_DIR", "/app/parsers/registry"))
 
 # Drain3 with in-memory state — no load_defaults() needed (removed in drain3 0.9.x)
@@ -201,6 +206,35 @@ def process(raw_log: str) -> dict:
                 }
             except Exception:
                 pass
+
+    # ── Firewall family path ───────────────────────────────────────────────────
+    # Deterministic engine covering CEF (generic), FortiGate key=value, Cisco ASA
+    # syslog (%ASA-N-MSGID), Juniper SRX RT_FLOW, and NetScreen legacy logs.
+    # All formats normalize to OCSF class 4001 (Network Activity). Runs before generic
+    # OS syslog so network telemetry with syslog wrappers is cleanly claimed here.
+    if _firewall_parse is not None:
+        try:
+            fr = _firewall_parse(raw_log)
+        except Exception:
+            fr = None
+        if fr is not None:
+            try:
+                normalized = map_to_ocsf(fr.fields, fr.parser_config, event_id, raw_log)
+                normalized["unmapped"]["firewall"] = fr.firewall_block
+                return {
+                    "event_id": event_id,
+                    "parser_id": fr.parser_id,
+                    "confidence": fr.confidence,
+                    "path": "ngre",
+                    "needs_review": normalized.get("needs_review", False),
+                    "normalized": normalized,
+                    "raw_log": raw_log,
+                    "source": fr.parser_config.get("source_name", "Firewall"),
+                    "ocsf_class": normalized.get("class_uid", 4001),
+                    "candidates": [{"parser_id": fr.parser_id, "score": fr.confidence}],
+                }
+            except Exception:
+                pass  # fall through
 
     # ── Linux family path ──────────────────────────────────────────────────────
     # Deterministic engine covering RFC3164/RFC5424 syslog, journald JSON, auditd

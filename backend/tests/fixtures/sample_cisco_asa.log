@@ -1,0 +1,1 @@
+<166>May  4 09:00:01 asa-fw %ASA-6-106015: Deny TCP (no connection) from 10.0.0.5/12345 to 192.168.1.1/80 flags RST  on interface outside

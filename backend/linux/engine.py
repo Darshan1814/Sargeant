@@ -73,8 +73,9 @@ def _should_decline(raw: str, ev: LinuxEvent) -> bool:
     for a mismatched header/body).
     """
     low = raw.lower()
-    # macOS / pfSense firewall products own these payloads.
-    if "filterlog" in low or "socketfilterfw" in low:
+    # macOS / pfSense / NetScreen / Juniper / Cisco ASA firewall products own these payloads.
+    if ("filterlog" in low or "socketfilterfw" in low or "rt_flow" in low
+            or "netscreen" in low or "%asa-" in low or "cef:" in low):
         return True
     prog = (ev.program or "").lower()
     msg = ev.message or ""

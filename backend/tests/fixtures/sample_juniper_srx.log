@@ -1,0 +1,1 @@
+May 14 09:33:21 srx1 RT_FLOW: RT_FLOW_SESSION_CREATE: session created 10.0.0.1/1234->192.168.1.1/80 0x0 junos-http 10.0.0.1/1234->192.168.1.1/80 0x0 N/A N/A trust-to-untrust trust untrust 123456

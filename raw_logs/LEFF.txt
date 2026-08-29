@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+
+class LeefEventGenerator():
+
+    LEEF_TEMPLATE = 'LEEF:1.0|VENDOR_NAME={0}|PRODUCT_NAME={1}|PRODUCT_VERSION={2}|QRadarAppLog|APP_ID={3} LOG_FILE={4} LOG_MESSAGE={5}'
+
+    APP_ID = os.getenv('QRADAR_APP_ID', '0')
+    VENDOR__NAME = 'QRadar'
+    PRODUCT_NAME = 'QRadarAppLogger'
+    PRODUCT_VERSION = '1.0'
+
+    def createQRadarLeefHeader(self, message, log_file):
+        # This function generates a QRadar specific LEEF header and will automatically set the 
+        # APP_ID, VENDOR_NAME, PRODUCT_NAME and PRODUCT_VERSION values
+        return LEEF_TEMPLATE.format(self.VENDOR__NAME, self.PRODUCT_NAME, self.PRODUCT_VERSION, self.APP_ID, log_file, message)
+
+    def createCustomLeefHeader( self, vendor, product_name, product_version, app_id, log_file, message):
+        # This function generates a custom LEEF header where custom values can be input
+        return LEEF_TEMPLATE.format(vendor, product_name, product_version, app_id, log_file, message)
+        

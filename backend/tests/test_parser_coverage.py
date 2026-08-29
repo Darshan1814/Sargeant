@@ -158,10 +158,10 @@ def test_report_measured_coverage(capsys):
     total = len(rows) or 1
     mal_fallback = sum(process(r["raw"])["path"] in ("drain3", "dlq") for r in _MAL)
     with capsys.disabled():
-        print(f"\n─ measured coverage (synthetic corpus) ─")
+        print(f"\n-- measured coverage (synthetic corpus) --")
         print(f"  known-format fixtures : {total}")
         print(f"  via NGRE  : {ngre}/{total} = {100*ngre/total:.1f}%")
         print(f"  via Drain3: {drain3}/{total} = {100*drain3/total:.1f}%")
         print(f"  via DLQ   : {dlq}/{total} = {100*dlq/total:.1f}%")
-        print(f"  malformed → graceful fallback: {mal_fallback}/{len(_MAL)}")
+        print(f"  malformed -> graceful fallback: {mal_fallback}/{len(_MAL)}")
     assert ngre == total, "every known-format fixture must parse via NGRE"
